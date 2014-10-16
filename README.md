@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # README
 
 ## Django apps
@@ -40,3 +41,7 @@
 	- e.g. iround() - function to round decimal/float to the nearers whole number 
 - primelogic/
 	- Logic for the PRIME model 
+=======
+prime
+=====
+>>>>>>> 7390a47661f15735792ec0720425af8c375fd268
