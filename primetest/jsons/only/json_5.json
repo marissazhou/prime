@@ -1,0 +1,15 @@
+[{
+    "e_id": 5,
+    "mean_total": 41.3,
+    "mean_sat": 14.1,
+    "mean_mufa": 13.7,
+    "mean_pufa": 6.8,
+    "mean_diet": 250.0,
+    "sd_total": 3.73,    
+    "sd_sat": 1.41,    
+    "sd_mufa": 1.37,    
+    "sd_pufa": 0.68,    
+    "sd_diet": 10.0,    
+    "non_rate": 0 
+}
+]

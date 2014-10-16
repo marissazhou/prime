@@ -1,0 +1,158 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href='{% static "prime/img/moon.jpg" %}' >
+    <!-- Bootstrap -->
+    <link href='{% static "news/css/theme.css" %}'rel="stylesheet">
+    <link href='{% static "news/css/bootstrap.min.css" %}' rel="stylesheet">
+    <link href='{% static "news/css/bootstrap-select.css" %}' rel="stylesheet">
+    <link href='{% static "news/css/bootstrap-select.min.css" %}' rel="stylesheet">
+    <link href='{% static "news/css/docs.css" %}' rel="stylesheet">
+    <link href='{% static "news/css/pygments-manni.css" %}' rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+      <div class="page-header">
+      </div>
+      <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Prime</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a href="http://localhost:8000/prime/">Home</a></li>
+              <li class="active"><a href="http://localhost:8000/news/">News</a></li>
+              <li><a href="http://localhost:8000/prime/">Publications</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> About <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">About</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">How Prime starts</li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">About</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="../navbar/">Contact</a></li>
+              <li><a href="http://localhost:8000/faq/">FAQ</a></li>
+              <li class="active"><a href="./">Sign in</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+
+<!-- container -->
+     <div class="row">
+        <div class="col-md-3">
+
+          <div class="bs-sidebar hidden-print affix-top" role="complementary">
+            <ul class="nav bs-sidenav">
+              
+                <li>
+  <a href="#overview">News 1</a>
+  <ul class="nav">
+    <li><a href="#overview-doctype">HTML5 doctype</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#grid">News 1</a>
+  <ul class="nav">
+    <li><a href="#grid-media-queries">Media queries</a></li>
+    <li><a href="#grid-options">Grid options</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#type">News 1</a>
+  <ul class="nav">
+    <li><a href="#type-headings">Headings</a></li>
+  </ul>
+</li>
+<li><a href="#code">News 1</a></li>
+<li>
+  <a href="#tables">Tables</a>
+  <ul class="nav">
+    <li><a href="#tables-example">Basic example</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#forms">News 1</a>
+  <ul class="nav">
+    <li><a href="#forms-example">Basic example</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#buttons">News 1</a>
+  <ul class="nav">
+    <li><a href="#buttons-options">Options</a></li>
+  </ul>
+</li>
+<li>
+  <a href="#images">News 1</a>
+</li>
+<li class="">
+  <a href="#helper-classes">News 1</a>
+</li>
+<li class="active">
+  <a href="#responsive-utilities">Responsive utilities</a>
+  <ul class="nav">
+    <li><a href="#responsive-utilities-classes">Available classes</a></li>
+    <li><a href="#responsive-utilities-print">Print classes</a></li>
+    <li class="active"><a href="#responsive-utilities-tests">Test cases</a></li>
+  </ul>
+</li>
+
+              
+            </ul>
+          </div>
+        
+	
+        </div><!-- /.col-md-3 -->
+        <div class="col-md-9" role="main">
+<div class="bs-docs-section">
+
+    <div class="page-header">
+      <h1 id="overview">News 1</h1>
+    </div>
+    
+    <p>Bootstrap makes use of certain HTML elements and CSS properties that require the use of the HTML5 doctype. Include it at the beginning of all your projects.</p>
+
+            
+</div><!-- /.bs-docs-section -->
+        </div><!-- /.col-md-9 -->
+      </div><!-- container -->
+
+<img src='{% static "prime/img/moon.jpg" %}' height="42" width="42"/>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src='{% static "prime/js/bootstrap.min.js" %}'></script>
+    <script src='{% static "prime/js/widgets.js" %}'></script>
+    <script src='{% static "prime/js/holder.js" %}'></script>
+    <script src='{% static "prime/js/application.js" %}'></script>
+<p>
+    <div class="footer">
+        <p>&copy; Prime 2013</p>
+      </div>
+</html>
+

@@ -1,0 +1,1924 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>primemodel package &mdash; prime 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="prime 1.0 documentation" href="index.html" />
+    <link rel="prev" title="Manual" href="manual.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="manual.html" title="Manual"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">prime 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="primemodel-package">
+<h1>primemodel package<a class="headerlink" href="#primemodel-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-primemodel.DBHelper">
+<span id="primemodel-dbhelper-module"></span><h2>primemodel.DBHelper module<a class="headerlink" href="#module-primemodel.DBHelper" title="Permalink to this headline">¶</a></h2>
+<p>dabatabase manipulation class
+.. module:: DBHelper</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">platform:</th><td class="field-body">Ubuntu Unix</td>
+</tr>
+<tr class="field-even field"><th class="field-name">synopsis:</th><td class="field-body">A module for conducting all database relavant manipulations.</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="class">
+<dt id="primemodel.DBHelper.DBHelper">
+<em class="property">class </em><tt class="descclassname">primemodel.DBHelper.</tt><tt class="descname">DBHelper</tt><a class="reference internal" href="_modules/primemodel/DBHelper.html#DBHelper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.DBHelper.DBHelper" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="primemodel.DBHelper.DBHelper.age_groups">
+<tt class="descname">age_groups</tt><em class="property"> = None</em><a class="headerlink" href="#primemodel.DBHelper.DBHelper.age_groups" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.DBHelper.DBHelper.exposure_outcome">
+<tt class="descname">exposure_outcome</tt><em class="property"> = {}</em><a class="headerlink" href="#primemodel.DBHelper.DBHelper.exposure_outcome" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.DBHelper.DBHelper.exposures">
+<tt class="descname">exposures</tt><em class="property"> = {}</em><a class="headerlink" href="#primemodel.DBHelper.DBHelper.exposures" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="primemodel.DBHelper.DBHelper.get_exposure_id">
+<em class="property">static </em><tt class="descname">get_exposure_id</tt><big>(</big><em>e_id</em><big>)</big><a class="reference internal" href="_modules/primemodel/DBHelper.html#DBHelper.get_exposure_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.DBHelper.DBHelper.get_exposure_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function return exposure id according to exposure id</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>abbreviation</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; outcome abbreviation</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">outcome id</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="primemodel.DBHelper.DBHelper.get_exposure_outcome">
+<em class="property">static </em><tt class="descname">get_exposure_outcome</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/DBHelper.html#DBHelper.get_exposure_outcome"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.DBHelper.DBHelper.get_exposure_outcome" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function stores outcomes into database, exposure_outcome={exposure_id:}</p>
+<p>:param : 
+:returns: No return</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="primemodel.DBHelper.DBHelper.get_exposures">
+<em class="property">static </em><tt class="descname">get_exposures</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/DBHelper.html#DBHelper.get_exposures"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.DBHelper.DBHelper.get_exposures" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function retrieves all exposures from database, exposures store in a datastructure of [{}]</p>
+<p>:param : 
+:returns: all exposures in database</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="primemodel.DBHelper.DBHelper.get_measurements">
+<em class="property">static </em><tt class="descname">get_measurements</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/DBHelper.html#DBHelper.get_measurements"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.DBHelper.DBHelper.get_measurements" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function retrieves all measurements from database, exposures store in a datastructure of {[]}</p>
+<p>:param : 
+:returns: No return</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="primemodel.DBHelper.DBHelper.get_measurements_list">
+<em class="property">static </em><tt class="descname">get_measurements_list</tt><big>(</big><em>m_type_id</em>, <em>is_baseline</em><big>)</big><a class="reference internal" href="_modules/primemodel/DBHelper.html#DBHelper.get_measurements_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.DBHelper.DBHelper.get_measurements_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function retrieves all measurements from database, exposures store in a datastructure of {[]}</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>m_type_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; measurement type id</li>
+<li><strong>is_baseline</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; True is baseline, false is counterfactual</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">measurement list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="primemodel.DBHelper.DBHelper.get_measurements_lists">
+<em class="property">static </em><tt class="descname">get_measurements_lists</tt><big>(</big><em>m_type_ids</em><big>)</big><a class="reference internal" href="_modules/primemodel/DBHelper.html#DBHelper.get_measurements_lists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.DBHelper.DBHelper.get_measurements_lists" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function retrieve all measurements for one exposure</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>m_type_ids</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; measurement type id</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">measurement list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="primemodel.DBHelper.DBHelper.get_mortalities">
+<em class="property">static </em><tt class="descname">get_mortalities</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/DBHelper.html#DBHelper.get_mortalities"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.DBHelper.DBHelper.get_mortalities" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function retrieves all mortalities from database, exposures store in a datastructure of {}</p>
+<p>:param : 
+:returns: No return</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="primemodel.DBHelper.DBHelper.get_outcome_abbreviation">
+<em class="property">static </em><tt class="descname">get_outcome_abbreviation</tt><big>(</big><em>o_id</em><big>)</big><a class="reference internal" href="_modules/primemodel/DBHelper.html#DBHelper.get_outcome_abbreviation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.DBHelper.DBHelper.get_outcome_abbreviation" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function return outcome abbreviation according to outcome id</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>o_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; outcome id</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">outcome abbreviation</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="primemodel.DBHelper.DBHelper.get_outcome_id">
+<em class="property">static </em><tt class="descname">get_outcome_id</tt><big>(</big><em>abbreviation</em><big>)</big><a class="reference internal" href="_modules/primemodel/DBHelper.html#DBHelper.get_outcome_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.DBHelper.DBHelper.get_outcome_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function return outcome id according to outcome abbreviation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>abbreviation</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; outcome abbreviation</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">outcome id</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="primemodel.DBHelper.DBHelper.get_outcome_name">
+<em class="property">static </em><tt class="descname">get_outcome_name</tt><big>(</big><em>o_id</em><big>)</big><a class="reference internal" href="_modules/primemodel/DBHelper.html#DBHelper.get_outcome_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.DBHelper.DBHelper.get_outcome_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function return outcome name according to outcome id</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>o_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; outcome id</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">outcome name</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="primemodel.DBHelper.DBHelper.get_outcomes">
+<em class="property">static </em><tt class="descname">get_outcomes</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/DBHelper.html#DBHelper.get_outcomes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.DBHelper.DBHelper.get_outcomes" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function retrieves all outcomes from database, outcome store in a datastructure of {o_id:[name,abbreviation]}</p>
+<p>:param : 
+:returns: No return</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="primemodel.DBHelper.DBHelper.get_population_subsets">
+<em class="property">static </em><tt class="descname">get_population_subsets</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/DBHelper.html#DBHelper.get_population_subsets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.DBHelper.DBHelper.get_population_subsets" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function retrieves population subsets from database, exposures store in a datastructure of []</p>
+<p>:param : 
+:returns: female age groups</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="primemodel.DBHelper.DBHelper.get_relative_risks">
+<em class="property">static </em><tt class="descname">get_relative_risks</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/DBHelper.html#DBHelper.get_relative_risks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.DBHelper.DBHelper.get_relative_risks" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function retrieves all relative risks from database, exposures store in a datastructure of [{}]</p>
+<p>:param : 
+:returns: No return</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="primemodel.DBHelper.DBHelper.get_relative_risks_count">
+<em class="property">static </em><tt class="descname">get_relative_risks_count</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/DBHelper.html#DBHelper.get_relative_risks_count"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.DBHelper.DBHelper.get_relative_risks_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function retrieves all variable distribution from database, exposures store in a datastructure of [{}]</p>
+<p>:param : 
+:returns: No return</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="primemodel.DBHelper.DBHelper.get_risks">
+<em class="property">static </em><tt class="descname">get_risks</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/DBHelper.html#DBHelper.get_risks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.DBHelper.DBHelper.get_risks" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns all baseline risks for all exposures</p>
+<p>:param : 
+:returns: No return</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="primemodel.DBHelper.DBHelper.get_samples">
+<em class="property">static </em><tt class="descname">get_samples</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/DBHelper.html#DBHelper.get_samples"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.DBHelper.DBHelper.get_samples" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns all samples for outcomes of all exposures</p>
+<p>:param : 
+:returns: No return</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="primemodel.DBHelper.DBHelper.initialize">
+<em class="property">static </em><tt class="descname">initialize</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/DBHelper.html#DBHelper.initialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.DBHelper.DBHelper.initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function initializes an DBHelper instance</p>
+<p>:param : 
+:returns:</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.DBHelper.DBHelper.measurements">
+<tt class="descname">measurements</tt><em class="property"> = None</em><a class="headerlink" href="#primemodel.DBHelper.DBHelper.measurements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.DBHelper.DBHelper.mortalities">
+<tt class="descname">mortalities</tt><em class="property"> = {}</em><a class="headerlink" href="#primemodel.DBHelper.DBHelper.mortalities" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.DBHelper.DBHelper.outcomes">
+<tt class="descname">outcomes</tt><em class="property"> = {}</em><a class="headerlink" href="#primemodel.DBHelper.DBHelper.outcomes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.DBHelper.DBHelper.outcomes_num">
+<tt class="descname">outcomes_num</tt><em class="property"> = 24</em><a class="headerlink" href="#primemodel.DBHelper.DBHelper.outcomes_num" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.DBHelper.DBHelper.population_subsets">
+<tt class="descname">population_subsets</tt><em class="property"> = None</em><a class="headerlink" href="#primemodel.DBHelper.DBHelper.population_subsets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.DBHelper.DBHelper.relative_risks">
+<tt class="descname">relative_risks</tt><em class="property"> = None</em><a class="headerlink" href="#primemodel.DBHelper.DBHelper.relative_risks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.DBHelper.DBHelper.risks">
+<tt class="descname">risks</tt><em class="property"> = {}</em><a class="headerlink" href="#primemodel.DBHelper.DBHelper.risks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.DBHelper.DBHelper.samples_pop">
+<tt class="descname">samples_pop</tt><em class="property"> = {}</em><a class="headerlink" href="#primemodel.DBHelper.DBHelper.samples_pop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.DBHelper.DBHelper.samples_rr">
+<tt class="descname">samples_rr</tt><em class="property"> = {}</em><a class="headerlink" href="#primemodel.DBHelper.DBHelper.samples_rr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="primemodel.DBHelper.DBHelper.update_fat_measures">
+<tt class="descname">update_fat_measures</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/DBHelper.html#DBHelper.update_fat_measures"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.DBHelper.DBHelper.update_fat_measures" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-primemodel.ExposureDistribution">
+<span id="primemodel-exposuredistribution-module"></span><h2>primemodel.ExposureDistribution module<a class="headerlink" href="#module-primemodel.ExposureDistribution" title="Permalink to this headline">¶</a></h2>
+<p>An population distribution Class
+.. module:: ExposureDistribution</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">platform:</th><td class="field-body">Ubuntu Unix</td>
+</tr>
+<tr class="field-even field"><th class="field-name">synopsis:</th><td class="field-body">A module for containing all population associations for Exposures</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="class">
+<dt id="primemodel.ExposureDistribution.ExposureDistribution">
+<em class="property">class </em><tt class="descclassname">primemodel.ExposureDistribution.</tt><tt class="descname">ExposureDistribution</tt><big>(</big><em>age_groups</em>, <em>non_rate</em>, <em>b_mean</em>, <em>b_sd</em>, <em>c_mean</em>, <em>c_sd</em>, <em>samples_pop</em>, <em>dist_type</em><big>)</big><a class="reference internal" href="_modules/primemodel/ExposureDistribution.html#ExposureDistribution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.ExposureDistribution.ExposureDistribution" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="primemodel.ExposureDistribution.ExposureDistribution.c_sd">
+<tt class="descname">c_sd</tt><em class="property"> = None</em><a class="headerlink" href="#primemodel.ExposureDistribution.ExposureDistribution.c_sd" title="Permalink to this definition">¶</a></dt>
+<dd><p>log means and standard deviations</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.ExposureDistribution.ExposureDistribution.dist_type">
+<tt class="descname">dist_type</tt><em class="property"> = None</em><a class="headerlink" href="#primemodel.ExposureDistribution.ExposureDistribution.dist_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>final distributions</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.ExposureDistribution.ExposureDistribution.get_attr_b_distribution">
+<tt class="descname">get_attr_b_distribution</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/ExposureDistribution.html#ExposureDistribution.get_attr_b_distribution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.ExposureDistribution.ExposureDistribution.get_attr_b_distribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>get attribution  baseline distribution of this class</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">baseline population distribution</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.ExposureDistribution.ExposureDistribution.get_attr_b_log_mean">
+<tt class="descname">get_attr_b_log_mean</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/ExposureDistribution.html#ExposureDistribution.get_attr_b_log_mean"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.ExposureDistribution.ExposureDistribution.get_attr_b_log_mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>get attribution  baseline log mean of this class</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">baseline log mean</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.ExposureDistribution.ExposureDistribution.get_attr_b_log_sd">
+<tt class="descname">get_attr_b_log_sd</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/ExposureDistribution.html#ExposureDistribution.get_attr_b_log_sd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.ExposureDistribution.ExposureDistribution.get_attr_b_log_sd" title="Permalink to this definition">¶</a></dt>
+<dd><p>get attribution  baseline log standard deviation of this class</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">baseline log standard deviation</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.ExposureDistribution.ExposureDistribution.get_attr_c_distribution">
+<tt class="descname">get_attr_c_distribution</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/ExposureDistribution.html#ExposureDistribution.get_attr_c_distribution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.ExposureDistribution.ExposureDistribution.get_attr_c_distribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>get attribution counterfactual distribution of this class</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">counterfactual population distribution</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.ExposureDistribution.ExposureDistribution.get_attr_samples_pop">
+<tt class="descname">get_attr_samples_pop</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/ExposureDistribution.html#ExposureDistribution.get_attr_samples_pop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.ExposureDistribution.ExposureDistribution.get_attr_samples_pop" title="Permalink to this definition">¶</a></dt>
+<dd><p>get attribution samples for population distribution of this class</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">samples for population distribution</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.ExposureDistribution.ExposureDistribution.get_population_distribution">
+<tt class="descname">get_population_distribution</tt><big>(</big><em>e_id</em>, <em>mean</em>, <em>sd</em>, <em>log_mean</em>, <em>log_sd</em><big>)</big><a class="reference internal" href="_modules/primemodel/ExposureDistribution.html#ExposureDistribution.get_population_distribution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.ExposureDistribution.ExposureDistribution.get_population_distribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>get distribution for this population and exposure. e_id decides the distribution should be normal or lognormal or others</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>e_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; exposure id</li>
+<li><strong>age_group</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; age_group</li>
+<li><strong>mean</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; mean</li>
+<li><strong>sd</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; sd</li>
+<li><strong>log_mean</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; log_mean</li>
+<li><strong>log_sd</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; log_sd</li>
+<li><strong>m</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; age group num</li>
+<li><strong>n</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; measure num</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">population distribution</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.ExposureDistribution.ExposureDistribution.get_population_distributions">
+<tt class="descname">get_population_distributions</tt><big>(</big><em>e_id</em><big>)</big><a class="reference internal" href="_modules/primemodel/ExposureDistribution.html#ExposureDistribution.get_population_distributions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.ExposureDistribution.ExposureDistribution.get_population_distributions" title="Permalink to this definition">¶</a></dt>
+<dd><p>get distribution for this both baseline and counterfactual</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>e_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; exposure id</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">population distribution</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-primemodel.PrimeCoordinator">
+<span id="primemodel-primecoordinator-module"></span><h2>primemodel.PrimeCoordinator module<a class="headerlink" href="#module-primemodel.PrimeCoordinator" title="Permalink to this headline">¶</a></h2>
+<p>Prime Coordination class
+.. module:: PrimeCoordinator</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">platform:</th><td class="field-body">Ubuntu Unix</td>
+</tr>
+<tr class="field-even field"><th class="field-name">synopsis:</th><td class="field-body">A module for operating all exposures compound or only, baseline or counterfactual.</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="class">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator">
+<em class="property">class </em><tt class="descclassname">primemodel.PrimeCoordinator.</tt><tt class="descname">PrimeCoordinator</tt><a class="reference internal" href="_modules/primemodel/PrimeCoordinator.html#PrimeCoordinator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator" title="Permalink to this definition">¶</a></dt>
+<dd><p>exposure objects, both for only ones and compound ones</p>
+<dl class="attribute">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.bc_exposures">
+<tt class="descname">bc_exposures</tt><em class="property"> = []</em><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.bc_exposures" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.cc_exposures">
+<tt class="descname">cc_exposures</tt><em class="property"> = []</em><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.cc_exposures" title="Permalink to this definition">¶</a></dt>
+<dd><p>deaths to show in the webpages [age]</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.counter_measures">
+<tt class="descname">counter_measures</tt><em class="property"> = []</em><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.counter_measures" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_b_death_age">
+<tt class="descname">get_attr_b_death_age</tt><big>(</big><em>a_id</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeCoordinator.html#PrimeCoordinator.get_attr_b_death_age"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_b_death_age" title="Permalink to this definition">¶</a></dt>
+<dd><p>get deaths for a_id age group for all exposures [baseline]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>a_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; age group id</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">death sum for a specific age group in baseline</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_b_exposure_outcome_death">
+<tt class="descname">get_attr_b_exposure_outcome_death</tt><big>(</big><em>index</em>, <em>o_id</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeCoordinator.html#PrimeCoordinator.get_attr_b_exposure_outcome_death"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_b_exposure_outcome_death" title="Permalink to this definition">¶</a></dt>
+<dd><p>get ith exposure o_id th death from baseline exposures</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>index</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; index of exposure</li>
+<li><strong>o_id</strong> &#8211; outcome id, the same id as in the database</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">death sum for a specific exposure and outcome in baseline case</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_b_exposure_outcome_death_age">
+<tt class="descname">get_attr_b_exposure_outcome_death_age</tt><big>(</big><em>index</em>, <em>a_id</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeCoordinator.html#PrimeCoordinator.get_attr_b_exposure_outcome_death_age"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_b_exposure_outcome_death_age" title="Permalink to this definition">¶</a></dt>
+<dd><p>get indexth exposure deaths for a_id age group [baselie]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>index</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; index of exposure</li>
+<li><strong>a_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; age group id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">death sum for a specific age group and a specific exposure in baseline</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_c_death_age">
+<tt class="descname">get_attr_c_death_age</tt><big>(</big><em>a_id</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeCoordinator.html#PrimeCoordinator.get_attr_c_death_age"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_c_death_age" title="Permalink to this definition">¶</a></dt>
+<dd><p>get deaths for a_id age group for all <em>initial</em> exposures [counterfactual]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>a_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; age group id</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">death sum for a specific age group in counterfactual</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_c_exposure_outcome_death">
+<tt class="descname">get_attr_c_exposure_outcome_death</tt><big>(</big><em>index</em>, <em>o_id</em>, <em>is_baseline</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeCoordinator.html#PrimeCoordinator.get_attr_c_exposure_outcome_death"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_c_exposure_outcome_death" title="Permalink to this definition">¶</a></dt>
+<dd><p>get ith exposure o_id th death from new counterfactual exposures</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>index</strong> &#8211; index of exposure</li>
+<li><strong>o_id</strong> &#8211; outcome id</li>
+<li><strong>is_baseline</strong> &#8211; is baleline or counterfactual</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">death sum for a specific exposure and outcome</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_c_exposure_outcome_death_age">
+<tt class="descname">get_attr_c_exposure_outcome_death_age</tt><big>(</big><em>index</em>, <em>a_id</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeCoordinator.html#PrimeCoordinator.get_attr_c_exposure_outcome_death_age"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_c_exposure_outcome_death_age" title="Permalink to this definition">¶</a></dt>
+<dd><p>get indexth exposure deaths for a_id age group [counterfactual]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>index</strong> &#8211; index of exposure</li>
+<li><strong>a_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; age group id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">death sum for a specific age group and a specific exposure in counterfactual</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_cc_death_age">
+<tt class="descname">get_attr_cc_death_age</tt><big>(</big><em>a_id</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeCoordinator.html#PrimeCoordinator.get_attr_cc_death_age"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_cc_death_age" title="Permalink to this definition">¶</a></dt>
+<dd><p>get deaths for a_id age group for all <em>new</em> exposures [counterfactual][compound]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>a_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; age group id</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">death sum for a specific age group in changed counterfactual</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_cc_exposure">
+<tt class="descname">get_attr_cc_exposure</tt><big>(</big><em>index</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeCoordinator.html#PrimeCoordinator.get_attr_cc_exposure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_cc_exposure" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the i_th exposure in counterfactual compound exposures list, all exposures mortalities are the compound results of all previous exposures. The mortality of the first exposure is the same as baseline only exposure mortality</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>index</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; index of exposure</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the indexth exposure, an PrimeExposure object</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">index out of bound error</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_exposure_outcome_death_gender">
+<tt class="descname">get_attr_exposure_outcome_death_gender</tt><big>(</big><em>index</em>, <em>o_id</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeCoordinator.html#PrimeCoordinator.get_attr_exposure_outcome_death_gender"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_exposure_outcome_death_gender" title="Permalink to this definition">¶</a></dt>
+<dd><p>get ith exposure o_id th death from new counterfactual exposures</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>index</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; index of exposure</li>
+<li><strong>o_id</strong> &#8211; outcome id, the same id as in the database</li>
+<li><strong>is_male</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; gender</li>
+<li><strong>is_baseline</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; is baleline or counterfactual</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">[b_m,b_f,c_m,c_f]death sum for a specific exposure and outcome</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.get_baseline_compound_exposures">
+<tt class="descname">get_baseline_compound_exposures</tt><big>(</big><em>e_list</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeCoordinator.html#PrimeCoordinator.get_baseline_compound_exposures"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.get_baseline_compound_exposures" title="Permalink to this definition">¶</a></dt>
+<dd><p>get new counterfactual exposures, <em>be called once a change is made</em></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>e_list</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; a list of baseline exposure parameters</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a list of initial/baseline exposures</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.get_counterfactual_compound_exposures">
+<tt class="descname">get_counterfactual_compound_exposures</tt><big>(</big><em>e_list</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeCoordinator.html#PrimeCoordinator.get_counterfactual_compound_exposures"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.get_counterfactual_compound_exposures" title="Permalink to this definition">¶</a></dt>
+<dd><p>get new counterfactual exposures, <em>be called once a change is made</em></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>e_list</strong> &#8211; a list of exposure parameters</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a list of counterfactual compound exposures</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.get_dist_type">
+<tt class="descname">get_dist_type</tt><big>(</big><em>e_id</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeCoordinator.html#PrimeCoordinator.get_dist_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.get_dist_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>get distribution type for exposure according to its id</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>e_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; exposure id, should be the same id as in the database</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">distribution type for this exposure</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.get_exposure">
+<tt class="descname">get_exposure</tt><big>(</big><em>exposure_id</em>, <em>b_mean</em>, <em>b_sd</em>, <em>c_mean</em>, <em>c_sd</em>, <em>non_rate</em>, <em>dist_type</em>, <em>mortalities</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeCoordinator.html#PrimeCoordinator.get_exposure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.get_exposure" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function initiate an exposure object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>exposure_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; id for exposures</li>
+<li><strong>b_mean</strong> (<a class="reference external" href="http://docs.python.org/library/array.html#module-array" title="(in Python v2.7)"><em>array</em></a>) &#8211; mean for baseline</li>
+<li><strong>b_sd</strong> (<a class="reference external" href="http://docs.python.org/library/array.html#module-array" title="(in Python v2.7)"><em>array</em></a>) &#8211; standard deviation for counterfactual</li>
+<li><strong>c_mean</strong> (<a class="reference external" href="http://docs.python.org/library/array.html#module-array" title="(in Python v2.7)"><em>array</em></a>) &#8211; mean for baseline</li>
+<li><strong>c_sd</strong> (<a class="reference external" href="http://docs.python.org/library/array.html#module-array" title="(in Python v2.7)"><em>array</em></a>) &#8211; standard deviation for counterfactual</li>
+<li><strong>non_rate</strong> (<a class="reference external" href="http://docs.python.org/library/array.html#module-array" title="(in Python v2.7)"><em>array</em></a>) &#8211; non rate for smokers/drinkers</li>
+<li><strong>dist_type</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; distribution type 0: normal distribution; 1: lognormal distribution; 2: binary distribution</li>
+<li><strong>mortalities</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; baseline mortalities for a new exposure, could be mortality in db or counterfactual mortality of previous exposure, {outcome_id:[mortalities of current outcome]}</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">an exposure object</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">an exception</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.get_exposure_list">
+<tt class="descname">get_exposure_list</tt><big>(</big><em>e_list</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeCoordinator.html#PrimeCoordinator.get_exposure_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.get_exposure_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function, could be compound result or &#8216;only&#8217; result, take salf for example:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>e_list</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; a list for exposures, if list is [4], then it is only sheet; if list is [1,2,3,4], then it is none sheet</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a list of initial/baseline exposures</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.get_exposure_outcome_death_age">
+<tt class="descname">get_exposure_outcome_death_age</tt><big>(</big><em>a_id</em>, <em>exposure</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeCoordinator.html#PrimeCoordinator.get_exposure_outcome_death_age"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.get_exposure_outcome_death_age" title="Permalink to this definition">¶</a></dt>
+<dd><p>get deaths sum for a_id age group in exposure, this age group id (a_id) should be a valid id for exposure, otherwise it raises NotFound or IndexOutOfBound error</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>a_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; age group id</li>
+<li><strong>exposure</strong> (<em>an PrimeExposure object</em>) &#8211; exposure to get data</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">deaths sum for a_id age group</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.get_initial_exposures">
+<tt class="descname">get_initial_exposures</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeCoordinator.html#PrimeCoordinator.get_initial_exposures"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.get_initial_exposures" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the initial baseline and counterfactual exposures,*be called only once when the program started*, only_exposures keeps the same in the whole process, while cc_exposures changes with new parameters</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attrubtes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a list of initial/baseline exposures</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.only_exposures">
+<tt class="descname">only_exposures</tt><em class="property"> = {}</em><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.only_exposures" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.output_baseline_mortality">
+<tt class="descname">output_baseline_mortality</tt><em class="property"> = {}</em><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.output_baseline_mortality" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.output_baseline_mortality_num">
+<tt class="descname">output_baseline_mortality_num</tt><em class="property"> = []</em><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.output_baseline_mortality_num" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.output_baseline_mortality_total">
+<tt class="descname">output_baseline_mortality_total</tt><em class="property"> = 0</em><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.output_baseline_mortality_total" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.output_counterfactual_mortality">
+<tt class="descname">output_counterfactual_mortality</tt><em class="property"> = {}</em><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.output_counterfactual_mortality" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.output_counterfactual_mortality_num">
+<tt class="descname">output_counterfactual_mortality_num</tt><em class="property"> = []</em><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.output_counterfactual_mortality_num" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.output_counterfactual_mortality_total">
+<tt class="descname">output_counterfactual_mortality_total</tt><em class="property"> = 0</em><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.output_counterfactual_mortality_total" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.read_json">
+<tt class="descname">read_json</tt><big>(</big><em>fileaddress</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeCoordinator.html#PrimeCoordinator.read_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.read_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>read json from fileaddress and store the content into exposures global variables, the json file format should look like [{u&#8217;non_rate&#8217;: 25, u&#8217;e_id&#8217;: 1, u&#8217;sd&#8217;: 25, u&#8217;mean&#8217;: 15.6}, {u&#8217;non_rate&#8217;: 100, u&#8217;e_id&#8217;: 2, u&#8217;sd&#8217;: 25, u&#8217;mean&#8217;: 3.6}]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fileaddress</strong> (<a class="reference external" href="http://docs.python.org/library/string.html#module-string" title="(in Python v2.7)"><em>string</em></a>) &#8211; A string to be converted</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">json content</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.refresh_output_baseline_mortality">
+<tt class="descname">refresh_output_baseline_mortality</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeCoordinator.html#PrimeCoordinator.refresh_output_baseline_mortality"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.refresh_output_baseline_mortality" title="Permalink to this definition">¶</a></dt>
+<dd><p>refresh final baseline compound mortality for output, it should be the baseline mortality of the intial exposure</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attrubtes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">No return</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeCoordinator.PrimeCoordinator.refresh_output_counterfactual_mortality">
+<tt class="descname">refresh_output_counterfactual_mortality</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeCoordinator.html#PrimeCoordinator.refresh_output_counterfactual_mortality"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeCoordinator.PrimeCoordinator.refresh_output_counterfactual_mortality" title="Permalink to this definition">¶</a></dt>
+<dd><p>refresh final compound mortality for output, it should be the counterfactual mortality of the final exposure</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attrubtes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">No return</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-primemodel.PrimeExposure">
+<span id="primemodel-primeexposure-module"></span><h2>primemodel.PrimeExposure module<a class="headerlink" href="#module-primemodel.PrimeExposure" title="Permalink to this headline">¶</a></h2>
+<p>An Exposure Class
+.. module:: PrimeExposure</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">platform:</th><td class="field-body">Ubuntu Unix</td>
+</tr>
+<tr class="field-even field"><th class="field-name">synopsis:</th><td class="field-body">A module for concluding all exposure relavant data and operation.</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="class">
+<dt id="primemodel.PrimeExposure.PrimeExposure">
+<em class="property">class </em><tt class="descclassname">primemodel.PrimeExposure.</tt><tt class="descname">PrimeExposure</tt><big>(</big><em>e_id</em>, <em>outcome_ids</em>, <em>mortalities</em>, <em>samples_rr</em>, <em>samples_pop</em>, <em>outcomes</em>, <em>popDistribution</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeExposure.html#PrimeExposure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set variables for mortality data
+Defined by population baseline data in database</p>
+<dl class="attribute">
+<dt id="primemodel.PrimeExposure.PrimeExposure.c_mortalities">
+<tt class="descname">c_mortalities</tt><em class="property"> = None</em><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure.c_mortalities" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeExposure.PrimeExposure.get_age_deaths_sum">
+<tt class="descname">get_age_deaths_sum</tt><big>(</big><em>a_id</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeExposure.html#PrimeExposure.get_age_deaths_sum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure.get_age_deaths_sum" title="Permalink to this definition">¶</a></dt>
+<dd><p>return deaths sum for a specific age group</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>a_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; age group id</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">death sum</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeExposure.PrimeExposure.get_attr_mortality_counterfactual">
+<tt class="descname">get_attr_mortality_counterfactual</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeExposure.html#PrimeExposure.get_attr_mortality_counterfactual"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure.get_attr_mortality_counterfactual" title="Permalink to this definition">¶</a></dt>
+<dd><p>return class attribution population distribution</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">population distribution</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeExposure.PrimeExposure.get_attr_population_distribution">
+<tt class="descname">get_attr_population_distribution</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeExposure.html#PrimeExposure.get_attr_population_distribution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure.get_attr_population_distribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>return class attribution population distribution</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">population distribution</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeExposure.PrimeExposure.get_attr_samples_pop">
+<tt class="descname">get_attr_samples_pop</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeExposure.html#PrimeExposure.get_attr_samples_pop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure.get_attr_samples_pop" title="Permalink to this definition">¶</a></dt>
+<dd><p>return class attribution samples/bins for population</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">samples for population</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeExposure.PrimeExposure.get_attr_samples_rr">
+<tt class="descname">get_attr_samples_rr</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeExposure.html#PrimeExposure.get_attr_samples_rr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure.get_attr_samples_rr" title="Permalink to this definition">¶</a></dt>
+<dd><p>return class attribution samples/bins for outcome</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">samples for outcome</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeExposure.PrimeExposure.get_c_mortalities">
+<tt class="descname">get_c_mortalities</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeExposure.html#PrimeExposure.get_c_mortalities"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure.get_c_mortalities" title="Permalink to this definition">¶</a></dt>
+<dd><p>return final counterfactual mortality, same format as DBHelper.mortalities</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">No return</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeExposure.PrimeExposure.get_outcome">
+<tt class="descname">get_outcome</tt><big>(</big><em>outcome_id</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeExposure.html#PrimeExposure.get_outcome"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure.get_outcome" title="Permalink to this definition">¶</a></dt>
+<dd><p>return outcome at outcome_id</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>outcome_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; id of outcome</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an Outcome object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeExposure.PrimeExposure.get_outcome_death_rates">
+<tt class="descname">get_outcome_death_rates</tt><big>(</big><em>o_id</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeExposure.html#PrimeExposure.get_outcome_death_rates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure.get_outcome_death_rates" title="Permalink to this definition">¶</a></dt>
+<dd><p>return deaths rates for ith outcome</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>o_id</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; outcome id</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">death sum</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeExposure.PrimeExposure.get_outcome_deaths_sum">
+<tt class="descname">get_outcome_deaths_sum</tt><big>(</big><em>i</em>, <em>is_baseline</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeExposure.html#PrimeExposure.get_outcome_deaths_sum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure.get_outcome_deaths_sum" title="Permalink to this definition">¶</a></dt>
+<dd><p>return deaths sum for baseline or counterfactual</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>is_baseline</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; true is baseline, false is counterfactual</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">death sum</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeExposure.PrimeExposure.get_outcome_mortality">
+<tt class="descname">get_outcome_mortality</tt><big>(</big><em>o_id</em>, <em>is_baseline</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeExposure.html#PrimeExposure.get_outcome_mortality"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure.get_outcome_mortality" title="Permalink to this definition">¶</a></dt>
+<dd><p>return deaths sum for outcome o_id, baseline or counterfactual</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>is_baseline</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; true is baseline, false is counterfactual</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">death sum for outcome o_id</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeExposure.PrimeExposure.get_outcomes_distributions">
+<tt class="descname">get_outcomes_distributions</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeExposure.html#PrimeExposure.get_outcomes_distributions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure.get_outcomes_distributions" title="Permalink to this definition">¶</a></dt>
+<dd><p>starts to generate outcome distribution, including relative risk, death rates and deaths</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">No return</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeExposure.PrimeExposure.get_outcomes_relative_risks">
+<tt class="descname">get_outcomes_relative_risks</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeExposure.html#PrimeExposure.get_outcomes_relative_risks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure.get_outcomes_relative_risks" title="Permalink to this definition">¶</a></dt>
+<dd><p>return a list of relative risks for all outcomes of this exposure</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">No return</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeExposure.PrimeExposure.get_population_distributions">
+<tt class="descname">get_population_distributions</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeExposure.html#PrimeExposure.get_population_distributions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure.get_population_distributions" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function starts to generate population distribution for current exposure</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">No return</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.PrimeExposure.PrimeExposure.mortality_baseline">
+<tt class="descname">mortality_baseline</tt><em class="property"> = []</em><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure.mortality_baseline" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.PrimeExposure.PrimeExposure.mortality_change">
+<tt class="descname">mortality_change</tt><em class="property"> = []</em><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure.mortality_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set parameters samples for distributions</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.PrimeExposure.PrimeExposure.mortality_counterfactural">
+<tt class="descname">mortality_counterfactural</tt><em class="property"> = []</em><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure.mortality_counterfactural" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.PrimeExposure.PrimeExposure.mortality_sum">
+<tt class="descname">mortality_sum</tt><em class="property"> = 0</em><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure.mortality_sum" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.PrimeExposure.PrimeExposure.outcomes">
+<tt class="descname">outcomes</tt><em class="property"> = None</em><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure.outcomes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.PrimeExposure.PrimeExposure.popDistribution">
+<tt class="descname">popDistribution</tt><em class="property"> = None</em><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure.popDistribution" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.PrimeExposure.PrimeExposure.samples_pop">
+<tt class="descname">samples_pop</tt><em class="property"> = None</em><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure.samples_pop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set variables to hold list of outcomes and population distributions</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.PrimeExposure.PrimeExposure.samples_rr">
+<tt class="descname">samples_rr</tt><em class="property"> = None</em><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure.samples_rr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeExposure.PrimeExposure.set_attr_mortalities">
+<tt class="descname">set_attr_mortalities</tt><big>(</big><em>mortalities</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeExposure.html#PrimeExposure.set_attr_mortalities"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeExposure.PrimeExposure.set_attr_mortalities" title="Permalink to this definition">¶</a></dt>
+<dd><p>return class attribution mortalities</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">original mortalities</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-primemodel.PrimeOutcome">
+<span id="primemodel-primeoutcome-module"></span><h2>primemodel.PrimeOutcome module<a class="headerlink" href="#module-primemodel.PrimeOutcome" title="Permalink to this headline">¶</a></h2>
+<p>An Outcome Class
+.. module:: PrimeOutcome</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">platform:</th><td class="field-body">Ubuntu Unix</td>
+</tr>
+<tr class="field-even field"><th class="field-name">synopsis:</th><td class="field-body">This class composes an Outcome object belonging to an Exposure object.</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<dl class="class">
+<dt id="primemodel.PrimeOutcome.PrimeOutcome">
+<em class="property">class </em><tt class="descclassname">primemodel.PrimeOutcome.</tt><tt class="descname">PrimeOutcome</tt><big>(</big><em>name</em>, <em>o_id</em>, <em>mortality</em>, <em>samples</em>, <em>risks</em>, <em>lower_limit_estimate</em>, <em>upper_limit_estimate</em>, <em>measure</em>, <em>exposure_id</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeOutcome.html#PrimeOutcome"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeOutcome.PrimeOutcome" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="primemodel.PrimeOutcome.PrimeOutcome.categorical_relative_risk">
+<tt class="descname">categorical_relative_risk</tt><big>(</big><em>i</em>, <em>j</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeOutcome.html#PrimeOutcome.categorical_relative_risk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeOutcome.PrimeOutcome.categorical_relative_risk" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calculation relative risk value for categorical distribution like alcohol/BMI</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>i</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; row number</li>
+<li><strong>j</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; column number</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">current relative risk value</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeOutcome.PrimeOutcome.get_attr_c_deaths">
+<tt class="descname">get_attr_c_deaths</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeOutcome.html#PrimeOutcome.get_attr_c_deaths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeOutcome.PrimeOutcome.get_attr_c_deaths" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function get class attribution deaths in counterfactual</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">deaths matrix of the current outcome</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeOutcome.PrimeOutcome.get_attr_c_mortality">
+<tt class="descname">get_attr_c_mortality</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeOutcome.html#PrimeOutcome.get_attr_c_mortality"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeOutcome.PrimeOutcome.get_attr_c_mortality" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function return the mortality for all age groups</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">counterfactual mortality</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeOutcome.PrimeOutcome.get_attr_death_rates">
+<tt class="descname">get_attr_death_rates</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeOutcome.html#PrimeOutcome.get_attr_death_rates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeOutcome.PrimeOutcome.get_attr_death_rates" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function return class attribution death rates</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">death rates matrix of the current outcome</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeOutcome.PrimeOutcome.get_attr_id">
+<tt class="descname">get_attr_id</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeOutcome.html#PrimeOutcome.get_attr_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeOutcome.PrimeOutcome.get_attr_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function return the class attribution id of current outcome</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">outcome id</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeOutcome.PrimeOutcome.get_attr_lower_limit_estimate">
+<tt class="descname">get_attr_lower_limit_estimate</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeOutcome.html#PrimeOutcome.get_attr_lower_limit_estimate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeOutcome.PrimeOutcome.get_attr_lower_limit_estimate" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function return the class attribution lower limit estimate</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">lower limit estimate</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeOutcome.PrimeOutcome.get_attr_name">
+<tt class="descname">get_attr_name</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeOutcome.html#PrimeOutcome.get_attr_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeOutcome.PrimeOutcome.get_attr_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function return the class attribution name of current outcome</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">outcome name</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeOutcome.PrimeOutcome.get_attr_upper_limit_estimate">
+<tt class="descname">get_attr_upper_limit_estimate</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeOutcome.html#PrimeOutcome.get_attr_upper_limit_estimate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeOutcome.PrimeOutcome.get_attr_upper_limit_estimate" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function return the class attribution upper limit estimate</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">upper limit estimate</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeOutcome.PrimeOutcome.get_baseline_death_rate">
+<tt class="descname">get_baseline_death_rate</tt><big>(</big><em>base_mortality</em>, <em>population_distribution_line</em>, <em>relative_risks_line</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeOutcome.html#PrimeOutcome.get_baseline_death_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeOutcome.PrimeOutcome.get_baseline_death_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns the baseline death rate for death rates calculation,  in each row, all other rates are relying on this base rate</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>base_mortality</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; base mortality, either from baseline data [only exposures] or from previous exposure result [compound]</li>
+<li><strong>population_distribution_line</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; the relavent line in population distribution</li>
+<li><strong>relative_risks_line</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; the relavent line in relative risk</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeOutcome.PrimeOutcome.get_c_mortality">
+<tt class="descname">get_c_mortality</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeOutcome.html#PrimeOutcome.get_c_mortality"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeOutcome.PrimeOutcome.get_c_mortality" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate counterfactual mortalities</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">No return</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeOutcome.PrimeOutcome.get_death_rates">
+<tt class="descname">get_death_rates</tt><big>(</big><em>population_distribution</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeOutcome.html#PrimeOutcome.get_death_rates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeOutcome.PrimeOutcome.get_death_rates" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function starts the calculation of death rates for a subset, it does not necessarily need to care what subset it is dealing with</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>mortality</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; original mortality</li>
+<li><strong>population_distribution</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; this calculation needs population distribution, matrix or line if there is only one population subset</li>
+<li><strong>relative_risks</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; relative risks from last step</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeOutcome.PrimeOutcome.get_deaths">
+<tt class="descname">get_deaths</tt><big>(</big><em>b_population_distribution</em>, <em>c_population_distribution</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeOutcome.html#PrimeOutcome.get_deaths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeOutcome.PrimeOutcome.get_deaths" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function starts calculating deaths for a subset data, without concering baseline or counterfactual,</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>population_distribution</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; the relavent population distribution</li>
+<li><strong>death_rates</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; death rates</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">No return</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeOutcome.PrimeOutcome.get_deaths_changes">
+<tt class="descname">get_deaths_changes</tt><big>(</big><em>b_deaths</em>, <em>c_deaths</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeOutcome.html#PrimeOutcome.get_deaths_changes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeOutcome.PrimeOutcome.get_deaths_changes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deaths sum change for both counterfactual compared with baseline subsets</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>b_deaths</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; baseline deaths</li>
+<li><strong>c_deaths</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; counterfactual deaths</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">death sum change</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeOutcome.PrimeOutcome.get_deaths_changes_sum">
+<tt class="descname">get_deaths_changes_sum</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeOutcome.html#PrimeOutcome.get_deaths_changes_sum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeOutcome.PrimeOutcome.get_deaths_changes_sum" title="Permalink to this definition">¶</a></dt>
+<dd><p>return death changes sum</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">death change sum</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeOutcome.PrimeOutcome.get_deaths_sum">
+<tt class="descname">get_deaths_sum</tt><big>(</big><em>is_baseline</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeOutcome.html#PrimeOutcome.get_deaths_sum"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeOutcome.PrimeOutcome.get_deaths_sum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deaths sum returning function, baseline/counterfactual</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>is_baseline</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; true is baseline, false is counterfactual</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">death sum for baseline/counterfactual</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeOutcome.PrimeOutcome.get_relative_risk">
+<tt class="descname">get_relative_risk</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeOutcome.html#PrimeOutcome.get_relative_risk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeOutcome.PrimeOutcome.get_relative_risk" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function return the relative risk for subsets, it does not need to know what data set is, this can not be started until a population input is fulfilled</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>self</strong> &#8211; self attributes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">No return</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeOutcome.PrimeOutcome.linear_relative_risk_decrease">
+<tt class="descname">linear_relative_risk_decrease</tt><big>(</big><em>i</em>, <em>j</em>, <em>lower_limit</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeOutcome.html#PrimeOutcome.linear_relative_risk_decrease"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeOutcome.PrimeOutcome.linear_relative_risk_decrease" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calculation relative risk value for linear distribution in a decrease case, in which relative risk decreases as consumption decreases</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>i</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; row number</li>
+<li><strong>j</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; column number</li>
+<li><strong>lower_limit</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; lower limit of current exposure</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">current relative risk value</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeOutcome.PrimeOutcome.linear_relative_risk_increase">
+<tt class="descname">linear_relative_risk_increase</tt><big>(</big><em>i</em>, <em>j</em>, <em>lower_limit</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeOutcome.html#PrimeOutcome.linear_relative_risk_increase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeOutcome.PrimeOutcome.linear_relative_risk_increase" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calculation relative risk value for linear distribution in an increase case, in which relative risk decreases as consumption increases</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>i</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; row number</li>
+<li><strong>j</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; column number</li>
+<li><strong>lower_limit</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; lower limit of current exposure</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">current relative risk value</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeOutcome.PrimeOutcome.pa_relative_risk">
+<tt class="descname">pa_relative_risk</tt><big>(</big><em>i</em>, <em>j</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeOutcome.html#PrimeOutcome.pa_relative_risk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeOutcome.PrimeOutcome.pa_relative_risk" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calculation relative risk value for categorical distribution like physical activity</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>i</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; row number</li>
+<li><strong>j</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; column number</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">current relative risk value</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="primemodel.PrimeOutcome.PrimeOutcome.set_attr_mortalities">
+<tt class="descname">set_attr_mortalities</tt><big>(</big><em>mortalities</em><big>)</big><a class="reference internal" href="_modules/primemodel/PrimeOutcome.html#PrimeOutcome.set_attr_mortalities"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.PrimeOutcome.PrimeOutcome.set_attr_mortalities" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function set class attribution mortalities, it is necessary when calculating compound exposures, current baseline mortality should be counterfactual mortality of previous exposure</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mortalites</strong> &#8211; original mortalities</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">No return</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="primemodel-admin-module">
+<h2>primemodel.admin module<a class="headerlink" href="#primemodel-admin-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-primemodel.forms">
+<span id="primemodel-forms-module"></span><h2>primemodel.forms module<a class="headerlink" href="#module-primemodel.forms" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="primemodel.forms.BasicForm">
+<em class="property">class </em><tt class="descclassname">primemodel.forms.</tt><tt class="descname">BasicForm</tt><big>(</big><em>data=None</em>, <em>files=None</em>, <em>auto_id=u'id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.util.ErrorList'&gt;</em>, <em>label_suffix=u':'</em>, <em>empty_permitted=False</em><big>)</big><a class="reference internal" href="_modules/primemodel/forms.html#BasicForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.forms.BasicForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.forms.forms.Form</span></tt></p>
+<dl class="attribute">
+<dt id="primemodel.forms.BasicForm.base_fields">
+<tt class="descname">base_fields</tt><em class="property"> = {'mean': &lt;django.forms.fields.CharField object at 0x4499ed0&gt;, 'sd': &lt;django.forms.fields.CharField object at 0x4499690&gt;}</em><a class="headerlink" href="#primemodel.forms.BasicForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="primemodel.forms.BasicForm.media">
+<tt class="descname">media</tt><em class="property"> None</em><a class="headerlink" href="#primemodel.forms.BasicForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-primemodel.logic">
+<span id="primemodel-logic-module"></span><h2>primemodel.logic module<a class="headerlink" href="#module-primemodel.logic" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="primemodel.logic.DIST_TYPE_BINARY">
+<tt class="descclassname">primemodel.logic.</tt><tt class="descname">DIST_TYPE_BINARY</tt><em class="property"> = 2</em><a class="headerlink" href="#primemodel.logic.DIST_TYPE_BINARY" title="Permalink to this definition">¶</a></dt>
+<dd><p>:parameters for different types of fats, these display correllation between different types of fats</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="primemodel.logic.generate_list_value">
+<tt class="descclassname">primemodel.logic.</tt><tt class="descname">generate_list_value</tt><big>(</big><em>v</em>, <em>n</em><big>)</big><a class="reference internal" href="_modules/primemodel/logic.html#generate_list_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.logic.generate_list_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>This :returns a size n list of same value</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; value of list</li>
+<li><strong>n</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; size of the list</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list of values</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="primemodel.logic.get_log_mean_sd">
+<tt class="descclassname">primemodel.logic.</tt><tt class="descname">get_log_mean_sd</tt><big>(</big><em>means</em>, <em>sds</em><big>)</big><a class="reference internal" href="_modules/primemodel/logic.html#get_log_mean_sd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.logic.get_log_mean_sd" title="Permalink to this definition">¶</a></dt>
+<dd><p>This returns log standard deviation of given mean and standard deviation lists</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>means</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; mean list</li>
+<li><strong>sds</strong> &#8211; standard deviation list</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">log mean and standard deviation list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="primemodel.logic.get_norm_distribution">
+<tt class="descclassname">primemodel.logic.</tt><tt class="descname">get_norm_distribution</tt><big>(</big><em>mean</em>, <em>sd</em><big>)</big><a class="reference internal" href="_modules/primemodel/logic.html#get_norm_distribution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.logic.get_norm_distribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>This :returns a normation distribution referring to given mean and standard deviation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>mean</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; mean</li>
+<li><strong>sd</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; standard deviation</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">normal distribution</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="primemodel.logic.get_population_density">
+<tt class="descclassname">primemodel.logic.</tt><tt class="descname">get_population_density</tt><big>(</big><em>size</em>, <em>upper</em>, <em>lower</em>, <em>mean</em>, <em>sd</em>, <em>log_mean</em>, <em>log_sd</em>, <em>dist_type</em>, <em>is_last</em><big>)</big><a class="reference internal" href="_modules/primemodel/logic.html#get_population_density"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.logic.get_population_density" title="Permalink to this definition">¶</a></dt>
+<dd><p>This :returns a value of a population distribution</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>size</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; total size</li>
+<li><strong>upper</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; upper value of bin</li>
+<li><strong>lower</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; lower value of bin</li>
+<li><strong>mean</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; mean</li>
+<li><strong>log_mean</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; log mean</li>
+<li><strong>sd</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; standard deviation</li>
+<li><strong>log_sd</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; log standard deviation</li>
+<li><strong>dist_type</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; distribution type, normal, log or binary</li>
+<li><strong>is_last</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; is the last bin of samples or not</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">population density</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="primemodel.logic.get_population_density_lognorm">
+<tt class="descclassname">primemodel.logic.</tt><tt class="descname">get_population_density_lognorm</tt><big>(</big><em>size</em>, <em>upper</em>, <em>lower</em>, <em>log_mean</em>, <em>log_sd</em>, <em>mean</em>, <em>sd</em>, <em>is_last</em><big>)</big><a class="reference internal" href="_modules/primemodel/logic.html#get_population_density_lognorm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.logic.get_population_density_lognorm" title="Permalink to this definition">¶</a></dt>
+<dd><p>This :returns a value of a lognormal population distribution</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>size</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; total size</li>
+<li><strong>upper</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; upper value of bin</li>
+<li><strong>lower</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; lower value of bin</li>
+<li><strong>log_mean</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; log mean</li>
+<li><strong>log_sd</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; log standard deviation</li>
+<li><strong>mean</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; mean</li>
+<li><strong>sd</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; standard deviation</li>
+<li><strong>is_last</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; is the last bin of samples or not</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">population density</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="primemodel.logic.get_population_density_norm">
+<tt class="descclassname">primemodel.logic.</tt><tt class="descname">get_population_density_norm</tt><big>(</big><em>size</em>, <em>upper</em>, <em>lower</em>, <em>mean</em>, <em>sd</em>, <em>is_last</em><big>)</big><a class="reference internal" href="_modules/primemodel/logic.html#get_population_density_norm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.logic.get_population_density_norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>This :returns a value of a normal population distribution</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>size</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; total size</li>
+<li><strong>upper</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; upper value of bin</li>
+<li><strong>lower</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; lower value of bin</li>
+<li><strong>mean</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; mean</li>
+<li><strong>sd</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; standard deviation</li>
+<li><strong>is_last</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><em>bool</em></a>) &#8211; is the last bin of samples or not</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">population density</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="primemodel.logic.get_pow">
+<tt class="descclassname">primemodel.logic.</tt><tt class="descname">get_pow</tt><big>(</big><em>x</em>, <em>y</em><big>)</big><a class="reference internal" href="_modules/primemodel/logic.html#get_pow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.logic.get_pow" title="Permalink to this definition">¶</a></dt>
+<dd><p>This returns x power of y</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; base</li>
+<li><strong>y</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; exponention</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">log mean and standard deviation list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="primemodel.logic.get_sum_matrix">
+<tt class="descclassname">primemodel.logic.</tt><tt class="descname">get_sum_matrix</tt><big>(</big><em>matrix</em><big>)</big><a class="reference internal" href="_modules/primemodel/logic.html#get_sum_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.logic.get_sum_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>This returns sum of matrix</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>matrix</strong> (<em>matrix</em>) &#8211; matrix to sum up</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">sum of matrix</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="primemodel.logic.logncdf">
+<tt class="descclassname">primemodel.logic.</tt><tt class="descname">logncdf</tt><big>(</big><em>x</em>, <em>mean</em>, <em>sig</em><big>)</big><a class="reference internal" href="_modules/primemodel/logic.html#logncdf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#primemodel.logic.logncdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>This returns log cdf value of a given distribution</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; x value of distribution</li>
+<li><strong>mean</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; mean value of distribution</li>
+<li><strong>sig</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#float" title="(in Python v2.7)"><em>float</em></a>) &#8211; sig value of distribution</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">log cdf value</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="primemodel-models-module">
+<h2>primemodel.models module<a class="headerlink" href="#primemodel-models-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="primemodel-prime-module">
+<h2>primemodel.prime module<a class="headerlink" href="#primemodel-prime-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="primemodel-tests-module">
+<h2>primemodel.tests module<a class="headerlink" href="#primemodel-tests-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="primemodel-urls-module">
+<h2>primemodel.urls module<a class="headerlink" href="#primemodel-urls-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="primemodel-views-module">
+<h2>primemodel.views module<a class="headerlink" href="#primemodel-views-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-primemodel">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-primemodel" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">primemodel package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-primemodel.DBHelper">primemodel.DBHelper module</a></li>
+<li><a class="reference internal" href="#module-primemodel.ExposureDistribution">primemodel.ExposureDistribution module</a></li>
+<li><a class="reference internal" href="#module-primemodel.PrimeCoordinator">primemodel.PrimeCoordinator module</a></li>
+<li><a class="reference internal" href="#module-primemodel.PrimeExposure">primemodel.PrimeExposure module</a></li>
+<li><a class="reference internal" href="#module-primemodel.PrimeOutcome">primemodel.PrimeOutcome module</a></li>
+<li><a class="reference internal" href="#primemodel-admin-module">primemodel.admin module</a></li>
+<li><a class="reference internal" href="#module-primemodel.forms">primemodel.forms module</a></li>
+<li><a class="reference internal" href="#module-primemodel.logic">primemodel.logic module</a></li>
+<li><a class="reference internal" href="#primemodel-models-module">primemodel.models module</a></li>
+<li><a class="reference internal" href="#primemodel-prime-module">primemodel.prime module</a></li>
+<li><a class="reference internal" href="#primemodel-tests-module">primemodel.tests module</a></li>
+<li><a class="reference internal" href="#primemodel-urls-module">primemodel.urls module</a></li>
+<li><a class="reference internal" href="#primemodel-views-module">primemodel.views module</a></li>
+<li><a class="reference internal" href="#module-primemodel">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="manual.html"
+                        title="previous chapter">Manual</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/primemodel.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="manual.html" title="Manual"
+             >previous</a> |</li>
+        <li><a href="index.html">prime 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Lijuan Marissa Zhou.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>primemodel.PrimeExposure &mdash; prime 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="prime 1.0 documentation" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">prime 1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for primemodel.PrimeExposure</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;An Exposure Class</span>
+<span class="sd">.. module:: PrimeExposure </span>
+<span class="sd">   :platform: Ubuntu Unix</span>
+<span class="sd">   :synopsis: A module for concluding all exposure relavant data and operation.</span>
+
+<span class="sd">.. moduleauthor:: Lijuan Marissa Zhou &lt;marissa.zhou.cn@gmail.com&gt;</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+
+<div class="viewcode-block" id="PrimeExposure"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeExposure.PrimeExposure">[docs]</a><span class="k">class</span> <span class="nc">PrimeExposure</span><span class="p">():</span>
+
+	<span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">		Set variables for mortality data</span>
+<span class="sd">		Defined by population baseline data in database</span>
+<span class="sd">	&quot;&quot;&quot;</span> 
+	<span class="n">mortality_baseline</span> 		<span class="o">=</span> <span class="p">[]</span>
+	<span class="n">mortality_counterfactural</span> 	<span class="o">=</span> <span class="p">[]</span>
+	<span class="n">mortality_sum</span> 			<span class="o">=</span> <span class="mi">0</span>
+	<span class="n">mortality_change</span>		<span class="o">=</span> <span class="p">[]</span>
+
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Set parameters samples for distributions </span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">samples_rr</span>	<span class="o">=</span> <span class="bp">None</span>  
+	<span class="n">samples_pop</span>	<span class="o">=</span> <span class="bp">None</span> 
+
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		Set variables to hold list of outcomes and population distributions</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">outcomes</span> 	<span class="o">=</span> <span class="bp">None</span> <span class="c"># an list of PrimeOutcome objects {id:Outcome} </span>
+	<span class="n">popDistribution</span> <span class="o">=</span> <span class="bp">None</span> <span class="c"># an object of PrimeExposure</span>
+	<span class="n">c_mortalities</span>	<span class="o">=</span> <span class="bp">None</span> <span class="c"># an list of PrimeOutcome objects mortalities {id:Outcome}, should be same size as DBHelper.mortality </span>
+
+	<span class="c">#initialization</span>
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e_id</span><span class="p">,</span> <span class="n">outcome_ids</span><span class="p">,</span> <span class="n">mortalities</span><span class="p">,</span> <span class="n">samples_rr</span><span class="p">,</span> <span class="n">samples_pop</span><span class="p">,</span> <span class="n">outcomes</span><span class="p">,</span> <span class="n">popDistribution</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; initialization</span>
+
+<span class="sd">    		:param e_id: exposure id.</span>
+<span class="sd">    		:type e_id: int. </span>
+<span class="sd">   	 	:returns: </span>
+<span class="sd">		:raises: AttributeError, KeyError</span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">e_id</span> 		<span class="o">=</span> <span class="n">e_id</span> 
+		<span class="bp">self</span><span class="o">.</span><span class="n">outcome_ids</span>	<span class="o">=</span> <span class="n">outcome_ids</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">mortalities</span>	<span class="o">=</span> <span class="n">mortalities</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">samples_rr</span> 	<span class="o">=</span> <span class="n">samples_rr</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">samples_pop</span> 	<span class="o">=</span> <span class="n">samples_pop</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">outcomes</span> 		<span class="o">=</span> <span class="n">outcomes</span> <span class="c"># {id:Outcome}</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">popDistribution</span> 	<span class="o">=</span> <span class="n">popDistribution</span>
+		
+		<span class="bp">self</span><span class="o">.</span><span class="n">get_population_distributions</span><span class="p">()</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">get_outcomes_distributions</span><span class="p">()</span>
+		
+	
+	<span class="c">#################################################</span>
+	<span class="c"># distribution					#</span>
+	<span class="c">#################################################</span>
+<div class="viewcode-block" id="PrimeExposure.get_population_distributions"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeExposure.PrimeExposure.get_population_distributions">[docs]</a>	<span class="k">def</span> <span class="nf">get_population_distributions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function starts to generate population distribution for current exposure </span>
+
+<span class="sd">    		:param self: self attributes </span>
+<span class="sd">   	 	:returns: No return </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">popDistribution</span><span class="o">.</span><span class="n">get_population_distributions</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">e_id</span><span class="p">)</span>
+
+	<span class="c">#################################################</span>
+	<span class="c"># outcome					#</span>
+	<span class="c">#################################################</span></div>
+<div class="viewcode-block" id="PrimeExposure.get_outcomes_distributions"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeExposure.PrimeExposure.get_outcomes_distributions">[docs]</a>	<span class="k">def</span> <span class="nf">get_outcomes_distributions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; starts to generate outcome distribution, including relative risk, death rates and deaths </span>
+
+<span class="sd">    		:param self: self attributes </span>
+<span class="sd">   	 	:returns: No return </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="c"># baseline population distribution</span>
+		<span class="n">b_dist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">popDistribution</span><span class="o">.</span><span class="n">get_attr_b_distribution</span><span class="p">()</span>
+		<span class="c"># counterfactual population distribution</span>
+		<span class="n">c_dist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">popDistribution</span><span class="o">.</span><span class="n">get_attr_c_distribution</span><span class="p">()</span>
+		<span class="c"># outcome keys </span>
+		<span class="n">keys</span>   <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outcomes</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+		<span class="c"># fulfil all outcomes&#39; data: relative risk, death rate and deaths</span>
+		<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+			<span class="n">outcome</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outcomes</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+			<span class="n">outcome</span><span class="o">.</span><span class="n">get_relative_risk</span><span class="p">()</span>			
+			<span class="n">outcome</span><span class="o">.</span><span class="n">get_death_rates</span><span class="p">(</span><span class="n">b_dist</span><span class="p">)</span>			
+			<span class="n">outcome</span><span class="o">.</span><span class="n">get_deaths</span><span class="p">(</span><span class="n">b_dist</span><span class="p">,</span><span class="n">c_dist</span><span class="p">)</span>
+			<span class="n">outcome</span><span class="o">.</span><span class="n">get_c_mortality</span><span class="p">()</span>			
+		<span class="c"># fulfil counterfactual mortalities list for current exposure</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">get_c_mortalities</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="PrimeExposure.get_outcomes_relative_risks"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeExposure.PrimeExposure.get_outcomes_relative_risks">[docs]</a>	<span class="k">def</span> <span class="nf">get_outcomes_relative_risks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; return a list of relative risks for all outcomes of this exposure </span>
+
+<span class="sd">    		:param self: self attributes </span>
+<span class="sd">   	 	:returns: No return </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">relative_risks</span> <span class="o">=</span> <span class="p">{}</span>
+		<span class="c"># calculate relative risks for all outcomes</span>
+		<span class="k">for</span> <span class="n">outcome</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">outcomes</span><span class="p">:</span>
+			<span class="n">o_id</span> 			<span class="o">=</span> <span class="n">outcome</span><span class="o">.</span><span class="n">get_attr_id</span><span class="p">()</span>
+			<span class="n">relative_risks</span><span class="p">[</span><span class="n">o_id</span><span class="p">]</span>	<span class="o">=</span> <span class="n">outcome</span><span class="o">.</span><span class="n">get_attr_m_relative_risks</span><span class="p">()</span>
+		<span class="k">return</span> <span class="n">relative_risks</span>
+</div>
+<div class="viewcode-block" id="PrimeExposure.get_outcome"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeExposure.PrimeExposure.get_outcome">[docs]</a>	<span class="k">def</span> <span class="nf">get_outcome</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">outcome_id</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; return outcome at outcome_id </span>
+
+<span class="sd">    		:param outcome_id: id of outcome </span>
+<span class="sd">    		:type outcome_id: int </span>
+<span class="sd">   	 	:returns: an Outcome object </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">outcomes</span><span class="p">[</span><span class="n">outcome_id</span><span class="p">]</span>
+</div>
+<div class="viewcode-block" id="PrimeExposure.get_outcome_deaths_sum"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeExposure.PrimeExposure.get_outcome_deaths_sum">[docs]</a>	<span class="k">def</span> <span class="nf">get_outcome_deaths_sum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">is_baseline</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; return deaths sum for baseline or counterfactual </span>
+
+<span class="sd">    		:param is_baseline: true is baseline, false is counterfactual </span>
+<span class="sd">    		:type is_baseline: bool </span>
+<span class="sd">   	 	:returns: death sum  </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">outcome</span> 	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outcomes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>	
+		<span class="n">deaths_sum</span> 	<span class="o">=</span> <span class="mi">0</span> 
+		<span class="n">deaths_sum</span> 	<span class="o">=</span> <span class="n">outcome</span><span class="o">.</span><span class="n">get_deaths_sum</span><span class="p">(</span><span class="n">is_baseline</span><span class="p">)</span>  
+		<span class="k">return</span> <span class="n">deaths_sum</span>
+</div>
+<div class="viewcode-block" id="PrimeExposure.get_age_deaths_sum"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeExposure.PrimeExposure.get_age_deaths_sum">[docs]</a>	<span class="k">def</span> <span class="nf">get_age_deaths_sum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a_id</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; return deaths sum for a specific age group </span>
+
+<span class="sd">    		:param a_id: age group id </span>
+<span class="sd">    		:type a_id: int </span>
+<span class="sd">   	 	:returns: death sum  </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">deaths_sum</span> 	<span class="o">=</span> <span class="mi">0</span> 
+		<span class="k">for</span> <span class="n">o_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">outcomes</span><span class="p">:</span>
+			<span class="n">outcome</span>	    <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outcomes</span><span class="p">[</span><span class="n">o_id</span><span class="p">]</span>	
+			<span class="n">deaths_sum</span> <span class="o">+=</span> <span class="n">outcome</span><span class="o">.</span><span class="n">get_deaths_sum</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>  
+			<span class="n">deaths_sum</span> <span class="o">+=</span> <span class="n">outcome</span><span class="o">.</span><span class="n">get_deaths_sum</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>  
+		<span class="k">return</span> <span class="n">deaths_sum</span>
+</div>
+<div class="viewcode-block" id="PrimeExposure.get_outcome_death_rates"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeExposure.PrimeExposure.get_outcome_death_rates">[docs]</a>	<span class="k">def</span> <span class="nf">get_outcome_death_rates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o_id</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; return deaths rates for ith outcome </span>
+
+<span class="sd">    		:param o_id: outcome id</span>
+<span class="sd">    		:type o_id: int </span>
+<span class="sd">   	 	:returns: death sum  </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">outcome</span> 	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outcomes</span><span class="p">[</span><span class="n">o_id</span><span class="p">]</span>	
+		<span class="n">death_rates</span> 	<span class="o">=</span> <span class="bp">None</span>
+		<span class="n">death_rates</span> <span class="o">=</span> <span class="n">outcome</span><span class="o">.</span><span class="n">get_attr_death_rates</span><span class="p">()</span>
+	 	<span class="k">return</span> <span class="n">death_rates</span> 
+
+</div>
+<div class="viewcode-block" id="PrimeExposure.get_outcome_mortality"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeExposure.PrimeExposure.get_outcome_mortality">[docs]</a>	<span class="k">def</span> <span class="nf">get_outcome_mortality</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">o_id</span><span class="p">,</span><span class="n">is_baseline</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; return deaths sum for outcome o_id, baseline or counterfactual </span>
+
+<span class="sd">    		:param is_baseline: true is baseline, false is counterfactual </span>
+<span class="sd">    		:type is_baseline: bool </span>
+<span class="sd">   	 	:returns: death sum for outcome o_id </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">outcome</span> 	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outcomes</span><span class="p">[</span><span class="n">o_id</span><span class="p">]</span>	
+		<span class="n">mortalities</span> 	<span class="o">=</span> <span class="bp">None</span>
+		<span class="k">if</span> <span class="n">is_baseline</span><span class="p">:</span> <span class="c">#baseline</span>
+			<span class="n">mortalities</span> 	<span class="o">=</span> <span class="n">outcome</span><span class="o">.</span><span class="n">get_attr_b_mortality</span><span class="p">()</span>
+		<span class="k">else</span><span class="p">:</span> <span class="c">#counterfactual</span>
+			<span class="n">mortalities</span> 	<span class="o">=</span> <span class="n">outcome</span><span class="o">.</span><span class="n">get_attr_c_mortality</span><span class="p">()</span>
+	 	<span class="k">return</span> <span class="n">mortalities</span> 
+</div>
+<div class="viewcode-block" id="PrimeExposure.get_c_mortalities"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeExposure.PrimeExposure.get_c_mortalities">[docs]</a>	<span class="k">def</span> <span class="nf">get_c_mortalities</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; return final counterfactual mortality, same format as DBHelper.mortalities </span>
+
+<span class="sd">    		:param self: self attributes </span>
+<span class="sd">   	 	:returns: No return </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">c_mortalities</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mortalities</span><span class="p">)</span> 
+		<span class="n">keys</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outcome_ids</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="c"># outcome_ids = {id:{lle,ule,measure}}</span>
+		<span class="k">for</span> <span class="n">o_id</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
+			<span class="n">mortality</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_outcome_mortality</span><span class="p">(</span><span class="n">o_id</span><span class="p">,</span><span class="bp">False</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">c_mortalities</span><span class="p">[</span><span class="n">o_id</span><span class="p">]</span>	<span class="o">=</span> <span class="n">mortality</span> 
+
+	<span class="c">#################################################</span>
+	<span class="c"># get and set attributions			#</span>
+	<span class="c">#################################################</span></div>
+<div class="viewcode-block" id="PrimeExposure.get_attr_samples_rr"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeExposure.PrimeExposure.get_attr_samples_rr">[docs]</a>	<span class="k">def</span> <span class="nf">get_attr_samples_rr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; return class attribution samples/bins for outcome </span>
+
+<span class="sd">    		:param self: self attributes </span>
+<span class="sd">   	 	:returns: samples for outcome </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">samples_rr</span>
+		</div>
+<div class="viewcode-block" id="PrimeExposure.get_attr_samples_pop"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeExposure.PrimeExposure.get_attr_samples_pop">[docs]</a>	<span class="k">def</span> <span class="nf">get_attr_samples_pop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; return class attribution samples/bins for population </span>
+
+<span class="sd">    		:param self: self attributes </span>
+<span class="sd">   	 	:returns: samples for population </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">samples_pop</span>
+</div>
+<div class="viewcode-block" id="PrimeExposure.get_attr_population_distribution"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeExposure.PrimeExposure.get_attr_population_distribution">[docs]</a>	<span class="k">def</span> <span class="nf">get_attr_population_distribution</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; return class attribution population distribution </span>
+
+<span class="sd">    		:param self: self attributes </span>
+<span class="sd">   	 	:returns: population distribution </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">popDistribution</span>
+		</div>
+<div class="viewcode-block" id="PrimeExposure.get_attr_mortality_counterfactual"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeExposure.PrimeExposure.get_attr_mortality_counterfactual">[docs]</a>	<span class="k">def</span> <span class="nf">get_attr_mortality_counterfactual</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; return class attribution population distribution </span>
+
+<span class="sd">    		:param self: self attributes </span>
+<span class="sd">   	 	:returns: population distribution </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">c_mortalities</span>
+</div>
+<div class="viewcode-block" id="PrimeExposure.set_attr_mortalities"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeExposure.PrimeExposure.set_attr_mortalities">[docs]</a>	<span class="k">def</span> <span class="nf">set_attr_mortalities</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mortalities</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; return class attribution mortalities </span>
+
+<span class="sd">    		:param self: self attributes </span>
+<span class="sd">   	 	:returns: original mortalities  </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">mortalities</span> <span class="o">=</span> <span class="n">mortalities</span>
+		</div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">prime 1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Lijuan Marissa Zhou.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

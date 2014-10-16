@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load url from future %}
+
+{% block title %} Prime News {{ year }}{% endblock %}
+
+{% block content %}
+<!-- container -->
+     <div class="row">
+        <div class="col-dp-1">
+
+
+{% for article in article_list %}
+
+	<div class="media">
+        <a class="pull-left" href="newsdetail"><img src='{% static "prime/img/moon.jpg" %}' style="width: 64px; height: 64px;" class="media-object" data-src="holder.js/64x64" alt="64x64" /></a> 
+          <div class="media-body">
+            <!--<h4 class="media-heading"><a href="/articles/{{article.title}}//{{ question.id }}/" >{{ article.title}}</h4></a> -->
+            <h4 class="media-heading"><a href="/news/articles/2013/05/1" >{{ article.title}}</h4></a>
+    	    <i><h7> Published: {{ article.created_at|date:"F j, Y" }} </h7></i>
+            <p>{{ article.body }}</p>
+          </div>
+        </div><!-- /.media -->
+{% endfor %}
+
+        </div><!-- /.col-dp-1 -->
+        <div class="col-dp-2">
+          
+        </div><!-- /.col-dp-2 -->
+      </div><!-- container -->
+
+{% endblock %}

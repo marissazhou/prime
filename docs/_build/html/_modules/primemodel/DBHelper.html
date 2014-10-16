@@ -1,0 +1,415 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>primemodel.DBHelper &mdash; prime 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="prime 1.0 documentation" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">prime 1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for primemodel.DBHelper</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;dabatabase manipulation class</span>
+<span class="sd">.. module:: DBHelper </span>
+<span class="sd">   :platform: Ubuntu Unix</span>
+<span class="sd">   :synopsis: A module for conducting all database relavant manipulations.</span>
+
+<span class="sd">.. moduleauthor:: Lijuan Marissa Zhou &lt;marissa.zhou.cn@gmail.com&gt;</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">unicodedata</span>
+
+<div class="viewcode-block" id="DBHelper"><a class="viewcode-back" href="../../primemodel.html#primemodel.DBHelper.DBHelper">[docs]</a><span class="k">class</span> <span class="nc">DBHelper</span><span class="p">:</span> 
+	
+	<span class="n">relative_risks</span> 		<span class="o">=</span> <span class="bp">None</span>
+	<span class="n">population_subsets</span> 	<span class="o">=</span> <span class="bp">None</span>
+	<span class="n">measurements</span> 		<span class="o">=</span> <span class="bp">None</span>
+	
+	<span class="n">outcomes_num</span> 		<span class="o">=</span> <span class="mi">24</span> <span class="c">#24 types of outcomes </span>
+	<span class="n">age_groups</span> 		<span class="o">=</span> <span class="bp">None</span>
+	<span class="n">measurements</span> 		<span class="o">=</span> <span class="bp">None</span>
+	
+	<span class="c">#mortalities in database</span>
+	<span class="n">mortalities</span> 		<span class="o">=</span> <span class="p">{}</span> 
+	<span class="n">samples_rr</span> 		<span class="o">=</span> <span class="p">{}</span> <span class="c"># for relative risks</span>
+	<span class="n">samples_pop</span> 		<span class="o">=</span> <span class="p">{}</span> <span class="c"># for population </span>
+	<span class="c"># initial risks referred to references, referred to database table primemodel_relativerisks </span>
+	<span class="n">risks</span> 			<span class="o">=</span> <span class="p">{}</span> 
+	<span class="c"># all exposures, refer to database table primemodel_variable</span>
+	<span class="n">exposures</span> 		<span class="o">=</span> <span class="p">{}</span>
+	<span class="n">outcomes</span> 		<span class="o">=</span> <span class="p">{}</span> 
+	<span class="c"># exposure_outcome relationship, including measures</span>
+	<span class="n">exposure_outcome</span> 	<span class="o">=</span> <span class="p">{}</span> 
+
+	<span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="DBHelper.initialize"><a class="viewcode-back" href="../../primemodel.html#primemodel.DBHelper.DBHelper.initialize">[docs]</a>	<span class="k">def</span> <span class="nf">initialize</span><span class="p">():</span>
+		<span class="sd">&quot;&quot;&quot;This function initializes an DBHelper instance </span>
+
+<span class="sd">    		:param : </span>
+<span class="sd">   	 	:returns: </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">get_exposures</span><span class="p">()</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">get_exposure_outcome</span><span class="p">()</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">get_relative_risks</span><span class="p">()</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">get_population_subsets</span><span class="p">()</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">get_measurements</span><span class="p">()</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">get_outcomes</span><span class="p">()</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">get_population_subsets</span><span class="p">()</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">get_mortalities</span><span class="p">()</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">get_samples</span><span class="p">()</span> <span class="c"># for population and relative risks</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">get_risks</span><span class="p">()</span>
+</div>
+	<span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="DBHelper.get_samples"><a class="viewcode-back" href="../../primemodel.html#primemodel.DBHelper.DBHelper.get_samples">[docs]</a>	<span class="k">def</span> <span class="nf">get_samples</span><span class="p">():</span>
+		<span class="sd">&quot;&quot;&quot;This function returns all samples for outcomes of all exposures </span>
+
+<span class="sd">    		:param : </span>
+<span class="sd">   	 	:returns: No return </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">samples_rr</span> <span class="o">=</span> <span class="p">{}</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">samples_pop</span> <span class="o">=</span> <span class="p">{}</span>
+		<span class="c"># all exposures/variables</span>
+		<span class="k">for</span> <span class="n">exposure</span> <span class="ow">in</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">exposures</span><span class="p">:</span>
+			<span class="c">#exposure id</span>
+			<span class="n">e_id</span> 		<span class="o">=</span> <span class="n">exposure</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;id&#39;</span><span class="p">)</span>
+			<span class="n">rr_bins</span>		<span class="o">=</span> <span class="p">[]</span>
+			<span class="n">pop_bins</span>	<span class="o">=</span> <span class="p">[]</span>
+			<span class="c"># related outcome risks</span>
+			<span class="n">rr_bins_values</span> 	<span class="o">=</span> <span class="n">Bins</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">variable</span><span class="o">=</span><span class="n">e_id</span><span class="p">,</span><span class="n">bin_type</span><span class="o">=</span><span class="s">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s">&#39;bin_value&#39;</span><span class="p">)</span>
+			<span class="n">pop_bins_values</span> <span class="o">=</span> <span class="n">Bins</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">variable</span><span class="o">=</span><span class="n">e_id</span><span class="p">,</span><span class="n">bin_type</span><span class="o">=</span><span class="s">&#39;p&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s">&#39;bin_value&#39;</span><span class="p">)</span>
+			<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rr_bins_values</span><span class="p">)):</span>
+				<span class="n">rr_bins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">rr_bins_values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;bin_value&#39;</span><span class="p">)))</span>
+				<span class="n">pop_bins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">pop_bins_values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;bin_value&#39;</span><span class="p">)))</span>
+			<span class="n">DBHelper</span><span class="o">.</span><span class="n">samples_rr</span><span class="p">[</span><span class="n">e_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">rr_bins</span>
+			<span class="n">DBHelper</span><span class="o">.</span><span class="n">samples_pop</span><span class="p">[</span><span class="n">e_id</span><span class="p">]</span><span class="o">=</span> <span class="n">pop_bins</span>
+
+</div>
+	<span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="DBHelper.get_risks"><a class="viewcode-back" href="../../primemodel.html#primemodel.DBHelper.DBHelper.get_risks">[docs]</a>	<span class="k">def</span> <span class="nf">get_risks</span><span class="p">():</span>
+		<span class="sd">&quot;&quot;&quot;This function returns all baseline risks for all exposures </span>
+
+<span class="sd">    		:param : </span>
+<span class="sd">   	 	:returns: No return </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">risks</span> <span class="o">=</span> <span class="p">{}</span>
+		
+		<span class="c">#get risks from database table primemodel_relativerisks</span>
+		<span class="c"># all exposures/variables</span>
+		<span class="k">for</span> <span class="n">exposure</span> <span class="ow">in</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">exposures</span><span class="p">:</span>
+			<span class="c">#exposure id</span>
+			<span class="n">e_id</span> <span class="o">=</span> <span class="n">exposure</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;id&#39;</span><span class="p">)</span>
+			<span class="c"># related outcome ids</span>
+			<span class="n">outcome_ids</span> <span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">exposure_outcome</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">e_id</span><span class="p">)</span>
+			<span class="c"># related outcome risks</span>
+			<span class="n">risks_outcomes</span><span class="o">=</span> <span class="p">{}</span>
+			<span class="k">for</span> <span class="n">o_id</span> <span class="ow">in</span> <span class="n">outcome_ids</span><span class="p">:</span>
+				<span class="c"># get data from database</span>
+				<span class="n">exposureoutcome_risks</span> <span class="o">=</span> <span class="n">RelativeRisk</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">variable</span><span class="o">=</span><span class="n">e_id</span><span class="p">,</span><span class="n">outcome</span><span class="o">=</span><span class="n">o_id</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&#39;population_subset&#39;</span><span class="p">,</span><span class="s">&#39;id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s">&#39;variable_value&#39;</span><span class="p">)</span>
+				<span class="c"># add into risks list of current exposure</span>
+				<span class="n">o_risks</span> <span class="o">=</span> <span class="p">[]</span>
+				<span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">exposureoutcome_risks</span><span class="p">)</span>
+				<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">):</span>
+					<span class="n">o_risks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">exposureoutcome_risks</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;variable_value&#39;</span><span class="p">)))</span>	
+				<span class="n">risks_outcomes</span><span class="p">[</span><span class="n">o_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">o_risks</span>
+			<span class="c"># add into risks lists of all exposures</span>
+			<span class="n">DBHelper</span><span class="o">.</span><span class="n">risks</span><span class="p">[</span><span class="n">e_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">risks_outcomes</span>
+		<span class="k">return</span> 
+
+</div>
+	<span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="DBHelper.get_relative_risks"><a class="viewcode-back" href="../../primemodel.html#primemodel.DBHelper.DBHelper.get_relative_risks">[docs]</a>	<span class="k">def</span> <span class="nf">get_relative_risks</span><span class="p">():</span>
+		<span class="sd">&quot;&quot;&quot;This function retrieves all relative risks from database, exposures store in a datastructure of [{}] </span>
+
+<span class="sd">    		:param : </span>
+<span class="sd">   	 	:returns: No return </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">relative_risks</span> <span class="o">=</span> <span class="n">VariableDistribution</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+	</div>
+	<span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="DBHelper.get_relative_risks_count"><a class="viewcode-back" href="../../primemodel.html#primemodel.DBHelper.DBHelper.get_relative_risks_count">[docs]</a>	<span class="k">def</span> <span class="nf">get_relative_risks_count</span><span class="p">():</span>
+		<span class="sd">&quot;&quot;&quot;This function retrieves all variable distribution from database, exposures store in a datastructure of [{}] </span>
+
+<span class="sd">    		:param : </span>
+<span class="sd">   	 	:returns: No return </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">relative_risks_count</span> <span class="o">=</span> <span class="n">VariableDistribution</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> 
+		<span class="k">return</span> <span class="n">relative_risks_count</span>
+	
+	</div>
+	<span class="nd">@staticmethod</span>
+	<span class="k">def</span> <span class="nf">get_population_subsets</span><span class="p">():</span>
+		<span class="sd">&quot;&quot;&quot;This function retrieves all population subsets from database, exposures store in a datastructure of [] </span>
+
+<span class="sd">    		:param : </span>
+<span class="sd">   	 	:returns: No return </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">population_subsets</span> <span class="o">=</span> <span class="n">PopulationSubset</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&#39;created_at&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">population_subsets</span> 
+
+	<span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="DBHelper.get_population_subsets"><a class="viewcode-back" href="../../primemodel.html#primemodel.DBHelper.DBHelper.get_population_subsets">[docs]</a>	<span class="k">def</span> <span class="nf">get_population_subsets</span><span class="p">():</span>
+		<span class="sd">&quot;&quot;&quot;This function retrieves population subsets from database, exposures store in a datastructure of [] </span>
+
+<span class="sd">    		:param : </span>
+<span class="sd">   	 	:returns: female age groups </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">age_groups</span> <span class="o">=</span> <span class="n">PopulationSubset</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&#39;id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s">&#39;size&#39;</span><span class="p">)</span>
+		<span class="n">age_groups_nums</span> <span class="o">=</span> <span class="p">[]</span>
+		<span class="k">for</span> <span class="n">age_group</span> <span class="ow">in</span> <span class="n">age_groups</span><span class="p">:</span>
+			<span class="n">age_groups_nums</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">long</span><span class="p">(</span><span class="n">age_group</span><span class="o">.</span><span class="n">values</span><span class="p">()[</span><span class="mi">0</span><span class="p">])))</span> 
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">age_groups</span> <span class="o">=</span> <span class="n">age_groups_nums</span>
+</div>
+	<span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="DBHelper.get_measurements"><a class="viewcode-back" href="../../primemodel.html#primemodel.DBHelper.DBHelper.get_measurements">[docs]</a>	<span class="k">def</span> <span class="nf">get_measurements</span><span class="p">():</span>
+		<span class="sd">&quot;&quot;&quot;This function retrieves all measurements from database, exposures store in a datastructure of {[]} </span>
+
+<span class="sd">    		:param : </span>
+<span class="sd">   	 	:returns: No return </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">measurements</span> 	<span class="o">=</span> <span class="p">{}</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">measurements</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">get_measurements_lists</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span><span class="c">#[[b_means],[c_means],[b_sds],[c_sds],[b_non_rates],[c_non_rates]]</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">measurements</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">get_measurements_lists</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">measurements</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">get_measurements_lists</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">measurements</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">get_measurements_lists</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">])</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">measurements</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">get_measurements_lists</span><span class="p">([</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">])</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">measurements</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">get_measurements_lists</span><span class="p">([</span><span class="mi">24</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">26</span><span class="p">])</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">measurements</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">get_measurements_lists</span><span class="p">([</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">])</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">measurements</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">get_measurements_lists</span><span class="p">([</span><span class="mi">33</span><span class="p">,</span><span class="mi">34</span><span class="p">,</span><span class="mi">32</span><span class="p">])</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">measurements</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">get_measurements_lists</span><span class="p">([</span><span class="mi">36</span><span class="p">,</span><span class="mi">37</span><span class="p">,</span><span class="mi">35</span><span class="p">])</span>
+		<span class="n">meaus</span> <span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">measurements</span>
+		</div>
+	<span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="DBHelper.get_measurements_lists"><a class="viewcode-back" href="../../primemodel.html#primemodel.DBHelper.DBHelper.get_measurements_lists">[docs]</a>	<span class="k">def</span> <span class="nf">get_measurements_lists</span><span class="p">(</span><span class="n">m_type_ids</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function retrieve all measurements for one exposure </span>
+
+<span class="sd">    		:param m_type_ids: measurement type id </span>
+<span class="sd">    		:type m_type_ids: list </span>
+<span class="sd">   	 	:returns: measurement list </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">lists</span> <span class="o">=</span> <span class="p">[]</span>
+		<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">m_type_ids</span><span class="p">:</span>
+			<span class="n">lists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">DBHelper</span><span class="o">.</span><span class="n">get_measurements_list</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="bp">True</span><span class="p">))</span>
+			<span class="n">lists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">DBHelper</span><span class="o">.</span><span class="n">get_measurements_list</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="bp">False</span><span class="p">))</span>
+		<span class="k">return</span> <span class="n">lists</span>
+</div>
+	<span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="DBHelper.get_measurements_list"><a class="viewcode-back" href="../../primemodel.html#primemodel.DBHelper.DBHelper.get_measurements_list">[docs]</a>	<span class="k">def</span> <span class="nf">get_measurements_list</span><span class="p">(</span><span class="n">m_type_id</span><span class="p">,</span> <span class="n">is_baseline</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function retrieves all measurements from database, exposures store in a datastructure of {[]} </span>
+
+<span class="sd">    		:param m_type_id: measurement type id </span>
+<span class="sd">    		:type m_type_id: int </span>
+<span class="sd">    		:param is_baseline: True is baseline, false is counterfactual </span>
+<span class="sd">    		:type is_baseline: bool </span>
+<span class="sd">   	 	:returns: measurement list </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+		<span class="k">if</span> <span class="n">is_baseline</span><span class="p">:</span>
+			<span class="n">measurements</span> <span class="o">=</span> <span class="n">Measurement</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">measurement_type_id</span><span class="o">=</span><span class="n">m_type_id</span><span class="p">,</span><span class="n">measurement_option</span><span class="o">=</span><span class="s">&#39;B&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&#39;population_subset&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s">&#39;value&#39;</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">measurements</span> <span class="o">=</span> <span class="n">Measurement</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">measurement_type_id</span><span class="o">=</span><span class="n">m_type_id</span><span class="p">,</span><span class="n">measurement_option</span><span class="o">=</span><span class="s">&#39;C&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&#39;population_subset&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s">&#39;value&#39;</span><span class="p">)</span>
+		<span class="c"># only get number value</span>
+		<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">measurements</span><span class="p">:</span>
+			<span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">values</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span> 
+		<span class="k">return</span> <span class="n">values</span>
+</div>
+<div class="viewcode-block" id="DBHelper.update_fat_measures"><a class="viewcode-back" href="../../primemodel.html#primemodel.DBHelper.DBHelper.update_fat_measures">[docs]</a>	<span class="k">def</span> <span class="nf">update_fat_measures</span><span class="p">():</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">measurements</span>
+</div>
+	<span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="DBHelper.get_mortalities"><a class="viewcode-back" href="../../primemodel.html#primemodel.DBHelper.DBHelper.get_mortalities">[docs]</a>	<span class="k">def</span> <span class="nf">get_mortalities</span><span class="p">():</span>
+		<span class="sd">&quot;&quot;&quot;This function retrieves all mortalities from database, exposures store in a datastructure of {} </span>
+
+<span class="sd">    		:param : </span>
+<span class="sd">   	 	:returns: No return </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">mortalities</span> 	<span class="o">=</span> <span class="p">{}</span> 
+		<span class="n">keys</span> 		<span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">outcomes</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+		<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">outcomes</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+			<span class="n">mortality</span> 		<span class="o">=</span> <span class="n">Mortality</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">outcome</span><span class="o">=</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&#39;population_subset&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s">&#39;value&#39;</span><span class="p">)</span>
+			<span class="n">mortality_nums</span> 	<span class="o">=</span> <span class="p">[]</span>
+			<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">mortality</span><span class="p">:</span>
+				<span class="n">mortality_nums</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">long</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">values</span><span class="p">()[</span><span class="mi">0</span><span class="p">])))</span> 
+			<span class="n">DBHelper</span><span class="o">.</span><span class="n">mortalities</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> 	<span class="o">=</span> <span class="n">mortality_nums</span> 
+
+</div>
+	<span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="DBHelper.get_exposures"><a class="viewcode-back" href="../../primemodel.html#primemodel.DBHelper.DBHelper.get_exposures">[docs]</a>	<span class="k">def</span> <span class="nf">get_exposures</span><span class="p">():</span>
+		<span class="sd">&quot;&quot;&quot;This function retrieves all exposures from database, exposures store in a datastructure of [{}] </span>
+
+<span class="sd">    		:param : </span>
+<span class="sd">   	 	:returns: all exposures in database </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">exposures</span> <span class="o">=</span> <span class="n">Variable</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&#39;id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s">&#39;id&#39;</span><span class="p">,</span><span class="s">&#39;name&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">exposures</span>
+</div>
+	<span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="DBHelper.get_outcomes"><a class="viewcode-back" href="../../primemodel.html#primemodel.DBHelper.DBHelper.get_outcomes">[docs]</a>	<span class="k">def</span> <span class="nf">get_outcomes</span><span class="p">():</span>
+		<span class="sd">&quot;&quot;&quot;This function retrieves all outcomes from database, outcome store in a datastructure of {o_id:[name,abbreviation]} </span>
+
+<span class="sd">    		:param : </span>
+<span class="sd">   	 	:returns: No return </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">outcomes</span><span class="o">=</span> <span class="n">Outcome</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&#39;id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s">&#39;id&#39;</span><span class="p">,</span><span class="s">&#39;name&#39;</span><span class="p">,</span><span class="s">&#39;abbreviation&#39;</span><span class="p">)</span>
+		<span class="k">for</span> <span class="n">outcome</span> <span class="ow">in</span> <span class="n">outcomes</span><span class="p">:</span>
+			<span class="n">o_id</span>			<span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">long</span><span class="p">(</span><span class="n">outcome</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;id&#39;</span><span class="p">)))</span>
+			<span class="n">name</span> 			<span class="o">=</span> <span class="n">outcome</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;name&#39;</span><span class="p">)</span>
+			<span class="n">name</span> 			<span class="o">=</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="s">&#39;NFKD&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s">&#39;ascii&#39;</span><span class="p">,</span><span class="s">&#39;ignore&#39;</span><span class="p">)</span>
+			<span class="n">abbreviation</span> 		<span class="o">=</span> <span class="n">outcome</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;abbreviation&#39;</span><span class="p">)</span>
+			<span class="n">DBHelper</span><span class="o">.</span><span class="n">outcomes</span><span class="p">[</span><span class="n">o_id</span><span class="p">]</span>	<span class="o">=</span> <span class="p">[</span><span class="n">name</span><span class="p">,</span><span class="n">abbreviation</span><span class="p">]</span> 
+		
+		<span class="k">return</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">outcomes</span>
+</div>
+	<span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="DBHelper.get_exposure_id"><a class="viewcode-back" href="../../primemodel.html#primemodel.DBHelper.DBHelper.get_exposure_id">[docs]</a>	<span class="k">def</span> <span class="nf">get_exposure_id</span><span class="p">(</span><span class="n">e_id</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function return exposure id according to exposure id </span>
+
+<span class="sd">    		:param abbreviation: outcome abbreviation </span>
+<span class="sd">    		:type abbreviation: string </span>
+<span class="sd">   	 	:returns: outcome id </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">exposure_id</span> <span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">exposures</span><span class="p">[</span><span class="n">e_id</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;id&#39;</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">exposure_id</span>
+</div>
+	<span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="DBHelper.get_exposure_outcome"><a class="viewcode-back" href="../../primemodel.html#primemodel.DBHelper.DBHelper.get_exposure_outcome">[docs]</a>	<span class="k">def</span> <span class="nf">get_exposure_outcome</span><span class="p">():</span>
+		<span class="sd">&quot;&quot;&quot;This function stores outcomes into database, exposure_outcome={exposure_id:}</span>
+
+<span class="sd">    		:param : </span>
+<span class="sd">   	 	:returns: No return </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">exposure_outcome</span> <span class="o">=</span> <span class="p">{}</span> 
+		<span class="c"># fetch data from database</span>
+		<span class="n">exposures</span> 	<span class="o">=</span> <span class="n">ExposureOutcome</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&#39;id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s">&#39;exposure&#39;</span><span class="p">,</span><span class="s">&#39;outcome&#39;</span><span class="p">,</span><span class="s">&#39;lower_limit_estimate&#39;</span><span class="p">,</span><span class="s">&#39;upper_limit_estimate&#39;</span><span class="p">,</span><span class="s">&#39;measure&#39;</span><span class="p">)</span>
+		<span class="c"># store data into an easy-to-search data format </span>
+		<span class="n">outcome_ids</span> 	<span class="o">=</span> <span class="p">{}</span> 
+		<span class="n">e_id</span> <span class="o">=</span> <span class="mi">1</span>
+		<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">exposures</span><span class="p">:</span>
+			<span class="n">new_e_id</span><span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">long</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;exposure&#39;</span><span class="p">)))</span>
+			<span class="n">o_id</span> 	<span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">long</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;outcome&#39;</span><span class="p">)))</span>
+			<span class="n">lle</span> 	<span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">long</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;lower_limit_estimate&#39;</span><span class="p">)))</span>
+			<span class="n">ule</span> 	<span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">long</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;upper_limit_estimate&#39;</span><span class="p">)))</span>
+			<span class="n">measure</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">long</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;measure&#39;</span><span class="p">)))</span>
+			<span class="k">if</span> <span class="n">new_e_id</span> <span class="o">==</span> <span class="n">e_id</span><span class="p">:</span>
+				<span class="n">outcome_ids</span><span class="p">[</span><span class="n">o_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">lle</span><span class="p">,</span><span class="n">ule</span><span class="p">,</span><span class="n">measure</span><span class="p">]</span>
+			<span class="k">else</span><span class="p">:</span>
+				<span class="n">DBHelper</span><span class="o">.</span><span class="n">exposure_outcome</span><span class="p">[</span><span class="n">e_id</span><span class="p">]</span> 	<span class="o">=</span> <span class="n">outcome_ids</span><span class="p">;</span> 
+				<span class="n">outcome_ids</span> 			<span class="o">=</span> <span class="p">{}</span> 
+				<span class="n">outcome_ids</span><span class="p">[</span><span class="n">o_id</span><span class="p">]</span> 		<span class="o">=</span> <span class="p">[</span><span class="n">lle</span><span class="p">,</span><span class="n">ule</span><span class="p">,</span><span class="n">measure</span><span class="p">]</span>
+				<span class="n">e_id</span> 				<span class="o">=</span> <span class="n">new_e_id</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">exposure_outcome</span><span class="p">[</span><span class="n">e_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">outcome_ids</span> <span class="c">#{e_id:{o_id:[lle,ule]}} </span>
+</div>
+	<span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="DBHelper.get_outcome_name"><a class="viewcode-back" href="../../primemodel.html#primemodel.DBHelper.DBHelper.get_outcome_name">[docs]</a>	<span class="k">def</span> <span class="nf">get_outcome_name</span><span class="p">(</span><span class="n">o_id</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function return outcome name according to outcome id </span>
+
+<span class="sd">    		:param o_id: outcome id </span>
+<span class="sd">    		:type o_id: int </span>
+<span class="sd">   	 	:returns: outcome name </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">outcomes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">o_id</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</div>
+	<span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="DBHelper.get_outcome_abbreviation"><a class="viewcode-back" href="../../primemodel.html#primemodel.DBHelper.DBHelper.get_outcome_abbreviation">[docs]</a>	<span class="k">def</span> <span class="nf">get_outcome_abbreviation</span><span class="p">(</span><span class="n">o_id</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function return outcome abbreviation according to outcome id </span>
+
+<span class="sd">    		:param o_id: outcome id </span>
+<span class="sd">    		:type o_id: int </span>
+<span class="sd">   	 	:returns: outcome abbreviation </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">outcomes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">o_id</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+</div>
+	<span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="DBHelper.get_outcome_id"><a class="viewcode-back" href="../../primemodel.html#primemodel.DBHelper.DBHelper.get_outcome_id">[docs]</a>	<span class="k">def</span> <span class="nf">get_outcome_id</span><span class="p">(</span><span class="n">abbreviation</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function return outcome id according to outcome abbreviation </span>
+
+<span class="sd">    		:param abbreviation: outcome abbreviation </span>
+<span class="sd">    		:type abbreviation: string </span>
+<span class="sd">   	 	:returns: outcome id </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">o_id</span> <span class="o">=</span> <span class="mi">1</span>
+		<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">outcomes</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+			<span class="k">if</span> <span class="n">abbreviation</span> <span class="o">==</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">outcomes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)[</span><span class="mi">1</span><span class="p">]:</span>
+				<span class="k">return</span> <span class="n">key</span>	
+		<span class="k">return</span> <span class="n">o_id</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">prime 1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Lijuan Marissa Zhou.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

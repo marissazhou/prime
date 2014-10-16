@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Articles for {{ year }}{% endblock %}
+
+{% block content %}
+
+    <h4>{{ article.title}}</h4>
+    <p>By {{ article.owner}}</p>
+    <p>Published {{ article.created_at|date:"F j, Y" }}</p>
+    <p>
+    <p>body: {{ article.body }}</p>
+
+{% endblock %}

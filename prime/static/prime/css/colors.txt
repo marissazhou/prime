@@ -1,0 +1,27 @@
+Color palette:
+
+From Hyowon:
+
+Turquoise:
+#3d8189
+
+Greys
+#e2ddd8
+#d0c4bb
+
+Turquoises:
+#8fafb4
+#5b939a
+#417980
+
+Yellow:
+#fbfcc3
+
+Orange:
+#fb721f
+
+Upper Greys:
+#9f9a96
+#b8b3af
+#d5d0ca
+#eee9e4

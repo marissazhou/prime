@@ -1,0 +1,474 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>primemodel.PrimeCoordinator &mdash; prime 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="prime 1.0 documentation" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">prime 1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for primemodel.PrimeCoordinator</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;Prime Coordination class</span>
+<span class="sd">.. module:: PrimeCoordinator </span>
+<span class="sd">   :platform: Ubuntu Unix</span>
+<span class="sd">   :synopsis: A module for operating all exposures compound or only, baseline or counterfactual.</span>
+
+<span class="sd">.. moduleauthor:: Lijuan Marissa Zhou &lt;marissa.zhou.cn@gmail.com&gt;</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">simplejson</span> <span class="k">as</span> <span class="n">json</span>
+<span class="kn">from</span> <span class="nn">django.core.files</span> <span class="kn">import</span> <span class="n">File</span>
+
+<div class="viewcode-block" id="PrimeCoordinator"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeCoordinator.PrimeCoordinator">[docs]</a><span class="k">class</span> <span class="nc">PrimeCoordinator</span><span class="p">():</span>
+
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		exposure objects, both for only ones and compound ones</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">counter_measures</span><span class="o">=</span> <span class="p">[]</span> <span class="c">#{id:[[mean,sd,non-rate]] }</span>
+	<span class="n">only_exposures</span>	<span class="o">=</span> <span class="p">{}</span> <span class="c">#a dict of only exposures {exposure_id:exposure object}</span>
+	<span class="n">bc_exposures</span>	<span class="o">=</span> <span class="p">[]</span> <span class="c">#new baseline compound exposures</span>
+	<span class="n">cc_exposures</span>	<span class="o">=</span> <span class="p">[]</span> <span class="c">#new counterfactual compound exposures</span>
+	
+	<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">		deaths to show in the webpages [age]</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="n">output_baseline_mortality</span>	<span class="o">=</span> <span class="p">{}</span> <span class="c"># {o_id:[]} {outcome_id:[deaths for population subsets]}</span>
+	<span class="n">output_baseline_mortality_num</span>	<span class="o">=</span> <span class="p">[]</span> <span class="c"># [death sum for outcome]</span>
+	<span class="n">output_baseline_mortality_total</span>	<span class="o">=</span> <span class="mi">0</span>  <span class="c"># sum of all outcome mortalities </span>
+	<span class="n">output_counterfactual_mortality</span>	<span class="o">=</span> <span class="p">{}</span> <span class="c"># {o_id:[]} {outcome_id:[deaths for population subsets]}</span>
+	<span class="n">output_counterfactual_mortality_num</span>	<span class="o">=</span> <span class="p">[]</span> <span class="c"># [death sum for outcome]</span>
+	<span class="n">output_counterfactual_mortality_total</span>	<span class="o">=</span> <span class="mi">0</span>  <span class="c"># sum of all outcome mortalities </span>
+
+
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    		<span class="sd">&quot;&quot;&quot;This function initializes an PrimeCoordinator object  </span>
+
+<span class="sd">    		:param:</span>
+<span class="sd">   	 	:returns: </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">DBHelper</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span> <span class="c">#initiate dababase helper</span>
+
+	<span class="c">#################################################</span>
+	<span class="c"># outcomes					# </span>
+	<span class="c">#################################################</span>
+<div class="viewcode-block" id="PrimeCoordinator.get_exposure"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeCoordinator.PrimeCoordinator.get_exposure">[docs]</a>	<span class="k">def</span> <span class="nf">get_exposure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">exposure_id</span><span class="p">,</span><span class="n">b_mean</span><span class="p">,</span><span class="n">b_sd</span><span class="p">,</span><span class="n">c_mean</span><span class="p">,</span><span class="n">c_sd</span><span class="p">,</span><span class="n">non_rate</span><span class="p">,</span><span class="n">dist_type</span><span class="p">,</span><span class="n">mortalities</span><span class="p">):</span><span class="c">#id in db</span>
+    		<span class="sd">&quot;&quot;&quot;This function initiate an exposure object </span>
+
+<span class="sd">    		:param exposure_id: id for exposures</span>
+<span class="sd">    		:type exposure_id: int</span>
+<span class="sd">    		:param b_mean: mean for baseline </span>
+<span class="sd">    		:type b_mean: array</span>
+<span class="sd">    		:param b_sd: standard deviation for counterfactual </span>
+<span class="sd">    		:type b_sd: array</span>
+<span class="sd">    		:param c_mean: mean for baseline </span>
+<span class="sd">    		:type c_mean: array</span>
+<span class="sd">    		:param c_sd: standard deviation for counterfactual </span>
+<span class="sd">    		:type c_sd: array</span>
+<span class="sd">    		:param non_rate: non rate for smokers/drinkers </span>
+<span class="sd">    		:type non_rate: array</span>
+<span class="sd">    		:param dist_type: distribution type 0: normal distribution; 1: lognormal distribution; 2: binary distribution </span>
+<span class="sd">    		:type dist_type: int </span>
+<span class="sd">    		:param mortalities: baseline mortalities for a new exposure, could be mortality in db or counterfactual mortality of previous exposure, {outcome_id:[mortalities of current outcome]} </span>
+<span class="sd">    		:type mortalities: dict </span>
+<span class="sd">   	 	:returns: an exposure object </span>
+<span class="sd">   	 	:raises: an exception </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">e_id</span> 		<span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">long</span><span class="p">(</span><span class="n">exposure_id</span><span class="p">))</span>
+		<span class="n">outcome_ids</span> 	<span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">exposure_outcome</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">e_id</span><span class="p">)</span>
+
+		<span class="n">samples_rr</span> 	<span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">samples_rr</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">e_id</span><span class="p">)</span><span class="c">#bins for population </span>
+		<span class="n">samples_pop</span> 	<span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">samples_pop</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">e_id</span><span class="p">)</span><span class="c">#bins for relative risk</span>
+		<span class="n">risks</span> 		<span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">risks</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">e_id</span><span class="p">)</span><span class="c">#initial risks </span>
+		<span class="n">dist_type</span>   	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dist_type</span><span class="p">(</span><span class="n">e_id</span><span class="p">)</span> <span class="c">#distribution type</span>
+
+		<span class="c">#get population distribution for the current exposure, age_groups  </span>
+		<span class="n">populationDistribution</span> <span class="o">=</span> <span class="n">ExposureDistribution</span><span class="p">(</span><span class="n">DBHelper</span><span class="o">.</span><span class="n">age_groups</span><span class="p">,</span><span class="n">non_rate</span><span class="p">,</span><span class="n">b_mean</span><span class="p">,</span><span class="n">b_sd</span><span class="p">,</span><span class="n">c_mean</span><span class="p">,</span><span class="n">c_sd</span><span class="p">,</span><span class="n">samples_pop</span><span class="p">,</span><span class="n">dist_type</span><span class="p">)</span>
+
+		<span class="c">#initialize all related outcomes for the current exposure in the loop below </span>
+		<span class="n">outcomes</span> <span class="o">=</span> <span class="p">{}</span>
+		<span class="k">for</span> <span class="n">o_id</span> <span class="ow">in</span> <span class="n">outcome_ids</span><span class="p">:</span>
+			<span class="n">mortality</span> 	<span class="o">=</span> <span class="n">mortalities</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">o_id</span><span class="p">)</span> <span class="c"># mortality</span>
+			<span class="n">outcome_risks</span>	<span class="o">=</span> <span class="n">risks</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">o_id</span><span class="p">)</span><span class="c"># risks</span>
+			<span class="n">name</span> 		<span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">get_outcome_name</span><span class="p">(</span><span class="n">o_id</span><span class="p">)</span> <span class="c"># outcome name</span>
+			<span class="c"># limit estimates</span>
+			<span class="n">lle</span> 		<span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">exposure_outcome</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">e_id</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">o_id</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="c"># lower limit estimate</span>
+			<span class="n">ule</span> 		<span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">exposure_outcome</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">e_id</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">o_id</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="c"># upper limit estimate</span>
+			<span class="n">measure</span> 	<span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">exposure_outcome</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">e_id</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">o_id</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span> <span class="c"># measurements </span>
+			<span class="n">outcome</span> 	<span class="o">=</span> <span class="n">PrimeOutcome</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">o_id</span><span class="p">,</span><span class="n">mortality</span><span class="p">,</span><span class="n">samples_rr</span><span class="p">,</span><span class="n">outcome_risks</span><span class="p">,</span><span class="n">lle</span><span class="p">,</span><span class="n">ule</span><span class="p">,</span><span class="n">measure</span><span class="p">,</span><span class="n">e_id</span><span class="p">)</span> <span class="c"># outcome</span>
+			<span class="c"># add current outcome to current exposure outcomes list</span>
+			<span class="n">outcomes</span><span class="p">[</span><span class="n">o_id</span><span class="p">]</span> 	<span class="o">=</span> <span class="n">outcome</span>
+
+		<span class="n">exposure</span> <span class="o">=</span> <span class="n">PrimeExposure</span><span class="p">(</span><span class="n">e_id</span><span class="p">,</span><span class="n">outcome_ids</span><span class="p">,</span> <span class="n">mortalities</span><span class="p">,</span><span class="n">samples_rr</span><span class="p">,</span><span class="n">samples_pop</span><span class="p">,</span><span class="n">outcomes</span><span class="p">,</span><span class="n">populationDistribution</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">exposure</span>
+</div>
+<div class="viewcode-block" id="PrimeCoordinator.get_exposure_list"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeCoordinator.PrimeCoordinator.get_exposure_list">[docs]</a>	<span class="k">def</span> <span class="nf">get_exposure_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e_list</span><span class="p">):</span><span class="c">#e_list is the list of exposure attributions[id:{mean_list,sd_list,non_rate_list}]</span>
+    		<span class="sd">&quot;&quot;&quot;This function, could be compound result or &#39;only&#39; result, take salf for example:</span>
+
+<span class="sd">    		:param e_list: a list for exposures, if list is [4], then it is only sheet; if list is [1,2,3,4], then it is none sheet</span>
+<span class="sd">    		:type e_list: list</span>
+<span class="sd">   	 	:returns: a list of initial/baseline exposures </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="k">if</span> <span class="n">e_list</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span> <span class="k">return</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">cc_exposures</span> 	<span class="o">=</span> <span class="p">[]</span><span class="c"># could be compound result or &#39;only&#39; result</span>
+		<span class="n">c_mortalities</span> 		<span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">mortalities</span>
+		<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">e_list</span><span class="p">:</span>
+			<span class="n">e_id</span> 		<span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;e_id&#39;</span><span class="p">)</span>
+			<span class="n">b_mean</span> 		<span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">measurements</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">e_id</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> 
+			<span class="n">b_sd</span> 		<span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">measurements</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">e_id</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span> 
+			<span class="n">list_size</span> 	<span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">b_mean</span><span class="p">)</span>
+			<span class="n">c_mean</span> 		<span class="o">=</span> <span class="n">generate_list_value</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;mean&#39;</span><span class="p">),</span><span class="n">list_size</span><span class="p">)</span>
+			<span class="n">c_sd</span> 		<span class="o">=</span> <span class="n">generate_list_value</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;sd&#39;</span><span class="p">),</span><span class="n">list_size</span><span class="p">)</span>
+			<span class="n">non_rate</span> 	<span class="o">=</span> <span class="n">generate_list_value</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;non_rate&#39;</span><span class="p">),</span><span class="n">list_size</span><span class="p">)</span>
+			<span class="n">dist_type</span>	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dist_type</span><span class="p">(</span><span class="n">e_id</span><span class="p">)</span>
+			<span class="n">exposure</span> 	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_exposure</span><span class="p">(</span><span class="n">e_id</span><span class="p">,</span><span class="n">b_mean</span><span class="p">,</span><span class="n">b_sd</span><span class="p">,</span><span class="n">c_mean</span><span class="p">,</span><span class="n">c_sd</span><span class="p">,</span><span class="n">non_rate</span><span class="p">,</span><span class="n">dist_type</span><span class="p">,</span><span class="n">c_mortalities</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">cc_exposures</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">exposure</span><span class="p">)</span> <span class="c"># current counterfactual exposures</span>
+			<span class="n">c_mortalities</span> 	<span class="o">=</span> <span class="n">exposure</span><span class="o">.</span><span class="n">c_mortalities</span><span class="c">#counterfactual mortality for next exposure</span>
+		
+</div>
+<div class="viewcode-block" id="PrimeCoordinator.read_json"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeCoordinator.PrimeCoordinator.read_json">[docs]</a>	<span class="k">def</span> <span class="nf">read_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">fileaddress</span><span class="p">):</span>
+        	<span class="sd">&quot;&quot;&quot;read json from fileaddress and store the content into exposures global variables, the json file format should look like [{u&#39;non_rate&#39;: 25, u&#39;e_id&#39;: 1, u&#39;sd&#39;: 25, u&#39;mean&#39;: 15.6}, {u&#39;non_rate&#39;: 100, u&#39;e_id&#39;: 2, u&#39;sd&#39;: 25, u&#39;mean&#39;: 3.6}]	</span>
+
+<span class="sd">		:param fileaddress: A string to be converted</span>
+<span class="sd">    		:type fileaddress: string </span>
+<span class="sd">		:returns: json content </span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="n">json_data</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">fileaddress</span><span class="p">,</span><span class="s">&#39;w+&#39;</span><span class="p">)</span>
+		<span class="n">exposures</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_data</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="PrimeCoordinator.get_initial_exposures"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeCoordinator.PrimeCoordinator.get_initial_exposures">[docs]</a>	<span class="k">def</span> <span class="nf">get_initial_exposures</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    		<span class="sd">&quot;&quot;&quot;get the initial baseline and counterfactual exposures,*be called only once when the program started*, only_exposures keeps the same in the whole process, while cc_exposures changes with new parameters</span>
+
+<span class="sd">    		:param self: self attrubtes </span>
+<span class="sd">   	 	:returns: a list of initial/baseline exposures </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">only_exposures</span> <span class="o">=</span> <span class="p">{}</span>
+		<span class="n">keys</span> <span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">outcomes</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+		<span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="mi">9</span><span class="p">]</span>
+		<span class="k">for</span> <span class="n">exposure_id</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span><span class="c">#get a list of exposures </span>
+			<span class="n">e_id</span> 		<span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">long</span><span class="p">(</span><span class="n">exposure_id</span><span class="p">))</span>
+			<span class="c">#outcome_ids 	= DBHelper.exposure_outcome.get(e_id)</span>
+
+			<span class="n">samples_rr</span> 	<span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">samples_rr</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">e_id</span><span class="p">)</span>
+			<span class="n">samples_pop</span> 	<span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">samples_pop</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">e_id</span><span class="p">)</span>
+			<span class="n">risks</span> 		<span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">risks</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">e_id</span><span class="p">)</span>
+			<span class="n">dist_type</span>   	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_dist_type</span><span class="p">(</span><span class="n">e_id</span><span class="p">)</span>
+			<span class="n">b_mean</span> 		<span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">measurements</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">e_id</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="c">#[[b_means],[c_means],[b_sd],[c_sd],[b_non_rate],[c_non_rate]]</span>
+			<span class="n">c_mean</span> 		<span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">measurements</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">e_id</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> 
+			<span class="n">b_sd</span> 		<span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">measurements</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">e_id</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span> 
+			<span class="n">c_sd</span> 		<span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">measurements</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">e_id</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span> 
+			<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">DBHelper</span><span class="o">.</span><span class="n">measurements</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">6</span><span class="p">:</span> <span class="c">#some exposures have no non_rate, such as Fibre and Fats</span>
+				<span class="n">non_rate</span><span class="o">=</span> <span class="bp">None</span> 
+			<span class="k">else</span><span class="p">:</span>	<span class="c">#some exposures have non_rate, such as fruit veg etc. </span>
+				<span class="n">non_rate</span><span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">measurements</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">e_id</span><span class="p">)[</span><span class="mi">4</span><span class="p">]</span>
+			<span class="n">mortalities</span>	<span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">mortalities</span>
+			<span class="n">exposure</span> 	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_exposure</span><span class="p">(</span><span class="n">e_id</span><span class="p">,</span><span class="n">b_mean</span><span class="p">,</span><span class="n">b_sd</span><span class="p">,</span><span class="n">c_mean</span><span class="p">,</span><span class="n">c_sd</span><span class="p">,</span><span class="n">non_rate</span><span class="p">,</span><span class="n">dist_type</span><span class="p">,</span> <span class="n">mortalities</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">only_exposures</span><span class="p">[</span><span class="n">e_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">exposure</span> <span class="c"># add into current only_exposures list</span>
+</div>
+<div class="viewcode-block" id="PrimeCoordinator.get_baseline_compound_exposures"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeCoordinator.PrimeCoordinator.get_baseline_compound_exposures">[docs]</a>	<span class="k">def</span> <span class="nf">get_baseline_compound_exposures</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e_list</span><span class="p">):</span>
+    		<span class="sd">&quot;&quot;&quot;get new counterfactual exposures, *be called once a change is made*</span>
+
+<span class="sd">    		:param e_list: a list of baseline exposure parameters </span>
+<span class="sd">    		:type e_list: list</span>
+<span class="sd">   	 	:returns: a list of initial/baseline exposures </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">get_exposure_list</span><span class="p">(</span><span class="n">e_list</span><span class="p">)</span> <span class="c"># fullfil attribute bc_exposures</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">refresh_output_baseline_mortality</span><span class="p">()</span> <span class="c"># refresh final compound mortality</span>
+	</div>
+<div class="viewcode-block" id="PrimeCoordinator.get_counterfactual_compound_exposures"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeCoordinator.PrimeCoordinator.get_counterfactual_compound_exposures">[docs]</a>	<span class="k">def</span> <span class="nf">get_counterfactual_compound_exposures</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e_list</span><span class="p">):</span>
+    		<span class="sd">&quot;&quot;&quot;get new counterfactual exposures, *be called once a change is made*</span>
+
+<span class="sd">    		:param e_list: a list of exposure parameters </span>
+<span class="sd">    		:type e_list: list</span>
+<span class="sd">   	 	:returns: a list of counterfactual compound exposures </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">get_exposure_list</span><span class="p">(</span><span class="n">e_list</span><span class="p">)</span> <span class="c"># fullfil attribute cc_exposures</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">refresh_output_counterfactual_mortality</span><span class="p">()</span> <span class="c"># refresh final compound mortality</span>
+</div>
+<div class="viewcode-block" id="PrimeCoordinator.refresh_output_baseline_mortality"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeCoordinator.PrimeCoordinator.refresh_output_baseline_mortality">[docs]</a>	<span class="k">def</span> <span class="nf">refresh_output_baseline_mortality</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    		<span class="sd">&quot;&quot;&quot; refresh final baseline compound mortality for output, it should be the baseline mortality of the intial exposure</span>
+
+<span class="sd">    		:param self: self attrubtes </span>
+<span class="sd">   	 	:returns: No return</span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">output_baseline_mortality</span> <span class="o">=</span> <span class="p">{}</span>
+		<span class="n">exposure</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cc_exposures</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+		<span class="k">if</span> <span class="bp">None</span> <span class="o">!=</span> <span class="n">exposure</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">output_baseline_mortality</span><span class="o">=</span> <span class="n">exposure</span><span class="o">.</span><span class="n">mortality</span> <span class="c"># same format as original baseline mortality </span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">output_baseline_mortality</span><span class="o">=</span> <span class="p">[]</span> 
+			<span class="k">for</span> <span class="n">o_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_counterfactual_mortality</span><span class="p">:</span>
+				<span class="n">arr_deaths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_baseline_mortality</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">o_id</span><span class="p">)</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">output_baseline_mortality</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">arr_deaths</span><span class="p">))</span> 
+			<span class="bp">self</span><span class="o">.</span><span class="n">output_baseline_mortality</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_baseline_mortality</span><span class="p">)</span> 
+	</div>
+<div class="viewcode-block" id="PrimeCoordinator.refresh_output_counterfactual_mortality"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeCoordinator.PrimeCoordinator.refresh_output_counterfactual_mortality">[docs]</a>	<span class="k">def</span> <span class="nf">refresh_output_counterfactual_mortality</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    		<span class="sd">&quot;&quot;&quot; refresh final compound mortality for output, it should be the counterfactual mortality of the final exposure</span>
+
+<span class="sd">    		:param self: self attrubtes </span>
+<span class="sd">   	 	:returns: No return</span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="k">try</span><span class="p">:</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">output_counterfactual_mortality</span> <span class="o">=</span> <span class="p">{}</span>
+			<span class="n">exposure</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cc_exposures</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+			<span class="k">if</span> <span class="bp">None</span> <span class="o">!=</span> <span class="n">exposure</span><span class="p">:</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">output_counterfactual_mortality</span> <span class="o">=</span> <span class="n">exposure</span><span class="o">.</span><span class="n">c_mortalities</span> <span class="c"># same format as original baseline mortality </span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">output_counterfactual_mortality_num</span> <span class="o">=</span> <span class="p">[]</span> 
+				<span class="k">for</span> <span class="n">o_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_counterfactual_mortality</span><span class="p">:</span>
+					<span class="n">arr_deaths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_counterfactual_mortality</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">o_id</span><span class="p">)</span>
+					<span class="bp">self</span><span class="o">.</span><span class="n">output_counterfactual_mortality_num</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">arr_deaths</span><span class="p">))</span> 
+				<span class="c">#sum of all outcome all population subsets deaths</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">output_counterfactual_mortality_total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_counterfactual_mortality_num</span><span class="p">)</span> 
+		<span class="k">except</span> <span class="ne">IOError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    			<span class="k">print</span> <span class="s">&quot;I/O error({0}): {1}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">errno</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">strerror</span><span class="p">)</span>
+		<span class="n">N1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_counterfactual_mortality</span>
+		<span class="n">N2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_counterfactual_mortality_num</span>
+		<span class="n">N3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_counterfactual_mortality_total</span> 
+		<span class="c">#log = 1/None</span>
+
+</div>
+<div class="viewcode-block" id="PrimeCoordinator.get_dist_type"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeCoordinator.PrimeCoordinator.get_dist_type">[docs]</a>	<span class="k">def</span> <span class="nf">get_dist_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e_id</span><span class="p">):</span>
+    		<span class="sd">&quot;&quot;&quot;get distribution type for exposure according to its id</span>
+
+<span class="sd">    		:param e_id: exposure id, should be the same id as in the database </span>
+<span class="sd">    		:type e_id: int</span>
+<span class="sd">   	 	:returns: distribution type for this exposure </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="k">try</span><span class="p">:</span>
+			<span class="k">if</span> <span class="n">e_id</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">e_id</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">e_id</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">or</span> <span class="n">e_id</span> <span class="o">==</span> <span class="mi">6</span> <span class="ow">or</span> <span class="n">e_id</span> <span class="o">==</span> <span class="mi">7</span> <span class="ow">or</span> <span class="n">e_id</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+				<span class="k">return</span> <span class="n">DIST_TYPE_LOGNORMAL</span>
+			<span class="k">elif</span> <span class="n">e_id</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">e_id</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+				<span class="k">return</span> <span class="n">DIST_TYPE_NORMAL</span>
+			<span class="k">elif</span> <span class="n">e_id</span> <span class="o">==</span> <span class="mi">9</span><span class="p">:</span>
+				<span class="k">return</span> <span class="n">DIST_TYPE_BINARY</span>
+		<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+			<span class="k">print</span> <span class="s">&#39;Value Error&#39;</span>
+		<span class="k">return</span> <span class="n">DIST_TYPE_BINARY</span>
+</div>
+<div class="viewcode-block" id="PrimeCoordinator.get_attr_cc_exposure"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_cc_exposure">[docs]</a>	<span class="k">def</span> <span class="nf">get_attr_cc_exposure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">index</span><span class="p">):</span>
+    		<span class="sd">&quot;&quot;&quot;get the i_th exposure in counterfactual compound exposures list, all exposures mortalities are the compound results of all previous exposures. The mortality of the first exposure is the same as baseline only exposure mortality</span>
+
+<span class="sd">    		:param index: index of exposure </span>
+<span class="sd">    		:type index: int </span>
+<span class="sd">   	 	:returns: the indexth exposure, an PrimeExposure object </span>
+<span class="sd">   	 	:raises: index out of bound error </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="k">try</span><span class="p">:</span>
+			<span class="n">exposures</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cc_exposures</span>
+			<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">exposures</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span> <span class="k">return</span>
+			<span class="k">return</span> <span class="n">exposures</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+		<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+			<span class="k">print</span> <span class="s">&#39;Index out of bound&#39;</span> 
+</div>
+<div class="viewcode-block" id="PrimeCoordinator.get_attr_c_exposure_outcome_death"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_c_exposure_outcome_death">[docs]</a>	<span class="k">def</span> <span class="nf">get_attr_c_exposure_outcome_death</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">index</span><span class="p">,</span><span class="n">o_id</span><span class="p">,</span><span class="n">is_baseline</span><span class="p">):</span>
+    		<span class="sd">&quot;&quot;&quot;get ith exposure o_id th death from new counterfactual exposures</span>
+
+<span class="sd">    		:param index: index of exposure </span>
+<span class="sd">    		:param o_id: outcome id </span>
+<span class="sd">    		:param is_baseline: is baleline or counterfactual </span>
+<span class="sd">   	 	:returns: death sum for a specific exposure and outcome </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">exposure</span> 		<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cc_exposures</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+		<span class="n">outcomes_deaths_sum</span> 	<span class="o">=</span> <span class="n">exposure</span><span class="o">.</span><span class="n">get_outcome_deaths_sum</span><span class="p">(</span><span class="n">o_id</span><span class="p">,</span><span class="n">is_baseline</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">outcomes_deaths_sum</span>
+</div>
+<div class="viewcode-block" id="PrimeCoordinator.get_attr_exposure_outcome_death_gender"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_exposure_outcome_death_gender">[docs]</a>	<span class="k">def</span> <span class="nf">get_attr_exposure_outcome_death_gender</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">index</span><span class="p">,</span><span class="n">o_id</span><span class="p">):</span>
+    		<span class="sd">&quot;&quot;&quot;get ith exposure o_id th death from new counterfactual exposures</span>
+
+<span class="sd">    		:param index: index of exposure </span>
+<span class="sd">    		:type index: int </span>
+<span class="sd">    		:param o_id: outcome id, the same id as in the database </span>
+<span class="sd">    		:type a_id: int </span>
+<span class="sd">    		:param is_male: gender </span>
+<span class="sd">    		:type is_male: bool </span>
+<span class="sd">    		:param is_baseline: is baleline or counterfactual </span>
+<span class="sd">    		:type is_baseline: bool </span>
+<span class="sd">   	 	:returns: [b_m,b_f,c_m,c_f]death sum for a specific exposure and outcome </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">exposure</span> 	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cc_exposures</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+		<span class="n">b_m</span>		<span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">exposure</span><span class="o">.</span><span class="n">outcomes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">o_id</span><span class="p">)</span><span class="o">.</span><span class="n">mortality</span><span class="p">[:</span><span class="mi">15</span><span class="p">])</span>
+		<span class="n">b_f</span>		<span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">exposure</span><span class="o">.</span><span class="n">outcomes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">o_id</span><span class="p">)</span><span class="o">.</span><span class="n">mortality</span><span class="p">[</span><span class="mi">15</span><span class="p">:])</span>
+		<span class="n">c_m</span>		<span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">exposure</span><span class="o">.</span><span class="n">outcomes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">o_id</span><span class="p">)</span><span class="o">.</span><span class="n">c_mortalities</span><span class="p">[:</span><span class="mi">15</span><span class="p">])</span>
+		<span class="n">c_f</span>		<span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">exposure</span><span class="o">.</span><span class="n">outcomes</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">o_id</span><span class="p">)</span><span class="o">.</span><span class="n">c_mortalities</span><span class="p">[</span><span class="mi">15</span><span class="p">:])</span>
+		<span class="k">return</span> <span class="p">[</span><span class="n">b_m</span><span class="p">,</span><span class="n">b_f</span><span class="p">,</span><span class="n">c_m</span><span class="p">,</span><span class="n">c_f</span><span class="p">]</span> 
+</div>
+<div class="viewcode-block" id="PrimeCoordinator.get_attr_b_exposure_outcome_death"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_b_exposure_outcome_death">[docs]</a>	<span class="k">def</span> <span class="nf">get_attr_b_exposure_outcome_death</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">index</span><span class="p">,</span><span class="n">o_id</span><span class="p">):</span>
+    		<span class="sd">&quot;&quot;&quot;get ith exposure o_id th death from baseline exposures</span>
+
+<span class="sd">    		:param index: index of exposure </span>
+<span class="sd">    		:type index: int </span>
+<span class="sd">    		:param o_id: outcome id, the same id as in the database </span>
+<span class="sd">    		:type a_id: int </span>
+<span class="sd">   	 	:returns: death sum for a specific exposure and outcome in baseline case </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">exposure</span> 		<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">only_exposures</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+		<span class="n">outcomes_deaths_sum</span> 	<span class="o">=</span> <span class="n">exposure</span><span class="o">.</span><span class="n">get_outcome_deaths_sum</span><span class="p">(</span><span class="n">o_id</span><span class="p">,</span><span class="bp">True</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">outcomes_deaths_sum</span>
+
+	<span class="c">#################################################</span>
+	<span class="c"># deaths according to age </span>
+	<span class="c">#################################################</span></div>
+<div class="viewcode-block" id="PrimeCoordinator.get_attr_b_death_age"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_b_death_age">[docs]</a>	<span class="k">def</span> <span class="nf">get_attr_b_death_age</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">a_id</span><span class="p">):</span>
+    		<span class="sd">&quot;&quot;&quot;get deaths for a_id age group for all exposures [baseline]</span>
+
+<span class="sd">    		:param a_id: age group id </span>
+<span class="sd">    		:type a_id: int </span>
+<span class="sd">   	 	:returns: death sum for a specific age group in baseline </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="c">#if not DBHelper.is_agegroup_valid(a_id): return -1</span>
+		<span class="n">age_deaths_sum</span> <span class="o">=</span> <span class="mi">0</span>
+		<span class="n">only_exposures</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">only_exposures</span>
+		<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">only_exposures</span><span class="p">:</span>
+			<span class="n">exposure</span> 	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">only_exposures</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+			<span class="n">deaths</span> 		<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_exposure_outcome_death_age</span><span class="p">(</span><span class="n">a_id</span><span class="p">,</span> <span class="n">exposure</span><span class="p">)</span>
+			<span class="n">age_deaths_sum</span> <span class="o">+=</span> <span class="n">deaths</span>
+		<span class="k">return</span> <span class="n">age_deaths_sum</span>
+</div>
+<div class="viewcode-block" id="PrimeCoordinator.get_attr_c_death_age"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_c_death_age">[docs]</a>	<span class="k">def</span> <span class="nf">get_attr_c_death_age</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">a_id</span><span class="p">):</span>
+    		<span class="sd">&quot;&quot;&quot;get deaths for a_id age group for all *initial* exposures [counterfactual]</span>
+
+<span class="sd">    		:param a_id: age group id </span>
+<span class="sd">    		:type a_id: int </span>
+<span class="sd">   	 	:returns: death sum for a specific age group in counterfactual </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">age_deaths_sum</span> <span class="o">=</span> <span class="mi">0</span>
+		<span class="k">for</span> <span class="n">exposure</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">only_exposures</span><span class="p">:</span>
+			<span class="n">deaths</span> 		<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_exposure_outcome_death_age</span><span class="p">(</span><span class="n">a_id</span><span class="p">,</span> <span class="n">exposure</span><span class="p">)</span>
+			<span class="n">age_deaths_sum</span> <span class="o">+=</span> <span class="n">deaths</span>
+		<span class="k">return</span> <span class="n">age_deaths_sum</span>
+</div>
+<div class="viewcode-block" id="PrimeCoordinator.get_attr_cc_death_age"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_cc_death_age">[docs]</a>	<span class="k">def</span> <span class="nf">get_attr_cc_death_age</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">a_id</span><span class="p">):</span>
+    		<span class="sd">&quot;&quot;&quot;get deaths for a_id age group for all *new* exposures [counterfactual][compound]</span>
+
+<span class="sd">    		:param a_id: age group id </span>
+<span class="sd">    		:type a_id: int </span>
+<span class="sd">   	 	:returns: death sum for a specific age group in changed counterfactual </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">age_deaths_sum</span> <span class="o">=</span> <span class="mi">0</span>
+		<span class="k">for</span> <span class="n">exposure</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cc_exposures</span><span class="p">:</span>
+			<span class="n">deaths</span> 		<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_exposure_outcome_death_age</span><span class="p">(</span><span class="n">a_id</span><span class="p">,</span> <span class="n">exposure</span><span class="p">)</span>
+			<span class="n">age_deaths_sum</span> <span class="o">+=</span> <span class="n">deaths</span>
+		<span class="k">return</span> <span class="n">age_deaths_sum</span>
+</div>
+<div class="viewcode-block" id="PrimeCoordinator.get_attr_b_exposure_outcome_death_age"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_b_exposure_outcome_death_age">[docs]</a>	<span class="k">def</span> <span class="nf">get_attr_b_exposure_outcome_death_age</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">index</span><span class="p">,</span><span class="n">a_id</span><span class="p">):</span>
+    		<span class="sd">&quot;&quot;&quot;get indexth exposure deaths for a_id age group [baselie]</span>
+
+<span class="sd">    		:param index: index of exposure </span>
+<span class="sd">    		:type index: int </span>
+<span class="sd">    		:param a_id: age group id </span>
+<span class="sd">    		:type a_id: int </span>
+<span class="sd">   	 	:returns: death sum for a specific age group and a specific exposure in baseline </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">exposure</span> 	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">only_exposures</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+		<span class="n">is_baseline</span> 	<span class="o">=</span> <span class="bp">True</span>
+		<span class="n">age_deaths_sum</span> 	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_exposure_outcome_death_age</span><span class="p">(</span><span class="n">a_id</span><span class="p">,</span> <span class="n">exposure</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">age_deaths_sum</span>
+</div>
+<div class="viewcode-block" id="PrimeCoordinator.get_attr_c_exposure_outcome_death_age"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeCoordinator.PrimeCoordinator.get_attr_c_exposure_outcome_death_age">[docs]</a>	<span class="k">def</span> <span class="nf">get_attr_c_exposure_outcome_death_age</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">index</span><span class="p">,</span><span class="n">a_id</span><span class="p">):</span>
+    		<span class="sd">&quot;&quot;&quot;get indexth exposure deaths for a_id age group [counterfactual]</span>
+
+<span class="sd">    		:param index: index of exposure </span>
+<span class="sd">    		:param a_id: age group id </span>
+<span class="sd">    		:type a_id: int </span>
+<span class="sd">   	 	:returns: death sum for a specific age group and a specific exposure in counterfactual </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">exposure</span> 	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cc_exposures</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+		<span class="n">age_deaths_sum</span> 	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_exposure_outcome_death_age</span><span class="p">(</span><span class="n">a_id</span><span class="p">,</span> <span class="n">exposure</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">age_deaths_sum</span>
+</div>
+<div class="viewcode-block" id="PrimeCoordinator.get_exposure_outcome_death_age"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeCoordinator.PrimeCoordinator.get_exposure_outcome_death_age">[docs]</a>	<span class="k">def</span> <span class="nf">get_exposure_outcome_death_age</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">a_id</span><span class="p">,</span> <span class="n">exposure</span><span class="p">):</span>
+    		<span class="sd">&quot;&quot;&quot;get deaths sum for a_id age group in exposure, this age group id (a_id) should be a valid id for exposure, otherwise it raises NotFound or IndexOutOfBound error</span>
+
+<span class="sd">    		:param a_id: age group id </span>
+<span class="sd">    		:type a_id: int </span>
+<span class="sd">    		:param exposure: exposure to get data </span>
+<span class="sd">    		:type exposure: an PrimeExposure object </span>
+<span class="sd">   	 	:returns: deaths sum for a_id age group</span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">age_deaths_e</span>	<span class="o">=</span> <span class="mi">0</span>
+		<span class="n">age_deaths_e</span> 	<span class="o">=</span> <span class="n">exposure</span><span class="o">.</span><span class="n">get_age_deaths_sum</span><span class="p">(</span><span class="n">a_id</span><span class="p">)</span> <span class="c">#death sum for one exposure </span>
+		<span class="c">#return age_deaths_sum</span>
+		<span class="k">return</span> <span class="n">age_deaths_e</span>
+		
+		</div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">prime 1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Lijuan Marissa Zhou.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+Architecture
+============
+
+:Authors:
+    Lijuan Marissa Zhou
+
+:Version: 1.0 of 2013/10/11
+:Dedication: To my family. 
+
+Templates
+---------
+
+directory: appname/templates/appname/index.html or other html
+These are web pages to show the model results and to interact with users [input and output interfaces]
+{{ outcomes_b_m_deaths_sum_e1 }} e.g. death for counterfactual veg change
+
+Views
+-----
+directory: appname/views.py
+Connector between model and templates
+Call ExposureController and manipulate over the model
+Refer to manual, manual_.
+
+.. _manual: 
+Model
+-----
+
+
+- ExposureCoordinator 
+
+- Exposure
+
+  - Population Distribution 
+  - Outcome 
+
+
+
+- Outcome
+Attributions:
+mortality      list of original mortality
+measure      how much amount is basically consumed
+samples_rr  
+relative_risks <- object of Matrix
+death_rates <- object of Matrix
+deaths <- object of Matrix
+
+
+.. image:: /img/class_diagram.png
+   :height: 100px
+   :width: 200 px
+   :scale: 50 %
+   :alt: alternate text
+   :align: right
+
+
+A sentence with links to Wikipedia_ and the `Linux kernel archive`_.
+
+.. _Wikipedia: http://www.wikipedia.org/
+
+.. _my-reference-label:
+
+Section to cross-reference
+--------------------------
+
+This is the text of the section.
+
+It refers to the section itself, see :ref:`my-reference-label`.
+
+

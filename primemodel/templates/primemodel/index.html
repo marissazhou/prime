@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %} Prime 2.0  {{ year }}{% endblock %}
+
+{% block content %}
+
+<!-- container -->
+     <div class="row">
+        <div class="col-dp-1 ">
+
+			{% include "primemodel/includes/outcomes.html" %}   
+			{% include "primemodel/includes/input.html" %}   
+
+      </div>
+    </div>
+    
+{% endblock %}

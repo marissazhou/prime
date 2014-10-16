@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Architecture &mdash; prime 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="prime 1.0 documentation" href="index.html" />
+    <link rel="next" title="Manual" href="manual.html" />
+    <link rel="prev" title="How to Deployment" href="deployment.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="manual.html" title="Manual"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="deployment.html" title="How to Deployment"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">prime 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="architecture">
+<h1>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Authors:</th><td class="field-body">Lijuan Marissa Zhou</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Version:</th><td class="field-body">1.0 of 2013/10/11</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Dedication:</th><td class="field-body">To my family.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="templates">
+<h2>Templates<a class="headerlink" href="#templates" title="Permalink to this headline">¶</a></h2>
+<p>directory: appname/templates/appname/index.html or other html
+These are web pages to show the model results and to interact with users [input and output interfaces]
+{{ outcomes_b_m_deaths_sum_e1 }} e.g. death for counterfactual veg change</p>
+</div>
+<div class="section" id="views">
+<h2>Views<a class="headerlink" href="#views" title="Permalink to this headline">¶</a></h2>
+<p>directory: appname/views.py
+Connector between model and templates
+Call ExposureController and manipulate over the model
+Refer to manual, <a class="reference internal" href="#manual">manual</a>.</p>
+</div>
+<div class="section" id="model">
+<h2>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>ExposureCoordinator</li>
+<li>Exposure<ul>
+<li>Population Distribution</li>
+<li>Outcome</li>
+</ul>
+</li>
+<li>Outcome</li>
+</ul>
+<p>Attributions:
+mortality      list of original mortality
+measure      how much amount is basically consumed
+samples_rr
+relative_risks &lt;- object of Matrix
+death_rates &lt;- object of Matrix
+deaths &lt;- object of Matrix</p>
+<a class="reference internal image-reference" href="home/zhou/Documents/projects/MarissaPrime/class_diagram.png"><img alt="alternate text" class="align-right" src="home/zhou/Documents/projects/MarissaPrime/class_diagram.png" style="width: 100.0px; height: 50.0px;" /></a>
+<p>A sentence with links to <a class="reference external" href="http://www.wikipedia.org/">Wikipedia</a> and the <a href="#id1"><span class="problematic" id="id2">`Linux kernel archive`_</span></a>.</p>
+</div>
+<div class="section" id="section-to-cross-reference">
+<span id="my-reference-label"></span><h2>Section to cross-reference<a class="headerlink" href="#section-to-cross-reference" title="Permalink to this headline">¶</a></h2>
+<p>This is the text of the section.</p>
+<p>It refers to the section itself, see <a class="reference internal" href="#my-reference-label"><em>Section to cross-reference</em></a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Architecture</a><ul>
+<li><a class="reference internal" href="#templates">Templates</a></li>
+<li><a class="reference internal" href="#views">Views</a></li>
+<li><a class="reference internal" href="#model">Model</a></li>
+<li><a class="reference internal" href="#section-to-cross-reference">Section to cross-reference</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="deployment.html"
+                        title="previous chapter">How to Deployment</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="manual.html"
+                        title="next chapter">Manual</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/architecture.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="manual.html" title="Manual"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="deployment.html" title="How to Deployment"
+             >previous</a> |</li>
+        <li><a href="index.html">prime 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Lijuan Marissa Zhou.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

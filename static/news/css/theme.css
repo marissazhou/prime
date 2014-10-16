@@ -1,0 +1,90 @@
+body {
+  padding-top: 10px;
+  padding-bottom: 30px;
+  padding-left: 70px;
+  padding-right: 70px;
+  color: #5A6466;
+  background-color: #346679;
+}
+
+.theme-dropdown .dropdown-menu {
+  display: block;
+  position: static;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+.display-float-1 {
+  float: left;
+}
+
+.col-dp-1 {
+  float: left;
+  width: 60.00000000%;  
+  padding-left: 15px;
+}
+.col-dp-2 {
+  float: left;
+  width: 40.00000000%;  
+  padding-right: 15px;
+}
+
+.well-bg-1 {
+  background-color: #000000;
+  height: 600px;
+}
+
+.well-bg-2 {
+  background-color: #346679;
+  height: 600px;
+}
+.note-head-1 {
+  float: left
+}
+.dropdown-head-1 {
+  float: left
+}
+
+.progress-1 {
+  height: 15px;
+  width: 50%;
+  margin-bottom: 1px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+          box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .nav .divider-vertical{
+    background-color:blue;
+    height:10px;    
+} 
+
+
+.line-separator{
+  height:1px;
+  width:100%;
+  background:#717171;
+  border-bottom:1px solid #aaaaaa;
+}
+
+.space-separator-1{
+  height:10px;
+  width:100%;
+}
+
+.space-separator-2{
+  height:20px;
+  width:100%;
+}
+

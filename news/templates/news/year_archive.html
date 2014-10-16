@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% url article_detail 2013 5 1 as the_url %}
+
+{% block title %}Articles for {{ prime }}{% endblock %}
+
+{% block content %}
+
+{% for article in article_list %}
+    <p>pa href="{{ the_url }}">{{ article.title}}</a></p>
+    <p>By {{ article.owner}}</p>
+    <p>Published {{ article.created_at|date:"F j, Y" }}</p>
+{% endfor %}
+{% endblock %}

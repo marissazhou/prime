@@ -1,0 +1,9 @@
+Start Time 									2013-11-18 12:47:03.219216
+####### 1.2 seconds
+Coordinator initialised 					2013-11-18 12:47:04.406286
+### 0.5 seconds
+Coordinator given exposures 				2013-11-18 12:47:04.910453
+Total baseline mortality calculated 		2013-11-18 12:47:04.910498
+Total counterfactual mortality calculated 	2013-11-18 12:47:04.910510
+Total deaths averted calculated 			2013-11-18 12:47:04.910521
+End Time: 									2013-11-18 12:47:04.910538

@@ -1,0 +1,11 @@
+[
+{
+    "e_id": 7,
+    "energy_mean": 2100,
+    "sedentary_rate": 0,
+    "met_mean": 30,
+    "met_sd": 35,
+    "met_mvpa": 6.0,    
+    "met_non_mvpa": 1.1
+}
+]

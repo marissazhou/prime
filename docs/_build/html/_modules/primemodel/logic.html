@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>primemodel.logic &mdash; prime 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="prime 1.0 documentation" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">prime 1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for primemodel.logic</h1><div class="highlight"><pre>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span><span class="p">,</span><span class="n">lognorm</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd"> 	constants for distritubion types	</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">DIST_TYPE_NORMAL</span> 	<span class="o">=</span> <span class="mi">0</span>
+<span class="n">DIST_TYPE_LOGNORMAL</span> 	<span class="o">=</span> <span class="mi">1</span> 
+<span class="n">DIST_TYPE_BINARY</span> 	<span class="o">=</span> <span class="mi">2</span> 
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	:parameters for different types of fats, these display correllation between different types of fats</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">PARA_FAT_SATURATE</span>	<span class="o">=</span> <span class="mf">0.052</span> 
+<span class="n">PARA_FAT_PUFA</span> 		<span class="o">=</span> <span class="o">-</span><span class="mf">0.026</span> 
+<span class="n">PARA_FAT_MUFA</span>		<span class="o">=</span> <span class="mf">0.005</span>
+<span class="n">PARA_FAT_DIET</span> 		<span class="o">=</span> <span class="mf">0.0007</span>
+<span class="n">PARA_FAT_FULL</span> 		<span class="o">=</span> <span class="mf">0.02</span>
+
+<div class="viewcode-block" id="get_norm_distribution"><a class="viewcode-back" href="../../primemodel.html#primemodel.logic.get_norm_distribution">[docs]</a><span class="k">def</span> <span class="nf">get_norm_distribution</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">sd</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;This :returns a normation distribution referring to given mean and standard deviation </span>
+<span class="sd">	</span>
+<span class="sd">	:param mean: mean </span>
+<span class="sd">	:type mean: float </span>
+<span class="sd">	:param sd: standard deviation </span>
+<span class="sd">	:type sd:  float </span>
+<span class="sd">	:returns: normal distribution </span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">distribution</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">sd</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">distribution</span>	
+
+<span class="c">#population characteristics</span></div>
+<div class="viewcode-block" id="get_population_density"><a class="viewcode-back" href="../../primemodel.html#primemodel.logic.get_population_density">[docs]</a><span class="k">def</span> <span class="nf">get_population_density</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">upper</span><span class="p">,</span> <span class="n">lower</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">sd</span><span class="p">,</span> <span class="n">log_mean</span><span class="p">,</span> <span class="n">log_sd</span><span class="p">,</span> <span class="n">dist_type</span><span class="p">,</span><span class="n">is_last</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;This :returns a value of a population distribution</span>
+<span class="sd">	</span>
+<span class="sd">	:param size: total size </span>
+<span class="sd">	:type size: float </span>
+<span class="sd">	:param upper: upper value of bin </span>
+<span class="sd">	:type upper:  float </span>
+<span class="sd">	:param lower: lower value of bin </span>
+<span class="sd">	:type lower:  float </span>
+<span class="sd">	:param mean: mean </span>
+<span class="sd">	:type mean:  float </span>
+<span class="sd">	:param log_mean: log mean </span>
+<span class="sd">	:type log_mean:  float </span>
+<span class="sd">	:param sd: standard deviation </span>
+<span class="sd">	:type sd:  float </span>
+<span class="sd">	:param log_sd: log standard deviation </span>
+<span class="sd">	:type log_sd:  float </span>
+<span class="sd">	:param dist_type: distribution type, normal, log or binary </span>
+<span class="sd">	:type dist_type: int </span>
+<span class="sd">	:param is_last: is the last bin of samples or not</span>
+<span class="sd">	:type is_last: bool </span>
+<span class="sd">	:returns: population density </span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">density</span> <span class="o">=</span> <span class="bp">None</span>
+	<span class="k">if</span> <span class="n">dist_type</span> <span class="o">==</span> <span class="n">DIST_TYPE_NORMAL</span><span class="p">:</span>
+		<span class="n">density</span> <span class="o">=</span> <span class="n">get_population_density_norm</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="n">upper</span><span class="p">,</span><span class="n">lower</span><span class="p">,</span><span class="n">mean</span><span class="p">,</span><span class="n">sd</span><span class="p">,</span><span class="n">is_last</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">dist_type</span> <span class="o">==</span> <span class="n">DIST_TYPE_LOGNORMAL</span><span class="p">:</span>
+		<span class="n">density</span> <span class="o">=</span> <span class="n">get_population_density_lognorm</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="n">upper</span><span class="p">,</span><span class="n">lower</span><span class="p">,</span><span class="n">log_mean</span><span class="p">,</span><span class="n">log_sd</span><span class="p">,</span><span class="n">mean</span><span class="p">,</span><span class="n">sd</span><span class="p">,</span><span class="n">is_last</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">density</span> <span class="o">=</span> <span class="n">get_population_density_norm</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="n">upper</span><span class="p">,</span><span class="n">lower</span><span class="p">,</span><span class="n">mean</span><span class="p">,</span><span class="n">sd</span><span class="p">,</span><span class="n">is_last</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">density</span>
+</div>
+<div class="viewcode-block" id="get_population_density_norm"><a class="viewcode-back" href="../../primemodel.html#primemodel.logic.get_population_density_norm">[docs]</a><span class="k">def</span> <span class="nf">get_population_density_norm</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">upper</span><span class="p">,</span> <span class="n">lower</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">sd</span><span class="p">,</span> <span class="n">is_last</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;This :returns a value of a normal population distribution</span>
+<span class="sd">	</span>
+<span class="sd">	:param size: total size </span>
+<span class="sd">	:type size: float </span>
+<span class="sd">	:param upper: upper value of bin </span>
+<span class="sd">	:type upper:  float </span>
+<span class="sd">	:param lower: lower value of bin </span>
+<span class="sd">	:type lower:  float </span>
+<span class="sd">	:param mean: mean </span>
+<span class="sd">	:type mean:  float </span>
+<span class="sd">	:param sd: standard deviation </span>
+<span class="sd">	:type sd:  float </span>
+<span class="sd">	:param is_last: is the last bin of samples or not</span>
+<span class="sd">	:type is_last: bool </span>
+<span class="sd">	:returns: population density </span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">density</span> <span class="o">=</span> <span class="bp">None</span>
+	<span class="n">distribution</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">sd</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">is_last</span><span class="p">:</span> 
+		<span class="n">cdf1</span> <span class="o">=</span> <span class="mi">1</span>
+	<span class="k">else</span><span class="p">:</span> 
+		<span class="n">cdf1</span> <span class="o">=</span> <span class="n">distribution</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">upper</span><span class="p">)</span>
+	<span class="n">cdf2</span> <span class="o">=</span> <span class="n">distribution</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">lower</span><span class="p">)</span> 
+	<span class="n">posibility_space</span> <span class="o">=</span> <span class="n">cdf1</span><span class="o">-</span><span class="n">cdf2</span> 
+	<span class="n">population</span> <span class="o">=</span> <span class="n">size</span> <span class="o">*</span> <span class="n">posibility_space</span> 
+	<span class="n">population_int</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">population</span><span class="p">))</span>
+	<span class="k">return</span> <span class="n">population_int</span><span class="p">;</span>
+</div>
+<div class="viewcode-block" id="get_population_density_lognorm"><a class="viewcode-back" href="../../primemodel.html#primemodel.logic.get_population_density_lognorm">[docs]</a><span class="k">def</span> <span class="nf">get_population_density_lognorm</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">upper</span><span class="p">,</span> <span class="n">lower</span><span class="p">,</span> <span class="n">log_mean</span><span class="p">,</span> <span class="n">log_sd</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">sd</span><span class="p">,</span> <span class="n">is_last</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;This :returns a value of a lognormal population distribution</span>
+<span class="sd">	</span>
+<span class="sd">	:param size: total size </span>
+<span class="sd">	:type size: float </span>
+<span class="sd">	:param upper: upper value of bin </span>
+<span class="sd">	:type upper:  float </span>
+<span class="sd">	:param lower: lower value of bin </span>
+<span class="sd">	:type lower:  float </span>
+<span class="sd">	:param log_mean: log mean </span>
+<span class="sd">	:type log_mean:  float </span>
+<span class="sd">	:param log_sd: log standard deviation </span>
+<span class="sd">	:type log_sd:  float </span>
+<span class="sd">	:param mean: mean </span>
+<span class="sd">	:type mean:  float </span>
+<span class="sd">	:param sd: standard deviation </span>
+<span class="sd">	:type sd:  float </span>
+<span class="sd">	:param is_last: is the last bin of samples or not</span>
+<span class="sd">	:type is_last: bool </span>
+<span class="sd">	:returns: population density </span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">distribution</span> 	<span class="o">=</span> <span class="n">lognorm</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">log_sd</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">log_mean</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">is_last</span><span class="p">:</span> 
+		<span class="n">cdf1</span> 	<span class="o">=</span> <span class="mi">1</span>
+		<span class="n">lower</span> 	<span class="o">=</span> <span class="n">upper</span>
+	<span class="k">else</span><span class="p">:</span> 
+		<span class="n">cdf1</span> 	<span class="o">=</span> <span class="n">logncdf</span><span class="p">(</span><span class="n">upper</span><span class="p">,</span><span class="n">log_mean</span><span class="p">,</span><span class="n">log_sd</span><span class="p">)</span>
+	<span class="n">cdf2</span> 		<span class="o">=</span> <span class="n">logncdf</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span><span class="n">log_mean</span><span class="p">,</span><span class="n">log_sd</span><span class="p">)</span>
+	<span class="n">posibility_space</span> <span class="o">=</span> <span class="n">cdf1</span> <span class="o">-</span> <span class="n">cdf2</span> 
+	<span class="n">population</span> 	<span class="o">=</span> <span class="n">size</span> <span class="o">*</span> <span class="n">posibility_space</span> 
+	<span class="n">population_int</span> 	<span class="o">=</span> <span class="n">population</span>
+	<span class="k">return</span> <span class="n">population_int</span><span class="p">;</span>
+
+<span class="c"># different from LN in excel by not adding +1</span></div>
+<div class="viewcode-block" id="get_log_mean_sd"><a class="viewcode-back" href="../../primemodel.html#primemodel.logic.get_log_mean_sd">[docs]</a><span class="k">def</span> <span class="nf">get_log_mean_sd</span><span class="p">(</span><span class="n">means</span><span class="p">,</span> <span class="n">sds</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;This returns log standard deviation of given mean and standard deviation lists</span>
+<span class="sd">	</span>
+<span class="sd">	:param means: mean list </span>
+<span class="sd">	:type means: list </span>
+<span class="sd">	:param sds: standard deviation list </span>
+<span class="sd">	:type means: list </span>
+<span class="sd">	:returns: log mean and standard deviation list </span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">log_means</span> 		<span class="o">=</span> <span class="p">[]</span>
+	<span class="n">log_sds</span> 		<span class="o">=</span> <span class="p">[]</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">means</span><span class="p">)):</span>
+		<span class="n">mean</span> 		<span class="o">=</span> <span class="n">means</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+		<span class="n">sd</span> 		<span class="o">=</span> <span class="n">sds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+		<span class="n">log_sd</span> 		<span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">sd</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
+		<span class="n">log_mean</span> 	<span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">mean</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">log_sd</span><span class="o">*</span><span class="n">log_sd</span> 
+		<span class="n">log_means</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">log_mean</span><span class="p">)</span>
+		<span class="n">log_sds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">log_sd</span><span class="p">)</span>
+	<span class="k">return</span> <span class="p">[</span><span class="n">log_means</span><span class="p">,</span><span class="n">log_sds</span><span class="p">]</span> 
+</div>
+<div class="viewcode-block" id="get_pow"><a class="viewcode-back" href="../../primemodel.html#primemodel.logic.get_pow">[docs]</a><span class="k">def</span> <span class="nf">get_pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;This returns x power of y </span>
+<span class="sd">	</span>
+<span class="sd">	:param x: base </span>
+<span class="sd">	:type x: float </span>
+<span class="sd">	:param y: exponention </span>
+<span class="sd">	:type y: float </span>
+<span class="sd">	:returns: log mean and standard deviation list </span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="get_sum_matrix"><a class="viewcode-back" href="../../primemodel.html#primemodel.logic.get_sum_matrix">[docs]</a><span class="k">def</span> <span class="nf">get_sum_matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;This returns sum of matrix  </span>
+<span class="sd">	</span>
+<span class="sd">	:param matrix: matrix to sum up </span>
+<span class="sd">	:type matrix: matrix </span>
+<span class="sd">	:returns: sum of matrix </span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">if</span> <span class="n">matrix</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+		<span class="k">return</span> <span class="mi">0</span>
+	<span class="n">sum_matrix</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">matrix</span><span class="p">:</span>
+		<span class="n">sum_matrix</span> <span class="o">+=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">sum_matrix</span> 
+</div>
+<div class="viewcode-block" id="logncdf"><a class="viewcode-back" href="../../primemodel.html#primemodel.logic.logncdf">[docs]</a><span class="k">def</span> <span class="nf">logncdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mean</span><span class="p">,</span><span class="n">sig</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;This returns log cdf value of a given distribution  </span>
+<span class="sd">	</span>
+<span class="sd">	:param x: x value of distribution </span>
+<span class="sd">	:type x: float </span>
+<span class="sd">	:param mean: mean value of distribution </span>
+<span class="sd">	:type mean: float </span>
+<span class="sd">	:param sig: sig value of distribution </span>
+<span class="sd">	:type sig: float </span>
+<span class="sd">	:returns: log cdf value </span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="k">if</span> <span class="n">x</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span>
+        	<span class="n">cdf</span>  <span class="o">=</span> <span class="mf">0.</span>
+    	<span class="k">elif</span> <span class="n">scipy</span><span class="o">.</span><span class="n">isposinf</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        	<span class="n">cdf</span>  <span class="o">=</span> <span class="mf">1.</span>
+    	<span class="k">else</span><span class="p">:</span> 
+        	<span class="n">z</span>    <span class="o">=</span> <span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="n">mean</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+        	<span class="n">cdf</span>  <span class="o">=</span> <span class="o">.</span><span class="mi">5</span><span class="o">*</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">erfc</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="o">/</span><span class="n">scipy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
+    	<span class="k">return</span> <span class="n">cdf</span>
+</div>
+<div class="viewcode-block" id="generate_list_value"><a class="viewcode-back" href="../../primemodel.html#primemodel.logic.generate_list_value">[docs]</a><span class="k">def</span> <span class="nf">generate_list_value</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;This :returns a size n list of same value  </span>
+<span class="sd">	</span>
+<span class="sd">	:param v: value of list </span>
+<span class="sd">	:type v: float </span>
+<span class="sd">	:param n: size of the list </span>
+<span class="sd">	:type n: float </span>
+<span class="sd">	:returns: a list of values </span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	<span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+		<span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">values</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">prime 1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Lijuan Marissa Zhou.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

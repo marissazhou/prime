@@ -1,0 +1,1929 @@
+test			:0
+python death total 	:258843.0
+init death averted	:0.0
+python death averted 	:-2.91038304567e-11
+distance			:2.91038304567e-11
+passed:True
+test			:1
+python death total 	:267395.355621
+init death averted	:-8552.35562112
+python death averted 	:-8552.35562112
+distance			:1.36424205266e-10
+passed:True
+test			:2
+python death total 	:280546.802329
+init death averted	:-21703.8023292
+python death averted 	:-21703.8023292
+distance			:3.81987774745e-10
+passed:True
+test			:3
+python death total 	:299780.631753
+init death averted	:-40937.6317526
+python death averted 	:-40937.6317526
+distance			:1.23691279441e-10
+passed:True
+test			:4
+python death total 	:326372.063214
+init death averted	:-67529.0632142
+python death averted 	:-67529.0632142
+distance			:2.91038304567e-10
+passed:True
+test			:5
+python death total 	:361196.821582
+init death averted	:-102353.821582
+python death averted 	:-102353.821582
+distance			:7.27595761418e-11
+passed:True
+test			:6
+python death total 	:253507.194112
+init death averted	:5335.80588816
+python death averted 	:5335.80588816
+distance			:2.14640749618e-10
+passed:True
+test			:7
+python death total 	:250293.491346
+init death averted	:8549.50865413
+python death averted 	:8549.50865413
+distance			:1.92812876776e-10
+passed:True
+test			:8
+python death total 	:248426.752768
+init death averted	:10416.247232
+python death averted 	:10416.247232
+distance			:4.43833414465e-10
+passed:True
+test			:9
+python death total 	:247402.862596
+init death averted	:11440.1374037
+python death averted 	:11440.1374037
+distance			:9.27684595808e-11
+passed:True
+test			:10
+python death total 	:246927.021407
+init death averted	:11915.9785932
+python death averted 	:11915.9785932
+distance			:5.22049958818e-10
+passed:True
+test			:11
+python death total 	:257959.923121
+init death averted	:503.12061481
+python death averted 	:883.076878829
+distance			:379.956264019
+passed:False
+test			:12
+python death total 	:257084.258186
+init death averted	:1001.34568722
+python death averted 	:1758.74181372
+distance			:757.396126506
+passed:False
+test			:13
+python death total 	:256216.270618
+init death averted	:1494.53636164
+python death averted 	:2626.72938213
+distance			:1132.19302049
+passed:False
+test			:14
+python death total 	:255355.906443
+init death averted	:1982.73734418
+python death averted 	:3487.09355745
+distance			:1504.35621327
+passed:False
+test			:15
+python death total 	:254502.903369
+init death averted	:2466.11718839
+python death averted 	:4340.0966313
+distance			:1873.97944292
+passed:False
+test			:16
+python death total 	:259733.904491
+init death averted	:-508.273336042
+python death averted 	:-890.904490893
+distance			:382.631154851
+passed:False
+test			:17
+python death total 	:260635.322108
+init death averted	:-1023.27182147
+python death averted 	:-1792.3221082
+distance			:769.050286731
+passed:False
+test			:18
+python death total 	:261554.595459
+init death averted	:-1549.27797732
+python death averted 	:-2711.59545853
+distance			:1162.31748121
+passed:False
+test			:19
+python death total 	:262509.965685
+init death averted	:-2096.93036413
+python death averted 	:-3666.96568465
+distance			:1570.03532052
+passed:False
+test			:20
+python death total 	:263540.17152
+init death averted	:-2688.81034065
+python death averted 	:-4697.17151992
+distance			:2008.36117928
+passed:False
+test			:21
+python death total 	:258848.869295
+init death averted	:-3.85063838
+python death averted 	:-5.86929470344
+distance			:2.01865632344
+passed:False
+test			:22
+python death total 	:258855.249463
+init death averted	:-8.010738422
+python death averted 	:-12.2494633218
+distance			:4.23872489984
+passed:False
+test			:23
+python death total 	:258862.228311
+init death averted	:-12.527715902
+python death averted 	:-19.2283105658
+distance			:6.70059466384
+passed:False
+test			:24
+python death total 	:258869.903735
+init death averted	:-17.454868589
+python death averted 	:-26.9037346007
+distance			:9.44886601172
+passed:False
+test			:25
+python death total 	:258878.393455
+init death averted	:-22.857088092
+python death averted 	:-35.3934554844
+distance			:12.5363673924
+passed:False
+test			:26
+python death total 	:258837.547081
+init death averted	:3.592582352
+python death averted 	:5.45291940111
+distance			:1.86033704911
+passed:False
+test			:27
+python death total 	:258832.389764
+init death averted	:6.994045785
+python death averted 	:10.61023635
+distance			:3.61619056504
+passed:False
+test			:28
+python death total 	:258827.368548
+init death averted	:10.294302466
+python death averted 	:15.63145241
+distance			:5.33714994396
+passed:False
+test			:29
+python death total 	:258822.297043
+init death averted	:13.599658737
+python death averted 	:20.7029573143
+distance			:7.10329857729
+passed:False
+test			:30
+python death total 	:258817.023276
+init death averted	:16.997744737
+python death averted 	:25.9767237706
+distance			:8.97897903361
+passed:False
+test			:31
+python death total 	:260049.867612
+init death averted	:-696.686495886
+python death averted 	:-1206.8676125
+distance			:510.181116611
+passed:False
+test			:32
+python death total 	:261256.735225
+init death averted	:-1393.37299177
+python death averted 	:-2413.73522499
+distance			:1020.36223322
+passed:False
+test			:33
+python death total 	:262463.602837
+init death averted	:-2090.05948766
+python death averted 	:-3620.60283749
+distance			:1530.54334983
+passed:False
+test			:34
+python death total 	:263670.47045
+init death averted	:-2786.74598354
+python death averted 	:-4827.47044999
+distance			:2040.72446644
+passed:False
+test			:35
+python death total 	:264877.338062
+init death averted	:-3483.43247943
+python death averted 	:-6034.33806249
+distance			:2550.90558306
+passed:False
+test			:36
+python death total 	:257636.132388
+init death averted	:696.686495886
+python death averted 	:1206.8676125
+distance			:510.181116611
+passed:False
+test			:37
+python death total 	:256429.264775
+init death averted	:1393.37299177
+python death averted 	:2413.73522499
+distance			:1020.36223322
+passed:False
+test			:38
+python death total 	:255222.397163
+init death averted	:2090.05948766
+python death averted 	:3620.60283749
+distance			:1530.54334983
+passed:False
+test			:39
+python death total 	:254015.52955
+init death averted	:2786.74598354
+python death averted 	:4827.47044999
+distance			:2040.72446644
+passed:False
+test			:40
+python death total 	:252808.661938
+init death averted	:3483.43247943
+python death averted 	:6034.33806249
+distance			:2550.90558306
+passed:False
+test			:41
+python death total 	:258243.489871
+init death averted	:609.174477524
+python death averted 	:599.510129214
+distance			:9.66434831014
+passed:False
+test			:42
+python death total 	:257650.668787
+init death averted	:1211.55207923
+python death averted 	:1192.33121276
+distance			:19.220866471
+passed:False
+test			:43
+python death total 	:257063.868014
+init death averted	:1807.81232043
+python death averted 	:1779.13198567
+distance			:28.6803347634
+passed:False
+test			:44
+python death total 	:256483.656182
+init death averted	:2397.37740497
+python death averted 	:2359.34381833
+distance			:38.0335866462
+passed:False
+test			:45
+python death total 	:255910.086496
+init death averted	:2980.193268
+python death averted 	:2932.9135036
+distance			:47.2797643975
+passed:False
+test			:46
+python death total 	:259452.659583
+init death averted	:-619.487544945
+python death averted 	:-609.659583287
+distance			:9.82796165809
+passed:False
+test			:47
+python death total 	:260080.722016
+init death averted	:-1257.67460069
+python death averted 	:-1237.72201592
+distance			:19.95258477
+passed:False
+test			:48
+python death total 	:260747.903905
+init death averted	:-1935.61173481
+python death averted 	:-1904.90390529
+distance			:30.7078295127
+passed:False
+test			:49
+python death total 	:261496.957019
+init death averted	:-2696.73989124
+python death averted 	:-2653.95701938
+distance			:42.7828718596
+passed:False
+test			:50
+python death total 	:262382.837402
+init death averted	:-3596.90102809
+python death averted 	:-3539.83740239
+distance			:57.0636257045
+passed:False
+test			:51
+python death total 	:258848.361836
+init death averted	:-5.448270804
+python death averted 	:-5.36183581949
+distance			:0.0864349845056
+passed:False
+test			:52
+python death total 	:258854.565712
+init death averted	:-11.752155803
+python death averted 	:-11.5657118019
+distance			:0.186444001099
+passed:False
+test			:53
+python death total 	:258861.735823
+init death averted	:-19.03785235
+python death averted 	:-18.7358232224
+distance			:0.302029127622
+passed:False
+test			:54
+python death total 	:258870.048096
+init death averted	:-27.484121865
+python death averted 	:-27.0480955106
+distance			:0.436026354426
+passed:False
+test			:55
+python death total 	:258879.700824
+init death averted	:-37.292456495
+python death averted 	:-36.700824209
+distance			:0.591632286035
+passed:False
+test			:56
+python death total 	:258838.427964
+init death averted	:4.645738841
+python death averted 	:4.57203575649
+distance			:0.073703084514
+passed:False
+test			:57
+python death total 	:258834.660852
+init death averted	:8.473578697
+python death averted 	:8.33914821898
+distance			:0.134430478024
+passed:False
+test			:58
+python death total 	:258831.731771
+init death averted	:11.449877529
+python death averted 	:11.2682290706
+distance			:0.181648458357
+passed:False
+test			:59
+python death total 	:258829.576235
+init death averted	:13.640162062
+python death averted 	:13.4237654766
+distance			:0.21639658544
+passed:False
+test			:60
+python death total 	:258827.831083
+init death averted	:15.413445978
+python death averted 	:15.1689168384
+distance			:0.244529139582
+passed:False
+test			:61
+python death total 	:259581.235889
+init death averted	:-750.13655291
+python death averted 	:-738.235888658
+distance			:11.9006642522
+passed:False
+test			:62
+python death total 	:260319.471777
+init death averted	:-1500.27310582
+python death averted 	:-1476.47177732
+distance			:23.8013285034
+passed:False
+test			:63
+python death total 	:261057.707666
+init death averted	:-2250.40965873
+python death averted 	:-2214.70766597
+distance			:35.7019927556
+passed:False
+test			:64
+python death total 	:261795.943555
+init death averted	:-3000.54621164
+python death averted 	:-2952.94355463
+distance			:47.6026570068
+passed:False
+test			:65
+python death total 	:262534.179443
+init death averted	:-3750.68276455
+python death averted 	:-3691.17944329
+distance			:59.503321259
+passed:False
+test			:66
+python death total 	:258104.764111
+init death averted	:750.13655291
+python death averted 	:738.235888658
+distance			:11.9006642522
+passed:False
+test			:67
+python death total 	:257366.528223
+init death averted	:1500.27310582
+python death averted 	:1476.47177732
+distance			:23.8013285034
+passed:False
+test			:68
+python death total 	:256628.292334
+init death averted	:2250.40965873
+python death averted 	:2214.70766597
+distance			:35.7019927556
+passed:False
+test			:69
+python death total 	:255890.056445
+init death averted	:3000.54621164
+python death averted 	:2952.94355463
+distance			:47.6026570068
+passed:False
+test			:70
+python death total 	:255151.820557
+init death averted	:3750.68276455
+python death averted 	:3691.17944329
+distance			:59.503321259
+passed:False
+test			:71
+python death total 	:252347.296996
+init death averted	:6495.7030042
+python death averted 	:6495.7030042
+distance			:3.98358679377e-10
+passed:True
+test			:72
+python death total 	:246194.941242
+init death averted	:12648.0587581
+python death averted 	:12648.0587581
+distance			:2.3101165425e-10
+passed:True
+test			:73
+python death total 	:240397.276964
+init death averted	:18445.7230357
+python death averted 	:18445.7230357
+distance			:6.54836185277e-11
+passed:True
+test			:74
+python death total 	:235905.509952
+init death averted	:22937.4900475
+python death averted 	:22937.4900475
+distance			:1.45519152284e-11
+passed:True
+test			:75
+python death total 	:233866.817202
+init death averted	:24976.1827981
+python death averted 	:24976.1827981
+distance			:6.18456397206e-11
+passed:True
+test			:76
+python death total 	:265503.717439
+init death averted	:-6660.71743891
+python death averted 	:-6660.71743891
+distance			:5.04769559484e-10
+passed:True
+test			:77
+python death total 	:269997.006483
+init death averted	:-11154.006483
+python death averted 	:-11154.006483
+distance			:2.0008883439e-10
+passed:True
+test			:78
+python death total 	:272083.191228
+init death averted	:-13240.1912278
+python death averted 	:-13240.1912278
+distance			:3.6925484892e-10
+passed:True
+test			:79
+python death total 	:273084.532311
+init death averted	:-14241.5323113
+python death averted 	:-14241.5323113
+distance			:5.6934368331e-10
+passed:True
+test			:80
+python death total 	:273158.315543
+init death averted	:-14315.3155426
+python death averted 	:-14315.3155426
+distance			:1.81898940355e-11
+passed:True
+test			:81
+python death total 	:258848.60967
+init death averted	:-5.60966991
+python death averted 	:-5.60966990981
+distance			:1.87490023507e-10
+passed:True
+test			:82
+python death total 	:258853.989179
+init death averted	:-10.989178558
+python death averted 	:-10.9891785583
+distance			:3.16779491527e-10
+passed:True
+test			:83
+python death total 	:258858.900722
+init death averted	:-15.900722176
+python death averted 	:-15.9007221758
+distance			:2.21644924636e-10
+passed:True
+test			:84
+python death total 	:258863.11216
+init death averted	:-20.11215961
+python death averted 	:-20.1121596095
+distance			:4.96420682339e-10
+passed:True
+test			:85
+python death total 	:258866.409694
+init death averted	:-23.40969411
+python death averted 	:-23.4096941099
+distance			:7.30686622319e-11
+passed:True
+test			:86
+python death total 	:258837.394969
+init death averted	:5.605031487
+python death averted 	:5.60503148712
+distance			:1.2450662723e-10
+passed:True
+test			:87
+python death total 	:258832.04324
+init death averted	:10.956760155
+python death averted 	:10.9567601555
+distance			:4.73603378737e-10
+passed:True
+test			:88
+python death total 	:258827.300111
+init death averted	:15.699889251
+python death averted 	:15.6998892515
+distance			:5.257465574e-10
+passed:True
+test			:89
+python death total 	:258823.892821
+init death averted	:19.107179273
+python death averted 	:19.1071792731
+distance			:9.45163947108e-11
+passed:True
+test			:90
+python death total 	:258823.501244
+init death averted	:19.498755507
+python death averted 	:19.4987555075
+distance			:4.91297669214e-10
+passed:True
+test			:91
+python death total 	:262595.099242
+init death averted	:-3752.09924183
+python death averted 	:-3752.09924155
+distance			:2.74543253909e-07
+passed:True
+test			:92
+python death total 	:266460.440643
+init death averted	:-7617.44064276
+python death averted 	:-7617.44064286
+distance			:1.07977939479e-07
+passed:True
+test			:93
+python death total 	:270443.279762
+init death averted	:-11600.2797619
+python death averted 	:-11600.2797619
+distance			:1.835906005e-08
+passed:True
+test			:94
+python death total 	:274548.077361
+init death averted	:-15705.0773616
+python death averted 	:-15705.0773613
+distance			:2.89859599434e-07
+passed:True
+test			:95
+python death total 	:278779.511561
+init death averted	:-19936.5115606
+python death averted 	:-19936.5115607
+distance			:1.23163772514e-07
+passed:True
+test			:96
+python death total 	:255200.081052
+init death averted	:3642.9189478
+python death averted 	:3642.91894771
+distance			:9.14105839911e-08
+passed:True
+test			:97
+python death total 	:251662.463008
+init death averted	:7180.53699181
+python death averted 	:7180.53699208
+distance			:2.69493284577e-07
+passed:True
+test			:98
+python death total 	:248226.436907
+init death averted	:10616.5630933
+python death averted 	:10616.5630933
+distance			:3.04062268697e-08
+passed:True
+test			:99
+python death total 	:244888.448501
+init death averted	:13954.5514989
+python death averted 	:13954.5514988
+distance			:7.51751940697e-08
+passed:True
+test			:100
+python death total 	:241645.093473
+init death averted	:17197.906527
+python death averted 	:17197.9065273
+distance			:2.93162884191e-07
+passed:True
+test			:101
+python death total 	:258853.443752
+init death averted	:-10.443752038
+python death averted 	:-10.4437520397
+distance			:1.6604673192e-09
+passed:True
+test			:102
+python death total 	:258865.014564
+init death averted	:-22.014564288
+python death averted 	:-22.0145642874
+distance			:5.87785820017e-10
+passed:True
+test			:103
+python death total 	:258877.711337
+init death averted	:-34.711337409
+python death averted 	:-34.7113374026
+distance			:6.42062758516e-09
+passed:True
+test			:104
+python death total 	:258891.542614
+init death averted	:-48.542613942
+python death averted 	:-48.5426139279
+distance			:1.40847760122e-08
+passed:True
+test			:105
+python death total 	:258906.516802
+init death averted	:-63.516801905
+python death averted 	:-63.5168018813
+distance			:2.37162467442e-08
+passed:True
+test			:106
+python death total 	:258833.692425
+init death averted	:9.307575228
+python death averted 	:9.30757523447
+distance			:6.47391651398e-09
+passed:True
+test			:107
+python death total 	:258825.328757
+init death averted	:17.671242922
+python death averted 	:17.6712429371
+distance			:1.50963934686e-08
+passed:True
+test			:108
+python death total 	:258816.740986
+init death averted	:26.259014119
+python death averted 	:26.2590141438
+distance			:2.47831337674e-08
+passed:True
+test			:109
+python death total 	:258805.332911
+init death averted	:37.667089454
+python death averted 	:37.6670894903
+distance			:3.63363668043e-08
+passed:True
+test			:110
+python death total 	:258791.379969
+init death averted	:51.620031177
+python death averted 	:51.6200312254
+distance			:4.84077276042e-08
+passed:True
+test			:111
+python death total 	:259478.541281
+init death averted	:-635.541281434
+python death averted 	:-635.541281433
+distance			:5.15001374879e-10
+passed:True
+test			:112
+python death total 	:260123.365862
+init death averted	:-1280.36586236
+python death averted 	:-1280.36586236
+distance			:3.88354237657e-10
+passed:True
+test			:113
+python death total 	:260777.443882
+init death averted	:-1934.44388241
+python death averted 	:-1934.44388241
+distance			:5.06361175212e-10
+passed:True
+test			:114
+python death total 	:261440.954421
+init death averted	:-2597.95442131
+python death averted 	:-2597.95442131
+distance			:4.73846739624e-10
+passed:True
+test			:115
+python death total 	:262114.273963
+init death averted	:-3271.27396263
+python death averted 	:-3271.27396263
+distance			:2.46927811531e-10
+passed:True
+test			:116
+python death total 	:258216.712445
+init death averted	:626.287555352
+python death averted 	:626.287555352
+distance			:4.35420588474e-10
+passed:True
+test			:117
+python death total 	:257599.415014
+init death averted	:1243.58498616
+python death averted 	:1243.58498616
+distance			:2.07819539355e-10
+passed:True
+test			:118
+python death total 	:256990.764512
+init death averted	:1852.23548825
+python death averted 	:1852.23548825
+distance			:4.07908373745e-10
+passed:True
+test			:119
+python death total 	:256390.601635
+init death averted	:2452.3983651
+python death averted 	:2452.3983651
+distance			:1.65982783074e-10
+passed:True
+test			:120
+python death total 	:255798.961061
+init death averted	:3044.0389385
+python death averted 	:3044.0389385
+distance			:5.77529135626e-10
+passed:True
+test			:121
+python death total 	:258850.488563
+init death averted	:-7.48856272
+python death averted 	:-7.48856272001
+distance			:1.28510535546e-11
+passed:True
+test			:122
+python death total 	:258858.483357
+init death averted	:-15.483356673
+python death averted 	:-15.4833566734
+distance			:3.8687986148e-10
+passed:True
+test			:123
+python death total 	:258867.03016
+init death averted	:-24.030160038
+python death averted 	:-24.0301600377
+distance			:2.57536214576e-10
+passed:True
+test			:124
+python death total 	:258876.143598
+init death averted	:-33.143597533
+python death averted 	:-33.1435975333
+distance			:2.86085821699e-10
+passed:True
+test			:125
+python death total 	:258885.828213
+init death averted	:-42.828212952
+python death averted 	:-42.8282129522
+distance			:1.83092652151e-10
+passed:True
+test			:126
+python death total 	:258835.887547
+init death averted	:7.112453181
+python death averted 	:7.11245318135
+distance			:3.54794416069e-10
+passed:True
+test			:127
+python death total 	:258828.822597
+init death averted	:14.177403159
+python death averted 	:14.1774031587
+distance			:3.46240369709e-10
+passed:True
+test			:128
+python death total 	:258821.076451
+init death averted	:21.92354901
+python death averted 	:21.9235490103
+distance			:3.01941582848e-10
+passed:True
+test			:129
+python death total 	:258811.248049
+init death averted	:31.751951308
+python death averted 	:31.751951308
+distance			:4.78657113945e-11
+passed:True
+test			:130
+python death total 	:258797.04807
+init death averted	:45.95192962
+python death averted 	:45.9519296204
+distance			:3.50709683516e-10
+passed:True
+test			:131
+python death total 	:260514.697197
+init death averted	:-1671.69719732
+python death averted 	:-1671.69719732
+distance			:2.80806489172e-10
+passed:True
+test			:132
+python death total 	:262250.145125
+init death averted	:-3407.14512514
+python death averted 	:-3407.14512514
+distance			:5.63886715099e-11
+passed:True
+test			:133
+python death total 	:264053.375333
+init death averted	:-5210.37533331
+python death averted 	:-5210.37533331
+distance			:3.16504156217e-10
+passed:True
+test			:134
+python death total 	:265926.611381
+init death averted	:-7083.61138134
+python death averted 	:-7083.61138134
+distance			:3.00133251585e-10
+passed:True
+test			:135
+python death total 	:267874.250845
+init death averted	:-9031.25084507
+python death averted 	:-9031.25084507
+distance			:2.40106601268e-10
+passed:True
+test			:136
+python death total 	:257233.203237
+init death averted	:1609.79676301
+python death averted 	:1609.79676301
+distance			:3.88126863982e-10
+passed:True
+test			:137
+python death total 	:255681.657598
+init death averted	:3161.34240162
+python death averted 	:3161.34240162
+distance			:4.87034412799e-10
+passed:True
+test			:138
+python death total 	:254186.772945
+init death averted	:4656.22705507
+python death averted 	:4656.22705507
+distance			:1.04591890704e-10
+passed:True
+test			:139
+python death total 	:252745.293908
+init death averted	:6097.70609182
+python death averted 	:6097.70609182
+distance			:4.29281499237e-10
+passed:True
+test			:140
+python death total 	:251355.797442
+init death averted	:7487.20255808
+python death averted 	:7487.20255807
+distance			:1.67892721947e-09
+passed:True
+test			:141
+python death total 	:258850.777633
+init death averted	:-7.777632925
+python death averted 	:-7.77763292461
+distance			:3.88319598699e-10
+passed:True
+test			:142
+python death total 	:258859.105593
+init death averted	:-16.105592886
+python death averted 	:-16.1055928861
+distance			:1.31489485966e-10
+passed:True
+test			:143
+python death total 	:258868.032426
+init death averted	:-25.03242635
+python death averted 	:-25.0324263496
+distance			:4.14125622683e-10
+passed:True
+test			:144
+python death total 	:258877.572958
+init death averted	:-34.572957826
+python death averted 	:-34.5729578262
+distance			:1.9621637648e-10
+passed:True
+test			:145
+python death total 	:258887.731633
+init death averted	:-44.731633394
+python death averted 	:-44.7316333935
+distance			:4.98602048538e-10
+passed:True
+test			:146
+python death total 	:258835.629158
+init death averted	:7.370841772
+python death averted 	:7.37084177166
+distance			:3.4475000632e-10
+passed:True
+test			:147
+python death total 	:258828.291607
+init death averted	:14.708393322
+python death averted 	:14.7083933224
+distance			:4.49411174941e-10
+passed:True
+test			:148
+python death total 	:258820.143311
+init death averted	:22.856688639
+python death averted 	:22.8566886392
+distance			:1.78172143706e-10
+passed:True
+test			:149
+python death total 	:258809.552151
+init death averted	:33.447848602
+python death averted 	:33.4478486015
+distance			:4.71324312912e-10
+passed:True
+test			:150
+python death total 	:258793.882251
+init death averted	:49.117748864
+python death averted 	:49.1177488641
+distance			:5.32835997546e-11
+passed:True
+test			:151
+python death total 	:258921.933824
+init death averted	:-78.933824425
+python death averted 	:-78.9338244253
+distance			:2.7218050036e-10
+passed:True
+test			:152
+python death total 	:259001.012854
+init death averted	:-158.012854272
+python death averted 	:-158.012854272
+distance			:9.22284471017e-11
+passed:True
+test			:153
+python death total 	:259080.23726
+init death averted	:-237.237259634
+python death averted 	:-237.237259634
+distance			:3.9369751903e-10
+passed:True
+test			:154
+python death total 	:259159.60714
+init death averted	:-316.60714045
+python death averted 	:-316.60714045
+distance			:1.08002495836e-11
+passed:True
+test			:155
+python death total 	:259239.122531
+init death averted	:-396.122531415
+python death averted 	:-396.122531415
+distance			:2.14868123294e-11
+passed:True
+test			:156
+python death total 	:258764.211138
+init death averted	:78.788862392
+python death averted 	:78.7888623917
+distance			:3.33955085807e-10
+passed:True
+test			:157
+python death total 	:258685.566919
+init death averted	:157.433080737
+python death averted 	:157.433080737
+distance			:4.48494574812e-11
+passed:True
+test			:158
+python death total 	:258607.066953
+init death averted	:235.933047066
+python death averted 	:235.933047066
+distance			:3.14031467497e-10
+passed:True
+test			:159
+python death total 	:258528.710775
+init death averted	:314.289225051
+python death averted 	:314.289225051
+distance			:6.30961949355e-11
+passed:True
+test			:160
+python death total 	:258450.497854
+init death averted	:392.502145836
+python death averted 	:392.502145836
+distance			:2.19472440222e-10
+passed:True
+test			:161
+python death total 	:258843.622899
+init death averted	:-0.622898878
+python death averted 	:-0.622898877977
+distance			:2.33049135545e-11
+passed:True
+test			:162
+python death total 	:258844.250328
+init death averted	:-1.250327501
+python death averted 	:-1.25032750127
+distance			:2.71385802719e-10
+passed:True
+test			:163
+python death total 	:258844.882383
+init death averted	:-1.882383394
+python death averted 	:-1.88238339371
+distance			:2.94177571192e-10
+passed:True
+test			:164
+python death total 	:258845.519157
+init death averted	:-2.519157171
+python death averted 	:-2.51915717122
+distance			:2.20286011654e-10
+passed:True
+test			:165
+python death total 	:258846.160733
+init death averted	:-3.160732913
+python death averted 	:-3.1607329128
+distance			:1.98095317927e-10
+passed:True
+test			:166
+python death total 	:258842.381526
+init death averted	:0.618473941
+python death averted 	:0.618473940762
+distance			:2.38240094319e-10
+passed:True
+test			:167
+python death total 	:258841.767365
+init death averted	:1.232635418
+python death averted 	:1.23263541801
+distance			:1.13411502412e-11
+passed:True
+test			:168
+python death total 	:258841.157395
+init death averted	:1.842604954
+python death averted 	:1.84260495432
+distance			:3.19540394145e-10
+passed:True
+test			:169
+python death total 	:258840.551488
+init death averted	:2.448511505
+python death averted 	:2.44851150515
+distance			:1.50236267871e-10
+passed:True
+test			:170
+python death total 	:258839.949507
+init death averted	:3.050492841
+python death averted 	:3.05049284094
+distance			:6.45239417452e-11
+passed:True
+test			:171
+python death total 	:258434.87241
+init death averted	:408.127590286
+python death averted 	:408.127590286
+distance			:6.57109922031e-11
+passed:True
+test			:172
+python death total 	:258030.596046
+init death averted	:812.403953842
+python death averted 	:812.403953842
+distance			:4.03588273912e-10
+passed:True
+test			:173
+python death total 	:257630.072087
+init death averted	:1212.92791274
+python death averted 	:1212.92791274
+distance			:1.58706825459e-10
+passed:True
+test			:174
+python death total 	:257233.203237
+init death averted	:1609.79676301
+python death averted 	:1609.79676301
+distance			:3.88126863982e-10
+passed:True
+test			:175
+python death total 	:256839.928599
+init death averted	:2003.07140147
+python death averted 	:2003.07140147
+distance			:1.34832589538e-10
+passed:True
+test			:176
+python death total 	:259255.04307
+init death averted	:-412.043069661
+python death averted 	:-412.043069661
+distance			:1.87469595403e-10
+passed:True
+test			:177
+python death total 	:259671.016972
+init death averted	:-828.016972452
+python death averted 	:-828.016972452
+distance			:1.217586032e-10
+passed:True
+test			:178
+python death total 	:260090.905149
+init death averted	:-1247.90514874
+python death averted 	:-1247.90514874
+distance			:1.79397829925e-10
+passed:True
+test			:179
+python death total 	:260514.697197
+init death averted	:-1671.69719732
+python death averted 	:-1671.69719732
+distance			:2.80806489172e-10
+passed:True
+test			:180
+python death total 	:260942.424173
+init death averted	:-2099.42417315
+python death averted 	:-2099.42417315
+distance			:4.27917257184e-10
+passed:True
+test			:181
+python death total 	:258841.501372
+init death averted	:1.498627874
+python death averted 	:1.49862787355
+distance			:4.54953186235e-10
+passed:True
+test			:182
+python death total 	:258840.032133
+init death averted	:2.967866807
+python death averted 	:2.96786680701
+distance			:1.18873799693e-11
+passed:True
+test			:183
+python death total 	:258838.590408
+init death averted	:4.40959224
+python death averted 	:4.40959224041
+distance			:4.08528322282e-10
+passed:True
+test			:184
+python death total 	:258837.174052
+init death averted	:5.825948333
+python death averted 	:5.82594833334
+distance			:3.38601147121e-10
+passed:True
+test			:185
+python death total 	:258835.780643
+init death averted	:7.219356811
+python death averted 	:7.21935681056
+distance			:4.42343939255e-10
+passed:True
+test			:186
+python death total 	:258844.529638
+init death averted	:-1.529638393
+python death averted 	:-1.52963839253
+distance			:4.69385419422e-10
+passed:True
+test			:187
+python death total 	:258846.091674
+init death averted	:-3.091674054
+python death averted 	:-3.0916740541
+distance			:9.97126825553e-11
+passed:True
+test			:188
+python death total 	:258847.687281
+init death averted	:-4.68728051
+python death averted 	:-4.68728051044
+distance			:4.35812275157e-10
+passed:True
+test			:189
+python death total 	:258849.317441
+init death averted	:-6.317440893
+python death averted 	:-6.31744089266
+distance			:3.42967432232e-10
+passed:True
+test			:190
+python death total 	:258850.982971
+init death averted	:-7.982970909
+python death averted 	:-7.98297090898
+distance			:1.73203673626e-11
+passed:True
+test			:191
+python death total 	:258953.548001
+init death averted	:-110.548000572
+python death averted 	:-110.548000572
+distance			:2.74582134807e-10
+passed:True
+test			:192
+python death total 	:259064.380743
+init death averted	:-221.380742747
+python death averted 	:-221.380742747
+distance			:3.36626726494e-10
+passed:True
+test			:193
+python death total 	:259175.498578
+init death averted	:-332.498577801
+python death averted 	:-332.498577801
+distance			:3.04225977743e-10
+passed:True
+test			:194
+python death total 	:259286.901603
+init death averted	:-443.901603093
+python death averted 	:-443.901603093
+distance			:4.28997282143e-10
+passed:True
+test			:195
+python death total 	:259398.589697
+init death averted	:-555.589697177
+python death averted 	:-555.589697177
+distance			:1.72690306499e-10
+passed:True
+test			:196
+python death total 	:258732.736113
+init death averted	:110.263886703
+python death averted 	:110.263886703
+distance			:8.36450908537e-11
+passed:True
+test			:197
+python death total 	:258622.755427
+init death averted	:220.244572708
+python death averted 	:220.244572708
+distance			:3.39639427693e-11
+passed:True
+test			:198
+python death total 	:258513.056748
+init death averted	:329.94325166
+python death averted 	:329.943251661
+distance			:5.01131580677e-10
+passed:True
+test			:199
+python death total 	:258403.638621
+init death averted	:439.36137909
+python death averted 	:439.36137909
+distance			:2.05659489438e-10
+passed:True
+test			:200
+python death total 	:258294.499359
+init death averted	:548.500641156
+python death averted 	:548.500641156
+distance			:4.48608261649e-10
+passed:True
+test			:201
+python death total 	:258843.873649
+init death averted	:-0.873648974
+python death averted 	:-0.873648973939
+distance			:6.14566175727e-11
+passed:True
+test			:202
+python death total 	:258844.756252
+init death averted	:-1.756251605
+python death averted 	:-1.75625160488
+distance			:1.21656462682e-10
+passed:True
+test			:203
+python death total 	:258845.648064
+init death averted	:-2.648064453
+python death averted 	:-2.64806445339
+distance			:3.8763303678e-10
+passed:True
+test			:204
+python death total 	:258846.549319
+init death averted	:-3.549318629
+python death averted 	:-3.54931862844
+distance			:5.56129364782e-10
+passed:True
+test			:205
+python death total 	:258847.460222
+init death averted	:-4.460221746
+python death averted 	:-4.46022174586
+distance			:1.40401468229e-10
+passed:True
+test			:206
+python death total 	:258842.135021
+init death averted	:0.864979342
+python death averted 	:0.864979341568
+distance			:4.32040403453e-10
+passed:True
+test			:207
+python death total 	:258841.278397
+init death averted	:1.721602591
+python death averted 	:1.72160259145
+distance			:4.53120208022e-10
+passed:True
+test			:208
+python death total 	:258840.429785
+init death averted	:2.570214876
+python death averted 	:2.57021487626
+distance			:2.64799293603e-10
+passed:True
+test			:209
+python death total 	:258839.588805
+init death averted	:3.411194975
+python death averted 	:3.41119497528
+distance			:2.84161139064e-10
+passed:True
+test			:210
+python death total 	:258838.755043
+init death averted	:4.244957356
+python death averted 	:4.24495735613
+distance			:1.31636035405e-10
+passed:True
+test			:211
+python death total 	:255980.85694
+init death averted	:2862.14306018
+python death averted 	:2862.14306018
+distance			:1.72803993337e-11
+passed:True
+test			:212
+python death total 	:253490.303998
+init death averted	:5352.69600168
+python death averted 	:5352.69600168
+distance			:3.95630195271e-10
+passed:True
+test			:213
+python death total 	:251323.384548
+init death averted	:7519.61545176
+python death averted 	:7519.61545176
+distance			:1.61890056916e-10
+passed:True
+test			:214
+python death total 	:249440.448407
+init death averted	:9402.55159317
+python death averted 	:9402.55159317
+distance			:1.72803993337e-10
+passed:True
+test			:215
+python death total 	:247808.198894
+init death averted	:11034.8011058
+python death averted 	:11034.8011058
+distance			:3.16504156217e-10
+passed:True
+test			:216
+python death total 	:262134.61066
+init death averted	:-3291.61066012
+python death averted 	:-3291.61066012
+distance			:2.65117705567e-10
+passed:True
+test			:217
+python death total 	:265923.538573
+init death averted	:-7080.53857283
+python death averted 	:-7080.53857283
+distance			:2.11912265513e-10
+passed:True
+test			:218
+python death total 	:270284.556455
+init death averted	:-11441.5564546
+python death averted 	:-11441.5564546
+distance			:1.61890056916e-10
+passed:True
+test			:219
+python death total 	:275292.378659
+init death averted	:-16449.3786586
+python death averted 	:-16449.3786586
+distance			:4.76575223729e-10
+passed:True
+test			:220
+python death total 	:281011.795148
+init death averted	:-22168.7951485
+python death averted 	:-22168.7951485
+distance			:5.129550118e-10
+passed:True
+test			:221
+python death total 	:259392.67044
+init death averted	:-549.670439653
+python death averted 	:-549.670439653
+distance			:1.05160324892e-10
+passed:True
+test			:222
+python death total 	:259916.614736
+init death averted	:-1073.61473578
+python death averted 	:-1073.61473578
+distance			:5.14774001203e-10
+passed:True
+test			:223
+python death total 	:260415.280157
+init death averted	:-1572.28015687
+python death averted 	:-1572.28015687
+distance			:3.54930307367e-10
+passed:True
+test			:224
+python death total 	:260889.344829
+init death averted	:-2046.34482939
+python death averted 	:-2046.34482939
+distance			:2.59660737356e-10
+passed:True
+test			:225
+python death total 	:261339.67756
+init death averted	:-2496.67756018
+python death averted 	:-2496.67756018
+distance			:6.68478605803e-11
+passed:True
+test			:226
+python death total 	:258267.413064
+init death averted	:575.586936342
+python death averted 	:575.586936342
+distance			:3.14003045787e-10
+passed:True
+test			:227
+python death total 	:257665.997992
+init death averted	:1177.00200825
+python death averted 	:1177.00200825
+distance			:1.45519152284e-11
+passed:True
+test			:228
+python death total 	:257039.187194
+init death averted	:1803.812806
+python death averted 	:1803.812806
+distance			:4.06771505368e-10
+passed:True
+test			:229
+python death total 	:256387.966292
+init death averted	:2455.03370769
+python death averted 	:2455.03370769
+distance			:5.45696821064e-12
+passed:True
+test			:230
+python death total 	:255714.36336
+init death averted	:3128.63664047
+python death averted 	:3128.63664047
+distance			:1.73713488039e-10
+passed:True
+test			:231
+python death total 	:262091.064267
+init death averted	:-3248.06426722
+python death averted 	:-3248.06426722
+distance			:6.27551344223e-11
+passed:True
+test			:232
+python death total 	:265413.36692
+init death averted	:-6570.36691973
+python death averted 	:-6570.36691973
+distance			:4.34738467447e-10
+passed:True
+test			:233
+python death total 	:268815.911761
+init death averted	:-9972.91176051
+python death averted 	:-9972.91176051
+distance			:4.62023308501e-10
+passed:True
+test			:234
+python death total 	:272305.181908
+init death averted	:-13462.1819081
+python death averted 	:-13462.1819081
+distance			:1.52795109898e-10
+passed:True
+test			:235
+python death total 	:275888.172588
+init death averted	:-17045.1725876
+python death averted 	:-17045.1725876
+distance			:2.43744580075e-10
+passed:True
+test			:236
+python death total 	:255663.617939
+init death averted	:3179.38206075
+python death averted 	:3179.38206075
+distance			:1.77806214197e-10
+passed:True
+test			:237
+python death total 	:252547.779097
+init death averted	:6295.22090263
+python death averted 	:6295.22090263
+distance			:1.88265403267e-10
+passed:True
+test			:238
+python death total 	:249490.732619
+init death averted	:9352.26738112
+python death averted 	:9352.26738112
+distance			:2.61934474111e-10
+passed:True
+test			:239
+python death total 	:246488.088173
+init death averted	:12354.9118274
+python death averted 	:12354.9118274
+distance			:3.03771230392e-10
+passed:True
+test			:240
+python death total 	:243535.78984
+init death averted	:15307.2101604
+python death averted 	:15307.2101604
+distance			:2.85581336357e-10
+passed:True
+test			:241
+python death total 	:251868.050259
+init death averted	:6974.94974116
+python death averted 	:6974.94974116
+distance			:4.54747350886e-12
+passed:True
+test			:242
+python death total 	:248887.604661
+init death averted	:9955.39533949
+python death averted 	:9955.39533949
+distance			:2.11002770811e-10
+passed:True
+test			:243
+python death total 	:247567.096282
+init death averted	:11275.903718
+python death averted 	:11275.903718
+distance			:2.11002770811e-10
+passed:True
+test			:244
+python death total 	:247004.159177
+init death averted	:11838.8408225
+python death averted 	:11838.8408225
+distance			:8.54925019667e-11
+passed:True
+test			:245
+python death total 	:246842.809484
+init death averted	:12000.1905162
+python death averted 	:12000.1905162
+distance			:1.25510268845e-10
+passed:True
+test			:246
+python death total 	:275875.029536
+init death averted	:-17032.0295364
+python death averted 	:-17032.0295364
+distance			:3.85625753552e-10
+passed:True
+test			:247
+python death total 	:317277.662644
+init death averted	:-58434.6626439
+python death averted 	:-58434.6626439
+distance			:2.61934474111e-10
+passed:True
+test			:248
+python death total 	:409648.151843
+init death averted	:-150805.151843
+python death averted 	:-150805.151843
+distance			:1.01863406599e-09
+passed:True
+test			:249
+python death total 	:602988.908916
+init death averted	:-344145.908916
+python death averted 	:-344145.908916
+distance			:1.16415321827e-09
+passed:True
+test			:250
+python death total 	:981900.844471
+init death averted	:-723057.844471
+python death averted 	:-723057.844471
+distance			:2.91038304567e-09
+passed:True
+test			:251
+python death total 	:258573.873797
+init death averted	:269.126202785
+python death averted 	:269.126202785
+distance			:2.06284767046e-10
+passed:True
+test			:252
+python death total 	:258348.106084
+init death averted	:494.893915969
+python death averted 	:494.893915969
+distance			:2.85695023194e-10
+passed:True
+test			:253
+python death total 	:258156.031859
+init death averted	:686.968140917
+python death averted 	:686.968140917
+distance			:1.01181285572e-10
+passed:True
+test			:254
+python death total 	:257990.65295
+init death averted	:852.347050445
+python death averted 	:852.347050445
+distance			:3.57999851985e-10
+passed:True
+test			:255
+python death total 	:257846.779405
+init death averted	:996.22059482
+python death averted 	:996.22059482
+distance			:1.00840225059e-10
+passed:True
+test			:256
+python death total 	:259169.212937
+init death averted	:-326.212936632
+python death averted 	:-326.212936632
+distance			:3.92390120396e-10
+passed:True
+test			:257
+python death total 	:259572.674646
+init death averted	:-729.674645522
+python death averted 	:-729.674645522
+distance			:1.47338141687e-10
+passed:True
+test			:258
+python death total 	:260084.216619
+init death averted	:-1241.21661901
+python death averted 	:-1241.21661901
+distance			:2.86718204734e-10
+passed:True
+test			:259
+python death total 	:260753.394298
+init death averted	:-1910.3942977
+python death averted 	:-1910.3942977
+distance			:3.5674929677e-10
+passed:True
+test			:260
+python death total 	:261665.036781
+init death averted	:-2822.03678082
+python death averted 	:-2822.03678082
+distance			:3.63797880709e-12
+passed:True
+test			:261
+python death total 	:259313.417422
+init death averted	:-470.674747257
+python death averted 	:-470.417422262
+distance			:0.257324994863
+passed:False
+test			:262
+python death total 	:259783.834845
+init death averted	:-941.349494514
+python death averted 	:-940.834844524
+distance			:0.514649989668
+passed:False
+test			:263
+python death total 	:260254.252267
+init death averted	:-1412.02424177
+python death averted 	:-1411.25226679
+distance			:0.771974985531
+passed:False
+test			:264
+python death total 	:260724.669689
+init death averted	:-1882.69898903
+python death averted 	:-1881.66968905
+distance			:1.02929998037
+passed:False
+test			:265
+python death total 	:261195.087111
+init death averted	:-2353.37373629
+python death averted 	:-2352.08711131
+distance			:1.28662497514
+passed:False
+test			:266
+python death total 	:258372.582578
+init death averted	:470.674747257
+python death averted 	:470.417422262
+distance			:0.257324994921
+passed:False
+test			:267
+python death total 	:257902.165155
+init death averted	:941.349494514
+python death averted 	:940.834844524
+distance			:0.514649989697
+passed:False
+test			:268
+python death total 	:257431.747733
+init death averted	:1412.02424177
+python death averted 	:1411.25226679
+distance			:0.771974985561
+passed:False
+test			:269
+python death total 	:256961.330311
+init death averted	:1882.69898903
+python death averted 	:1881.66968905
+distance			:1.02929998039
+passed:False
+test			:270
+python death total 	:256490.912889
+init death averted	:2353.37373629
+python death averted 	:2352.08711131
+distance			:1.2866249752
+passed:False
+test			:271
+python death total 	:258956.335042
+init death averted	:-113.251298518
+python death averted 	:-113.335042246
+distance			:0.0837437275114
+passed:False
+test			:272
+python death total 	:260079.206742
+init death averted	:-1236.08793671
+python death averted 	:-1236.20674204
+distance			:0.118805335858
+passed:False
+test			:273
+python death total 	:261820.774222
+init death averted	:-2977.62616251
+python death averted 	:-2977.77422243
+distance			:0.14805992286
+passed:False
+test			:274
+python death total 	:263897.149219
+init death averted	:-5053.9716936
+python death averted 	:-5054.14921881
+distance			:0.177525209007
+passed:False
+test			:275
+python death total 	:266115.121797
+init death averted	:-7271.91422895
+python death averted 	:-7272.12179671
+distance			:0.207567761507
+passed:False
+test			:276
+python death total 	:260100.234741
+init death averted	:-1257.52820587
+python death averted 	:-1257.23474084
+distance			:0.293465028136
+passed:False
+test			:277
+python death total 	:262773.480255
+init death averted	:-3931.58589152
+python death averted 	:-3930.48025499
+distance			:1.10563653196
+passed:False
+test			:278
+python death total 	:266323.185699
+init death averted	:-7482.8486503
+python death averted 	:-7480.18569872
+distance			:2.66295158832
+passed:False
+test			:279
+python death total 	:269642.035834
+init death averted	:-10803.8225647
+python death averted 	:-10799.0358337
+distance			:4.78673108584
+passed:False
+test			:280
+python death total 	:270808.896738
+init death averted	:36.0
+python death averted 	:-11965.896738
+distance			:12001.896738
+passed:False
+test			:281
+python death total 	:260219.083313
+init death averted	:-1376.12818463
+python death averted 	:-1376.08331292
+distance			:0.0448717080092
+passed:False
+test			:282
+python death total 	:261674.757044
+init death averted	:-2831.85883112
+python death averted 	:-2831.7570435
+distance			:0.101787620249
+passed:False
+test			:283
+python death total 	:263157.790978
+init death averted	:-4314.95948795
+python death averted 	:-4314.79097813
+distance			:0.16850982655
+passed:False
+test			:284
+python death total 	:264627.435457
+init death averted	:-5784.67807491
+python death averted 	:-5784.43545724
+distance			:0.242617662834
+passed:False
+test			:285
+python death total 	:266054.822364
+init death averted	:-7212.14423283
+python death averted 	:-7211.822364
+distance			:0.321868835841
+passed:False
+test			:286
+python death total 	:257605.01469
+init death averted	:1238.01672155
+python death averted 	:1237.98531007
+distance			:0.0314114837147
+passed:False
+test			:287
+python death total 	:256556.748724
+init death averted	:2286.3008998
+python death averted 	:2286.2512758
+distance			:0.0496240023717
+passed:False
+test			:288
+python death total 	:255721.432801
+init death averted	:3121.62441249
+python death averted 	:3121.56719893
+distance			:0.0572135626335
+passed:False
+test			:289
+python death total 	:255072.824645
+init death averted	:3770.23393384
+python death averted 	:3770.17535534
+distance			:0.0585785013131
+passed:False
+test			:290
+python death total 	:254531.750879
+init death averted	:4311.3069598
+python death averted 	:4311.24912139
+distance			:0.0578384063883
+passed:False
+test			:291
+python death total 	:265354.571853
+init death averted	:-6511.57185266
+python death averted 	:-6511.57185266
+distance			:3.36513039656e-10
+passed:True
+test			:292
+python death total 	:271866.143705
+init death averted	:-13023.1437053
+python death averted 	:-13023.1437053
+distance			:2.11002770811e-10
+passed:True
+test			:293
+python death total 	:278377.715558
+init death averted	:-19534.715558
+python death averted 	:-19534.715558
+distance			:2.43744580075e-10
+passed:True
+test			:294
+python death total 	:284889.287411
+init death averted	:-26046.2874106
+python death averted 	:-26046.2874106
+distance			:3.05590219796e-10
+passed:True
+test			:295
+python death total 	:291400.859263
+init death averted	:-32557.8592633
+python death averted 	:-32557.8592633
+distance			:9.09494701773e-11
+passed:True
+test			:296
+python death total 	:252331.428147
+init death averted	:6511.57185266
+python death averted 	:6511.57185266
+distance			:3.94720700569e-10
+passed:True
+test			:297
+python death total 	:245819.856295
+init death averted	:13023.1437053
+python death averted 	:13023.1437053
+distance			:1.52795109898e-10
+passed:True
+test			:298
+python death total 	:239308.284442
+init death averted	:19534.715558
+python death averted 	:19534.715558
+distance			:3.01952240989e-10
+passed:True
+test			:299
+python death total 	:232796.712589
+init death averted	:26046.2874106
+python death averted 	:26046.2874106
+distance			:2.47382558882e-10
+passed:True
+test			:300
+python death total 	:226285.140737
+init death averted	:32557.8592633
+python death averted 	:32557.8592633
+distance			:1.78260961547e-10
+passed:True
+test			:301
+python death total 	:269037.707168
+init death averted	:-10194.7071677
+python death averted 	:-10194.7071677
+distance			:2.51020537689e-10
+passed:True
+test			:302
+python death total 	:279232.414335
+init death averted	:-20389.4143353
+python death averted 	:-20389.4143353
+distance			:4.98403096572e-10
+passed:True
+test			:303
+python death total 	:289427.121503
+init death averted	:-30584.121503
+python death averted 	:-30584.121503
+distance			:1.30967237055e-10
+passed:True
+test			:304
+python death total 	:299621.828671
+init death averted	:-40778.8286706
+python death averted 	:-40778.8286706
+distance			:1.81898940355e-10
+passed:True
+test			:305
+python death total 	:309816.535838
+init death averted	:-50973.5358383
+python death averted 	:-50973.5358383
+distance			:4.29281499237e-10
+passed:True
+test			:306
+python death total 	:248648.292832
+init death averted	:10194.7071677
+python death averted 	:10194.7071677
+distance			:3.09228198603e-10
+passed:True
+test			:307
+python death total 	:238453.585665
+init death averted	:20389.4143353
+python death averted 	:20389.4143353
+distance			:4.11091605201e-10
+passed:True
+test			:308
+python death total 	:228258.878497
+init death averted	:30584.121503
+python death averted 	:30584.121503
+distance			:1.01863406599e-10
+passed:True
+test			:309
+python death total 	:218064.171329
+init death averted	:40778.8286706
+python death averted 	:40778.8286706
+distance			:2.11002770811e-10
+passed:True
+test			:310
+python death total 	:207869.464162
+init death averted	:50973.5358383
+python death averted 	:50973.5358383
+distance			:4.58385329694e-10
+passed:True
+test			:311
+python death total 	:274195.863695
+init death averted	:-15352.8636955
+python death averted 	:-15352.8636955
+distance			:6.73026079312e-11
+passed:True
+test			:312
+python death total 	:289548.727391
+init death averted	:-30705.7273909
+python death averted 	:-30705.7273909
+distance			:2.51020537689e-10
+passed:True
+test			:313
+python death total 	:304901.591086
+init death averted	:-46058.5910864
+python death averted 	:-46058.5910864
+distance			:3.20142135024e-10
+passed:True
+test			:314
+python death total 	:320254.454782
+init death averted	:-61411.4547819
+python death averted 	:-61411.4547819
+distance			:5.60248736292e-10
+passed:True
+test			:315
+python death total 	:335607.318477
+init death averted	:-76764.3184773
+python death averted 	:-76764.3184773
+distance			:3.78349795938e-10
+passed:True
+test			:316
+python death total 	:243490.136305
+init death averted	:15352.8636955
+python death averted 	:15352.8636955
+distance			:1.25510268845e-10
+passed:True
+test			:317
+python death total 	:228137.272609
+init death averted	:30705.7273909
+python death averted 	:30705.7273909
+distance			:3.09228198603e-10
+passed:True
+test			:318
+python death total 	:212784.408914
+init death averted	:46058.5910864
+python death averted 	:46058.5910864
+distance			:4.07453626394e-10
+passed:True
+test			:319
+python death total 	:197431.545218
+init death averted	:61411.4547819
+python death averted 	:61411.4547819
+distance			:5.02041075379e-10
+passed:True
+test			:320
+python death total 	:182078.681523
+init death averted	:76764.3184773
+python death averted 	:76764.3184773
+distance			:3.20142135024e-10
+passed:True
+test_number_true:231
+test_number_total:321
+test_percent_true :0.719626168224

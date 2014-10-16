@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<title>PRIME Model</title>
+	</head>
+	<body>
+		
+<p>
+<div style="width:20%"> 
+<h1> initital result from anja</h1>
+{% for death in init_results %}
+{{ death }}
+</br>
+{% endfor %}
+</div>
+
+<div style="width:20%"> 
+<h1> results from python model marissa </h1>
+{% for death in test_results %}
+{{ death }}
+</br>
+{% endfor %}
+</div>
+
+<h1> test_number_total</h1>
+{{ test_number_total}}&nbsp;
+
+<h1> test_number_true</h1>
+{{ test_number_true}}&nbsp;
+
+<h1> true percentage </h1>
+{{ test_percent_true}}&nbsp;
+		
+		
+	</body>
+</html>

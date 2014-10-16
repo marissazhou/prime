@@ -1,0 +1,473 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>primemodel.PrimeOutcome &mdash; prime 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="prime 1.0 documentation" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">prime 1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for primemodel.PrimeOutcome</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;An Outcome Class</span>
+<span class="sd">.. module:: PrimeOutcome</span>
+<span class="sd">   :platform: Ubuntu Unix</span>
+<span class="sd">   :synopsis: This class composes an Outcome object belonging to an Exposure object. </span>
+
+<span class="sd">.. moduleauthor:: Lijuan Marissa Zhou &lt;marissa.zhou.cn@gmail.com&gt;</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PrimeOutcome"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeOutcome.PrimeOutcome">[docs]</a><span class="k">class</span> <span class="nc">PrimeOutcome</span><span class="p">:</span>
+	
+	<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">o_id</span><span class="p">,</span> <span class="n">mortality</span><span class="p">,</span> <span class="n">samples</span><span class="p">,</span> <span class="n">risks</span><span class="p">,</span> <span class="n">lower_limit_estimate</span><span class="p">,</span> <span class="n">upper_limit_estimate</span><span class="p">,</span> <span class="n">measure</span><span class="p">,</span> <span class="n">exposure_id</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function initialize an Outcome instance </span>
+
+<span class="sd">    		:param name: outcome name like &#39;Stroke&#39; or &#39;Lung Cancer&#39; </span>
+<span class="sd">    		:type name: string </span>
+<span class="sd">    		:param o_id: outcome id, same number as in the database </span>
+<span class="sd">    		:type o_id: int </span>
+<span class="sd">    		:param mortality: origianl mortality for current outcome, in &#39;Only&#39; occasions, it is the original baseline mortality, in &#39;Compound&#39; cases, it is counterfactual mortality of the same outcome of previous exposure </span>
+<span class="sd">    		:type mortality: list </span>
+<span class="sd">    		:param samples: samples/bins for relative risks </span>
+<span class="sd">    		:type samples: list </span>
+<span class="sd">    		:param lower_limit_estimate: relative risks estimate for lower bound </span>
+<span class="sd">    		:type lower_limit_estimate: list </span>
+<span class="sd">    		:param upper_limit_estimate: relative risks estimate for upper bound </span>
+<span class="sd">    		:type upper_limit_estimate: list </span>
+<span class="sd">    		:param measure: measure for the current outcome, it is the consumption measure like 7g/day or 20mm/week, for one outcome in one exposure, all population subsets have the same measure </span>
+<span class="sd">    		:type measure: float </span>
+<span class="sd">    		:param exposure_id: exposure id, this id is the same number as shown in the database </span>
+<span class="sd">    		:type exposure_id: int </span>
+<span class="sd">   	 	:returns: </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">name</span> 			<span class="o">=</span> <span class="n">name</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">o_id</span> 			<span class="o">=</span> <span class="n">o_id</span> <span class="c">#outcome id: 1-24 in the DBHelper </span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">mortality</span> 			<span class="o">=</span> <span class="n">mortality</span> <span class="c">#input mortality</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">samples</span> 			<span class="o">=</span> <span class="n">samples</span> <span class="c">#[]  </span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">risks</span> 			<span class="o">=</span> <span class="n">risks</span> <span class="c">#{} </span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">age_group_num</span> 		<span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mortality</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">measure_num</span> 		<span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">samples</span><span class="p">)</span> 
+		<span class="bp">self</span><span class="o">.</span><span class="n">measure</span> 			<span class="o">=</span> <span class="n">measure</span> <span class="c">#measure like 10g/day </span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">lower_limit_estimate</span> 	<span class="o">=</span> <span class="n">lower_limit_estimate</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">upper_limit_estimate</span> 	<span class="o">=</span> <span class="n">upper_limit_estimate</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">exposure_id</span> 		<span class="o">=</span> <span class="n">exposure_id</span>
+		
+		<span class="bp">self</span><span class="o">.</span><span class="n">relative_risks</span> 		<span class="o">=</span> <span class="bp">None</span> <span class="c">#[][] </span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">death_rates</span>		<span class="o">=</span> <span class="bp">None</span> <span class="c">#[][] </span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">b_deaths</span> 			<span class="o">=</span> <span class="bp">None</span> <span class="c">#[][] # deaths matrix for baseline </span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">c_deaths</span> 			<span class="o">=</span> <span class="bp">None</span> <span class="c">#[][] # deaths matrix for counterfactual</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">c_mortality</span> 		<span class="o">=</span> <span class="bp">None</span> <span class="c">#[] mortality for counterfactual, this is used for next exposure in compound exposures, same format as self.mortality </span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">deaths_changes</span> 		<span class="o">=</span> <span class="bp">None</span> <span class="c"># [] # a list of death changes for different age groups, mortality-c_mortality </span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">deaths_changes_sum</span> 	<span class="o">=</span> <span class="mi">0</span> <span class="c"># death sum for current outcome	 </span>
+
+
+	<span class="c">#################################################</span>
+	<span class="c"># realative risks				# </span>
+	<span class="c">#################################################</span>
+<div class="viewcode-block" id="PrimeOutcome.get_relative_risk"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeOutcome.PrimeOutcome.get_relative_risk">[docs]</a>	<span class="k">def</span> <span class="nf">get_relative_risk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function return the relative risk for subsets, it does not need to know what data set is, this can not be started until a population input is fulfilled </span>
+
+<span class="sd">    		:param self: self attributes </span>
+<span class="sd">   	 	:returns: No return  </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">age_group_num</span> <span class="c"># row number of matrix</span>
+		<span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">measure_num</span> <span class="c"># column number of matrix</span>
+
+		<span class="n">relative_risks</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
+		<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>		
+			<span class="n">lower_limit</span> 	<span class="o">=</span> <span class="mi">0</span> 
+			<span class="n">name</span> 		<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+			<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+				<span class="c"># the first rr is always 1.0</span>
+				<span class="k">if</span> <span class="n">j</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span> 
+					<span class="n">relative_risks</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span> 
+					<span class="k">continue</span>
+				<span class="k">if</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span> 
+					<span class="n">sample_distance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="c">#sample distance might be changing</span>
+				<span class="n">upper_limit_reestimate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">upper_limit_estimate</span><span class="o">+</span><span class="n">sample_distance</span><span class="o">/</span><span class="mi">2</span><span class="c">#re estimate limit,can be changed </span>
+				<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">&lt;=</span><span class="bp">self</span><span class="o">.</span><span class="n">lower_limit_estimate</span><span class="p">:</span> <span class="c">#lower than the estimate according to referrence</span>
+					<span class="n">relative_risks</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> 	<span class="o">=</span> <span class="mf">1.0</span> 
+					<span class="n">lower_limit</span> 		<span class="o">=</span> <span class="n">j</span> 
+				<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">upper_limit_estimate</span><span class="p">:</span> <span class="c">#higher than the estimate according to referrence</span>
+					<span class="n">relative_risks</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">relative_risks</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+				<span class="k">else</span><span class="p">:</span>
+					<span class="c"># para id is DBHelper id</span>
+					<span class="c"># for different exposures there are different relative risk calculation methods</span>
+					<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">exposure_id</span> <span class="o">==</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">get_exposure_id</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span><span class="c">#fruit</span>
+						<span class="n">relative_risks</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> 	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_relative_risk_decrease</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">lower_limit</span><span class="p">)</span> 
+					<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">exposure_id</span> <span class="o">==</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">get_exposure_id</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span><span class="c">#vegetable</span>
+						<span class="n">relative_risks</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> 	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_relative_risk_decrease</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">lower_limit</span><span class="p">)</span> 
+					<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">exposure_id</span> <span class="o">==</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">get_exposure_id</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span><span class="c">#fibre </span>
+						<span class="n">relative_risks</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> 	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_relative_risk_decrease</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">lower_limit</span><span class="p">)</span> 
+					<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">exposure_id</span> <span class="o">==</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">get_exposure_id</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span><span class="c">#salt </span>
+						<span class="n">relative_risks</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> 	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_relative_risk_increase</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">lower_limit</span><span class="p">)</span> 
+					<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">exposure_id</span> <span class="o">==</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">get_exposure_id</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span><span class="c">#fats</span>
+						<span class="n">relative_risks</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> 	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">linear_relative_risk_increase</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">lower_limit</span><span class="p">)</span> 
+					<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">exposure_id</span> <span class="o">==</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">get_exposure_id</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span><span class="c">#phisical activity</span>
+						<span class="c">#need to add inactive rate from b/c table</span>
+						<span class="n">relative_risks</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> 	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pa_relative_risk</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> 
+					<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">exposure_id</span> <span class="o">==</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">get_exposure_id</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span><span class="c">#bmi,sample amount </span>
+						<span class="n">rr</span> 			<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">categorical_relative_risk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
+						<span class="n">relative_risks</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> 	<span class="o">=</span> <span class="n">relative_risks</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">rr</span> 
+					<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">exposure_id</span> <span class="o">==</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">get_exposure_id</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span><span class="c">#alcohol </span>
+						<span class="c"># some outcomes have decresing/increading rates  </span>
+						<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">o_id</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">o_id</span> <span class="o">==</span> <span class="mi">8</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">o_id</span> <span class="o">==</span> <span class="mi">9</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">o_id</span> <span class="o">==</span> <span class="mi">16</span><span class="p">:</span> 
+							<span class="n">relative_risks</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> 	<span class="o">=</span> <span class="n">linear_relative_risk_decrease</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">lower_limit</span><span class="p">)</span> 
+						<span class="c"># some outcomes have fixed rates</span>
+						<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">o_id</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">o_id</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">o_id</span> <span class="o">==</span> <span class="mi">14</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">o_id</span> <span class="o">==</span> <span class="mi">19</span><span class="p">:</span> 
+							<span class="n">relative_risks</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> 	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">risks</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> 
+						<span class="k">else</span><span class="p">:</span>
+							<span class="k">pass</span>
+					<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">exposure_id</span> <span class="o">==</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">get_exposure_id</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span><span class="c">#smoking </span>
+						<span class="c"># order convert </span>
+						<span class="n">relative_risks</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> 	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">risks</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="mi">3</span><span class="o">+</span><span class="n">j</span><span class="p">]</span>
+					<span class="k">else</span><span class="p">:</span>
+						<span class="k">pass</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">relative_risks</span> <span class="o">=</span> <span class="n">relative_risks</span>
+					</div>
+<div class="viewcode-block" id="PrimeOutcome.pa_relative_risk"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeOutcome.PrimeOutcome.pa_relative_risk">[docs]</a>	<span class="k">def</span> <span class="nf">pa_relative_risk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function calculation relative risk value for categorical distribution like physical activity </span>
+
+<span class="sd">    		:param i: row number </span>
+<span class="sd">    		:type i: int </span>
+<span class="sd">    		:param j: column number </span>
+<span class="sd">    		:type j: int </span>
+<span class="sd">   	 	:returns: current relative risk value </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">frac1</span> 			<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">risks</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="mf">1.0</span>
+		<span class="n">frac2</span> 			<span class="o">=</span> <span class="n">get_pow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="mf">0.25</span><span class="p">)</span>
+		<span class="n">frac3</span> 			<span class="o">=</span> <span class="n">get_pow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">measure</span><span class="p">,</span><span class="mf">0.25</span><span class="p">)</span>
+		<span class="n">rr</span> 			<span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="p">((</span><span class="n">frac1</span><span class="o">/</span><span class="n">frac3</span><span class="p">)</span><span class="o">*</span><span class="n">frac2</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">rr</span>
+</div>
+<div class="viewcode-block" id="PrimeOutcome.categorical_relative_risk"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeOutcome.PrimeOutcome.categorical_relative_risk">[docs]</a>	<span class="k">def</span> <span class="nf">categorical_relative_risk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function calculation relative risk value for categorical distribution like alcohol/BMI</span>
+
+<span class="sd">    		:param i: row number </span>
+<span class="sd">    		:type i: int </span>
+<span class="sd">    		:param j: column number </span>
+<span class="sd">    		:type j: int </span>
+<span class="sd">   	 	:returns: current relative risk value </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">frac1</span> 			<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">risks</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+		<span class="n">measure_difference</span>	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> 
+		<span class="n">frac2</span> 			<span class="o">=</span> <span class="n">measure_difference</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">measure</span><span class="o">+</span><span class="mf">0.0</span><span class="p">)</span>
+		<span class="n">rr</span> 			<span class="o">=</span> <span class="n">get_pow</span><span class="p">(</span><span class="n">frac1</span><span class="p">,</span><span class="n">frac2</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">rr</span>
+</div>
+<div class="viewcode-block" id="PrimeOutcome.linear_relative_risk_decrease"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeOutcome.PrimeOutcome.linear_relative_risk_decrease">[docs]</a>	<span class="k">def</span> <span class="nf">linear_relative_risk_decrease</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">lower_limit</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function calculation relative risk value for linear distribution in a decrease case, in which relative risk decreases as consumption decreases </span>
+
+<span class="sd">    		:param i: row number </span>
+<span class="sd">    		:type i: int </span>
+<span class="sd">    		:param j: column number </span>
+<span class="sd">    		:type j: int </span>
+<span class="sd">    		:param lower_limit: lower limit of current exposure </span>
+<span class="sd">    		:type lower_limit: int </span>
+<span class="sd">   	 	:returns: current relative risk value </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">risk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">risks</span>
+		<span class="n">dbrisk</span> <span class="o">=</span> <span class="n">DBHelper</span><span class="o">.</span><span class="n">risks</span>
+		<span class="n">frac1</span> 			<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">risks</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+		<span class="n">measure_difference</span>	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="n">lower_limit</span><span class="p">]</span> 
+		<span class="n">frac2</span> 			<span class="o">=</span> <span class="n">measure_difference</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">measure</span><span class="o">+</span><span class="mf">0.0</span><span class="p">)</span>
+		<span class="n">rr</span> 			<span class="o">=</span> <span class="n">get_pow</span><span class="p">(</span><span class="n">frac1</span><span class="p">,</span><span class="n">frac2</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">rr</span> 
+</div>
+<div class="viewcode-block" id="PrimeOutcome.linear_relative_risk_increase"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeOutcome.PrimeOutcome.linear_relative_risk_increase">[docs]</a>	<span class="k">def</span> <span class="nf">linear_relative_risk_increase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">lower_limit</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function calculation relative risk value for linear distribution in an increase case, in which relative risk decreases as consumption increases  </span>
+
+<span class="sd">    		:param i: row number </span>
+<span class="sd">    		:type i: int </span>
+<span class="sd">    		:param j: column number </span>
+<span class="sd">    		:type j: int </span>
+<span class="sd">    		:param lower_limit: lower limit of current exposure </span>
+<span class="sd">    		:type lower_limit: int </span>
+<span class="sd">   	 	:returns: current relative risk value </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">frac1</span> 			<span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">risks</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+		<span class="n">measure_difference</span>	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">samples</span><span class="p">[</span><span class="n">lower_limit</span><span class="p">]</span> 
+		<span class="n">frac2</span> 			<span class="o">=</span> <span class="n">measure_difference</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">measure</span><span class="o">+</span><span class="mf">0.0</span><span class="p">)</span>
+		<span class="n">rr</span> 			<span class="o">=</span> <span class="n">get_pow</span><span class="p">(</span><span class="n">frac1</span><span class="p">,</span><span class="n">frac2</span><span class="p">)</span>
+		<span class="k">return</span> <span class="n">rr</span> 
+
+	<span class="c">#################################################</span>
+	<span class="c"># death rates					#  </span>
+	<span class="c">#################################################</span></div>
+<div class="viewcode-block" id="PrimeOutcome.get_death_rates"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeOutcome.PrimeOutcome.get_death_rates">[docs]</a>	<span class="k">def</span> <span class="nf">get_death_rates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">population_distribution</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function starts the calculation of death rates for a subset, it does not necessarily need to care what subset it is dealing with</span>
+
+<span class="sd">    		:param mortality: original mortality </span>
+<span class="sd">    		:type mortality: list</span>
+<span class="sd">    		:param population_distribution: this calculation needs population distribution, matrix or line if there is only one population subset  </span>
+<span class="sd">    		:type population_distribution: list </span>
+<span class="sd">    		:param relative_risks: relative risks from last step </span>
+<span class="sd">    		:type relative_risks: list</span>
+<span class="sd">   	 	:returns: </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="c"># column and row for a matrix</span>
+		<span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">age_group_num</span>
+		<span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">measure_num</span>
+		<span class="c"># initiate the matrix</span>
+		<span class="n">death_rates</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
+		<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+			<span class="n">this_mort</span> 		<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mortality</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+			<span class="n">this_pop_dist</span> 		<span class="o">=</span> <span class="n">population_distribution</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+			<span class="n">this_rr</span> 		<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relative_risks</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+			<span class="c"># the first death rate needs to refer to the population distribution</span>
+			<span class="n">death_rates</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> 	<span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_baseline_death_rate</span><span class="p">(</span><span class="n">this_mort</span><span class="p">,</span><span class="n">this_pop_dist</span><span class="p">,</span><span class="n">this_rr</span><span class="p">)</span> <span class="c"># first death rate relies on population</span>
+			<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+				<span class="c"># rest of the line is a multiple result of relative risk and the first column of death rate</span>
+				<span class="n">death_rates</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">death_rates</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">relative_risks</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">death_rates</span> <span class="o">=</span> <span class="n">death_rates</span>
+</div>
+<div class="viewcode-block" id="PrimeOutcome.get_baseline_death_rate"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeOutcome.PrimeOutcome.get_baseline_death_rate">[docs]</a>	<span class="k">def</span> <span class="nf">get_baseline_death_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">base_mortality</span><span class="p">,</span><span class="n">population_distribution_line</span><span class="p">,</span><span class="n">relative_risks_line</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function returns the baseline death rate for death rates calculation,  in each row, all other rates are relying on this base rate </span>
+
+<span class="sd">    		:param base_mortality: base mortality, either from baseline data [only exposures] or from previous exposure result [compound] </span>
+<span class="sd">    		:type base_mortality: list </span>
+<span class="sd">    		:param population_distribution_line: the relavent line in population distribution </span>
+<span class="sd">    		:type population_distribution_line: list </span>
+<span class="sd">    		:param relative_risks_line: the relavent line in relative risk</span>
+<span class="sd">    		:type relative_risks_line: list </span>
+<span class="sd">   	 	:returns: </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">baseline_death_rate</span> <span class="o">=</span> <span class="mf">1000.0</span><span class="o">*</span><span class="n">base_mortality</span> 
+		<span class="n">weighted_sum</span> <span class="o">=</span> <span class="mf">0.0</span>
+		<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">measure_num</span><span class="p">):</span>
+			<span class="n">this_pop_dist</span> 	<span class="o">=</span> <span class="n">population_distribution_line</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+			<span class="n">this_rr</span> 	<span class="o">=</span> <span class="n">relative_risks_line</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> 
+			<span class="n">weighted_sum</span> 	<span class="o">+=</span> <span class="n">this_rr</span> <span class="o">*</span> <span class="n">this_pop_dist</span> 
+		<span class="n">baseline_death_rate</span> 	<span class="o">=</span> <span class="n">baseline_death_rate</span> <span class="o">/</span> <span class="n">weighted_sum</span>  
+		<span class="k">return</span> <span class="n">baseline_death_rate</span> 
+
+	<span class="c">#################################################</span>
+	<span class="c"># deaths					# </span>
+	<span class="c">#################################################</span></div>
+<div class="viewcode-block" id="PrimeOutcome.get_deaths"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeOutcome.PrimeOutcome.get_deaths">[docs]</a>	<span class="k">def</span> <span class="nf">get_deaths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">b_population_distribution</span><span class="p">,</span><span class="n">c_population_distribution</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function starts calculating deaths for a subset data, without concering baseline or counterfactual, </span>
+
+<span class="sd">    		:param population_distribution: the relavent population distribution </span>
+<span class="sd">    		:type population_distribution: list </span>
+<span class="sd">    		:param death_rates: death rates </span>
+<span class="sd">    		:type death_rates: list </span>
+<span class="sd">   	 	:returns: No return </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">age_group_num</span>
+		<span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">measure_num</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">b_deaths</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">c_deaths</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
+		<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+			<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+				<span class="c"># death is a multiple result of population and death rate</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">b_deaths</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">b_population_distribution</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">death_rates</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1000.0</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">c_deaths</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">c_population_distribution</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">death_rates</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1000.0</span>
+</div>
+<div class="viewcode-block" id="PrimeOutcome.get_c_mortality"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeOutcome.PrimeOutcome.get_c_mortality">[docs]</a>	<span class="k">def</span> <span class="nf">get_c_mortality</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; calculate counterfactual mortalities </span>
+
+<span class="sd">    		:param self: self attributes </span>
+<span class="sd">   	 	:returns: No return </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">c_mortality</span> <span class="o">=</span> <span class="p">[]</span>
+		<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">c_deaths</span><span class="p">)):</span>
+			<span class="c"># each value in c_mortality is sum of the line of deaths</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">c_mortality</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">c_deaths</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+	
+	<span class="c">#################################################</span>
+	<span class="c"># death changes					# </span>
+	<span class="c">#################################################</span></div>
+<div class="viewcode-block" id="PrimeOutcome.get_deaths_changes_sum"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeOutcome.PrimeOutcome.get_deaths_changes_sum">[docs]</a>	<span class="k">def</span> <span class="nf">get_deaths_changes_sum</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; return death changes sum </span>
+
+<span class="sd">    		:param self: self attributes </span>
+<span class="sd">   	 	:returns: death change sum </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">deaths_changes_sum</span> <span class="o">=</span> <span class="n">get_deaths_sum</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> <span class="o">-</span> <span class="n">get_deaths_sum</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">deaths_changes_sum</span> 
+</div>
+<div class="viewcode-block" id="PrimeOutcome.get_deaths_changes"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeOutcome.PrimeOutcome.get_deaths_changes">[docs]</a>	<span class="k">def</span> <span class="nf">get_deaths_changes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b_deaths</span><span class="p">,</span> <span class="n">c_deaths</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; Deaths sum change for both counterfactual compared with baseline subsets </span>
+
+<span class="sd">    		:param b_deaths: baseline deaths  </span>
+<span class="sd">    		:type b_deaths: list </span>
+<span class="sd">    		:param c_deaths: counterfactual deaths</span>
+<span class="sd">    		:type c_deaths: list </span>
+<span class="sd">   	 	:returns: death sum change </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">age_group_num</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">deaths_changes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
+		<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+			<span class="c"># get an array of death changes</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">deaths_changes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">c_deaths</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">b_deaths</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>  
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">deaths_changes</span> <span class="c">#[changes,changes...]</span>
+</div>
+<div class="viewcode-block" id="PrimeOutcome.get_deaths_sum"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeOutcome.PrimeOutcome.get_deaths_sum">[docs]</a>	<span class="k">def</span> <span class="nf">get_deaths_sum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">is_baseline</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot; Deaths sum returning function, baseline/counterfactual </span>
+
+<span class="sd">    		:param is_baseline: true is baseline, false is counterfactual </span>
+<span class="sd">    		:type is_baseline: bool </span>
+<span class="sd">   	 	:returns: death sum for baseline/counterfactual </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="n">sum_deaths</span> <span class="o">=</span> <span class="mi">0</span>
+		<span class="k">if</span> <span class="n">is_baseline</span><span class="p">:</span>
+				<span class="c"># sum of baseline deaths</span>
+				<span class="n">sum_deaths</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mortality</span><span class="p">)</span> 
+		<span class="k">else</span><span class="p">:</span>
+				<span class="c"># sum of mortality deaths</span>
+				<span class="n">sum_deaths</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">c_mortality</span><span class="p">)</span> 
+		<span class="k">return</span> <span class="n">sum_deaths</span>
+		
+	<span class="c">#################################################</span>
+	<span class="c"># get and set attributions			# </span>
+	<span class="c">#################################################</span></div>
+<div class="viewcode-block" id="PrimeOutcome.get_attr_lower_limit_estimate"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeOutcome.PrimeOutcome.get_attr_lower_limit_estimate">[docs]</a>	<span class="k">def</span> <span class="nf">get_attr_lower_limit_estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function return the class attribution lower limit estimate </span>
+
+<span class="sd">    		:param self: self attributes </span>
+<span class="sd">   	 	:returns: lower limit estimate </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lower_limit_estimate</span>
+
+</div>
+<div class="viewcode-block" id="PrimeOutcome.get_attr_upper_limit_estimate"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeOutcome.PrimeOutcome.get_attr_upper_limit_estimate">[docs]</a>	<span class="k">def</span> <span class="nf">get_attr_upper_limit_estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function return the class attribution upper limit estimate </span>
+
+<span class="sd">    		:param self: self attributes </span>
+<span class="sd">   	 	:returns: upper limit estimate </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">upper_limit_estimate</span>
+
+</div>
+<div class="viewcode-block" id="PrimeOutcome.set_attr_mortalities"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeOutcome.PrimeOutcome.set_attr_mortalities">[docs]</a>	<span class="k">def</span> <span class="nf">set_attr_mortalities</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mortalities</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function set class attribution mortalities, it is necessary when calculating compound exposures, current baseline mortality should be counterfactual mortality of previous exposure </span>
+
+<span class="sd">    		:param mortalites: original mortalities </span>
+<span class="sd">   	 	:returns: No return </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">mortalities</span> <span class="o">=</span> <span class="n">mortalities</span>
+</div>
+<div class="viewcode-block" id="PrimeOutcome.get_attr_c_deaths"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeOutcome.PrimeOutcome.get_attr_c_deaths">[docs]</a>	<span class="k">def</span> <span class="nf">get_attr_c_deaths</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function get class attribution deaths in counterfactual </span>
+
+<span class="sd">    		:param self: self attributes </span>
+<span class="sd">   	 	:returns: deaths matrix of the current outcome </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">c_deaths</span>
+</div>
+<div class="viewcode-block" id="PrimeOutcome.get_attr_death_rates"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeOutcome.PrimeOutcome.get_attr_death_rates">[docs]</a>	<span class="k">def</span> <span class="nf">get_attr_death_rates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function return class attribution death rates </span>
+
+<span class="sd">    		:param self: self attributes </span>
+<span class="sd">   	 	:returns: death rates matrix of the current outcome </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">death_rates</span>
+</div>
+<div class="viewcode-block" id="PrimeOutcome.get_attr_c_mortality"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeOutcome.PrimeOutcome.get_attr_c_mortality">[docs]</a>	<span class="k">def</span> <span class="nf">get_attr_c_mortality</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function return the mortality for all age groups  </span>
+
+<span class="sd">    		:param self: self attributes </span>
+<span class="sd">   	 	:returns: counterfactual mortality </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">c_mortality</span>
+</div>
+<div class="viewcode-block" id="PrimeOutcome.get_attr_name"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeOutcome.PrimeOutcome.get_attr_name">[docs]</a>	<span class="k">def</span> <span class="nf">get_attr_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function return the class attribution name of current outcome </span>
+
+<span class="sd">    		:param self: self attributes </span>
+<span class="sd">   	 	:returns: outcome name </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> 
+</div>
+<div class="viewcode-block" id="PrimeOutcome.get_attr_id"><a class="viewcode-back" href="../../primemodel.html#primemodel.PrimeOutcome.PrimeOutcome.get_attr_id">[docs]</a>	<span class="k">def</span> <span class="nf">get_attr_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="sd">&quot;&quot;&quot;This function return the class attribution id of current outcome </span>
+
+<span class="sd">    		:param self: self attributes </span>
+<span class="sd">   	 	:returns: outcome id </span>
+<span class="sd">    		&quot;&quot;&quot;</span>
+		<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">o_id</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../index.html">prime 1.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Lijuan Marissa Zhou.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,360 @@
+        <div class="col-dp-1">
+          <div class="well well-bg-3 span1">
+          	<h4>Select population and exposure variables</h4>
+              <!-- Select the dataset to be displayed   upload dataset -->
+			<br />
+		<p>
+		<!-- <div class="dropdown-head-1" style="margin-right: 40px">Data Set:</div> -->
+		<h5>Data Set:</h5>
+		<select class="selectpicker">
+		  <option value="UK-population-2007" selected> UK population 2007</option>
+		</select> 
+		<!-- <br /><br /> -->
+		<div class="space-separator-1"></div>
+		<hr class="dash" />
+		<h5>Population:</h5>
+		<select class="selectpicker">
+		  <option value="UK-population-2007" selected> UK population 2007</option>
+		  <!--<option value="profession">profession</option> -->
+		</select> 
+		<div class="space-separator-1"></div>
+		<hr class="dash" />
+		<div class="space-separator-1	"></div>
+
+		<!-- sliders-->
+		<!-- Fruit-->
+
+		<h4>Risk Factors:</h4>
+		<p>Current status is displayed below.  Drag the slider bars (or fill numbers in the text boxes) to test how the outcome mortality rate changes on the graphs on the left.</p>
+		<div class="space-separator-2"></div>
+
+		<h5>Dietary Factors</h5>
+		<div class="space-separator-1"></div>
+
+		<!-- <span class="label label-primary">Primary</span> -->
+		<div class='row'>
+		  <div class='col-xs-2'>Fruit</div>
+		  <div class='col-xs-8'>
+  		    <div class="progress-2">
+        	      <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 10%"><span class="sr-only">40% Complete (success)</span></div>
+      		</div>
+		    <div id="slipper-mean">
+		      <div id="bslider"></div>
+		    </div><!-- slipper-mean -->
+		  </div><!-- col-xs-8 -->
+	      <div class='col-xs-1'><label for="amount">&nbsp;g/day</label></div>      
+		  <div class='col-xs-1'>
+		    <div id="arrow-down"></div>
+            <button data-toggle="collapse" data-target="#slipper"><i class="glyphicon glyphicon-large glyphicon-chevron-up"></i></button>
+		  </div>
+		</div>
+
+		<div class='row' id='slipper'> <!-- hidden charts  -->
+		  <div class='col-xs-2'></div>
+		  <div class='col-xs-8'>
+		    <div class='col-xs-6'>
+		      <!-- distribution chart -->
+		      distribution chart 
+		    </div>
+		    <div class='col-xs-6'>
+		      <!-- slider mean/non-rate chart -->
+		      <div id="bslider"></div>
+		      <div class="space-separator-2"></div>
+		      <div id="gslider"></div>
+		    </div>
+		  </div><!-- col-xs-8 -->
+	       	  <div class='col-xs-2'>
+		    <label for="sd">SD:</label>
+		    <div class="space-separator-4"></div>
+		    <p><label for="non-rate">non:</label>
+		  </div> <!-- col-xs-8 -->
+		</div> <!-- row  -->
+		<div class="space-separator-3"></div>
+		<!-- fruit end-->
+
+		<!-- Veg-->
+		<div class='row'>
+		  <div class='col-xs-2'>Vegetables</div>
+		  <div class='col-xs-8'>
+  		    <div class="progress-2">
+        	      <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 10%"><span class="sr-only">40% Complete (success)</span></div>
+      		    </div>
+		    <div id="slipper-mean"><div id="bslider"></div></div>
+		  </div><!-- col-xs-8 -->
+	       	  <div class='col-xs-1'><b>g/day</b></div>
+		  <div class='col-xs-1'>
+		    <div id="arrow-down-veg"></div>
+		  </div>
+		</div>
+		<div class='row' id='slipper-veg'> <!-- hided charts  -->
+		  <div class='col-xs-2'></div>
+		  <div class='col-xs-8'>
+		    <div class='col-xs-6'>
+		      <!-- distribution chart -->
+		      distribution chart 
+		    </div>
+		    <div class='col-xs-6'>
+		      <!-- slider mean/non-rate chart -->
+		      <div id="bslider"></div>
+		      <div class="space-separator-2"></div>
+		      <div id="gslider"></div>
+		    </div>
+		  </div><!-- col-xs-8 -->
+		</div> <!-- row  -->
+		<div class="space-separator-3"></div>
+		<!-- veg end-->
+
+		<!-- FIBRE -->
+		<div class='row'>
+		  <div class='col-xs-2'>Fibre</div>
+		  <div class='col-xs-8'>
+  		    <div class="progress-2">
+        	      <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 10%"><span class="sr-only">40% Complete (success)</span></div>
+      		    </div>
+		    <div id="slipper-mean"><div id="bslider"></div></div>
+		  </div><!-- col-xs-8 -->
+	       	  <div class='col-xs-1'><b>g/day</b></div>
+		  <div class='col-xs-1'>
+		    <div id="arrow-down-fibre"></div>
+		  </div>
+		</div>
+		<div class='row' id='slipper-fibre'> <!-- hided charts  -->
+		  <div class='col-xs-2'></div>
+		  <div class='col-xs-8'>
+		    <div class='col-xs-6'>
+		      <!-- distribution chart -->
+		      distribution chart 
+		    </div>
+		    <div class='col-xs-6'>
+		      <!-- slider mean/non-rate chart -->
+		      <div id="bslider"></div>
+		      <div class="space-separator-2"></div>
+		      <div id="gslider"></div>
+		    </div>
+		  </div><!-- col-xs-8 -->
+		</div> <!-- row  -->
+		<div class="space-separator-3"></div>
+		<!-- Fibre end-->
+
+		<!-- SALT-->
+		<div class='row'>
+		  <div class='col-xs-2'>Salt</div>
+		  <div class='col-xs-8'>
+  		    <div class="progress-2">
+        	      <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 10%"><span class="sr-only">40% Complete (success)</span></div>
+      		    </div>
+		    <div id="slipper-mean"><div id="bslider"></div></div>
+		  </div><!-- col-xs-8 -->
+	       	  <div class='col-xs-1'><b>g/day</b></div>
+		  <div class='col-xs-1'>
+		    <div id="arrow-down-salt"></div>
+		  </div>
+		</div>
+		<div class='row' id='slipper-salt'> <!-- hided charts  -->
+		  <div class='col-xs-2'></div>
+		  <div class='col-xs-8'>
+		    <div class='col-xs-6'>
+		      <!-- distribution chart -->
+		      distribution chart 
+		    </div>
+		    <div class='col-xs-6'>
+		      <!-- slider mean/non-rate chart -->
+		      <div id="bslider"></div>
+		      <div class="space-separator-2"></div>
+		      <div id="gslider"></div>
+		    </div>
+		  </div><!-- col-xs-8 -->
+		</div> <!-- row  -->
+		<div class="space-separator-3"></div>
+		<!-- SALT end-->
+
+		<!-- FAT -->
+		<div class='row'>
+		  <div class='col-xs-2'>Fat</div>
+		  <div class='col-xs-8'>
+  		    <div class="progress-2">
+        	      <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 10%"><span class="sr-only">40% Complete (success)</span></div>
+      		    </div>
+		    <div id="slipper-mean"><div id="bslider"></div></div>
+		  </div><!-- col-xs-8 -->
+	       	  <div class='col-xs-1'><b>g/day <su><a href="#">*</a></su></b></div>
+		  <div class='col-xs-1'>
+		    <div id="arrow-down-fat"></div>
+		  </div>
+		</div>
+		<div class='row' id='slipper-fat'> <!-- hided charts  -->
+		  <div class='col-xs-2'></div>
+		  <div class='col-xs-8'>
+		    <div class='col-xs-6'>
+		      <!-- distribution chart -->
+		      distribution chart 
+		    </div>
+		    <div class='col-xs-6'>
+		      <!-- slider mean/non-rate chart -->
+		      <div id="bslider"></div>
+		      <div class="space-separator-2"></div>
+		      <div id="gslider"></div>
+		    </div>
+		  </div><!-- col-xs-8 -->
+		</div> <!-- row  -->
+		<div class="space-separator-3"></div>
+		<div class="space-separator-3"></div>
+		<!-- FAT end-->
+
+		<h5>Physical Activity</h5>
+		<div class="space-separator-1"></div>
+
+		<!-- PA -->
+		<div class='row'>
+		  <div class='col-xs-2'>Physical Activity (PA)</div>
+		  <div class='col-xs-8'>
+  		    <div class="progress-2">
+        	      <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 10%"><span class="sr-only">40% Complete (success)</span></div>
+      		    </div>
+		    <div id="slipper-mean"><div id="bslider"></div></div>
+		  </div><!-- col-xs-8 -->
+	       	  <div class='col-xs-1'><b>MetHrs/week</b></div>
+		  <div class='col-xs-1'>
+		    <div id="arrow-down-pa"></div>
+		  </div>
+		</div>
+		<div class='row' id='slipper-pa'> <!-- hided charts  -->
+		  <div class='col-xs-2'></div>
+		  <div class='col-xs-8'>
+		    <div class='col-xs-6'>
+		      <!-- distribution chart -->
+		      distribution chart 
+		    </div>
+		    <div class='col-xs-6'>
+		      <!-- slider mean/non-rate chart -->
+		      <div id="bslider"></div>
+		      <div class="space-separator-2"></div>
+		      <div id="gslider"></div>
+		    </div>
+		  </div><!-- col-xs-8 -->
+		</div> <!-- row  -->
+		<div class="space-separator-3"></div>
+		<!-- PA end-->
+
+		<!-- BMI -->
+		<div class='row'>
+		  <div class='col-xs-2'>Body Mass Index</div>
+		  <div class='col-xs-8'>
+  		    <div class="progress-2">
+        	      <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 10%"><span class="sr-only">40% Complete (success)</span></div>
+      		    </div>
+		    <div id="slipper-mean"><div id="bslider"></div></div>
+		  </div><!-- col-xs-8 -->
+	       	  <div class='col-xs-1'><b>BMI</b></div>
+		  <div class='col-xs-1'>
+		    <div id="arrow-down-bmi"></div>
+		  </div>
+		</div>
+		<div class='row' id='slipper-bmi'> <!-- hided charts  -->
+		  <div class='col-xs-2'></div>
+		  <div class='col-xs-8'>
+		    <div class='col-xs-6'>
+		      <!-- distribution chart -->
+		      distribution chart 
+		    </div>
+		    <div class='col-xs-6'>
+		      <!-- slider mean/non-rate chart -->
+		      <div id="bslider"></div>
+		      <div class="space-separator-2"></div>
+		      <div id="gslider"></div>
+		    </div>
+		  </div><!-- col-xs-8 -->
+		</div> <!-- row  -->
+		<div class="space-separator-3"></div>
+		<div class="space-separator-3"></div>
+		<!-- BMI end-->
+
+
+		<h5>Smoking and Alcohol</h5>
+		<div class="space-separator-1"></div>		
+
+		<!-- ALCOHOL-->
+		<div class='row'>
+		  <div class='col-xs-2'>Alcohol</div>
+		  <div class='col-xs-8'>
+  		    <div class="progress-2">
+        	      <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 10%"><span class="sr-only">40% Complete (success)</span></div>
+      		    </div>
+		    <div id="slipper-mean"><div id="bslider"></div></div>
+		  </div><!-- col-xs-8 -->
+	       	  <div class='col-xs-1'><b>g/day</b></div>
+		  <div class='col-xs-1'>
+		    <div id="arrow-down-alcohol"></div>
+		  </div>
+		</div>
+		<div class='row' id='slipper-alcohol'> <!-- hided charts  -->
+		  <div class='col-xs-2'></div>
+		  <div class='col-xs-8'>
+		    <div class='col-xs-6'>
+		      <!-- distribution chart -->
+		      distribution chart 
+		    </div>
+		    <div class='col-xs-6'>
+		      <!-- slider mean/non-rate chart -->
+		      <div id="bslider"></div>
+		      <div class="space-separator-2"></div>
+		      <div id="gslider"></div>
+		    </div>
+		  </div><!-- col-xs-8 -->
+		</div> <!-- row  -->
+		<div class="space-separator-3"></div>
+		<!-- ALCOHOL end-->
+
+		<!-- SMOKING -->
+		<div class='row'>
+		  <div class='col-xs-2'>Smoking</div>
+		  <div class='col-xs-8'>
+  		    <div class="progress-2">
+        	      <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 10%"><span class="sr-only">40% Complete (success)</span></div>
+      		    </div>
+		    <div id="slipper-mean"><div id="bslider"></div></div>
+		  </div><!-- col-xs-8 -->
+	       	  <div class='col-xs-1'><b>%smokers</b></div>
+		  <div class='col-xs-1'>
+		    <div id="arrow-down-smoking"></div>
+		  </div>
+		</div>
+
+
+		<div class='row' id='slipper-smoking'> <!-- hided charts  -->
+		  <div class='col-xs-5'>
+		    <!-- distribution chart -->
+		    distribution chart 
+		  </div>
+		  <div class='col-xs-7'>
+		    <div class='row'>
+		      <div class='col-xs-4'>
+		        <!-- slider mean/non-rate chart -->
+		        <div id="bslider"></div>
+		      </div>
+	       	      <div class='col-xs-3'>
+		        <label for="sd">SD:</label>
+		      </div> <!-- col-xs-3 -->
+		    </div><!-- row -->
+		    <div class="space-separator-2"></div>
+		    <div class='row'> 
+		      <div class='col-xs-4'>
+		        <!-- slider mean/non-rate chart -->
+		        <div id="gslider"></div>
+		      </div>
+	       	      <div class='col-xs-3'>
+		        <p><label for="non-rate">non:</label>
+		      </div> <!-- col-xs-3 -->
+		    </div><!-- row -->
+		  </div><!-- col-xs-7 -->
+		</div><!-- row -->
+		<div class="space-separator-3"></div>
+		<!-- SMOKING end-->
+		<!-- sliders end-->
+		<!-- submit button -->
+		<div class="row pull-right">
+		  <div class="btn-group">
+		    <button type="button" class="btn btn-default" id="btn-reset">Reset</button>
+		    <button type="button" class="btn btn-warning">Submit</button>
+		  </div>
+		</div>

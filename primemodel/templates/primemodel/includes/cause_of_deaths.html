@@ -1,0 +1,55 @@
+	<!-- Breakdown of all death outcomes -->
+
+	<div class="space-separator-2"></div>
+	<hr class="dash" />
+	<div class="space-separator-2"></div>
+	<h4>Cause of death</h4>
+	<table class="table table-striped">  
+        <thead>  
+          <tr>  
+            <th>Cause of death</th>  
+            <th>Baseline mortality</th>
+            <th>Counterfactual mortality</th>  
+          </tr>  
+        </thead>  
+        <tbody>  
+		{% for outcome in all_mortality_exposure %}
+          <tr>  
+            <td>{{outcome.name}}</td>  
+            <td>{{outcome.b_mortality_sum_db}}</td>  
+            <td>{{outcome.c_mortality_sum}}</td>
+          </tr>  
+         {% endfor %}
+        </tbody>  
+      </table> 
+
+
+{% for outcome in all_mortality_exposure %}
+
+<!-- <div class='row'>{{ outcome.name }}
+  <div class="line-separator"></div>
+  <div class='col-xs-2'>mortality</div>
+  <div class='col-xs-10'>
+  <div class='row'>
+    <div class="col-dp-2">
+    <div class="progress-0">
+      <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow='{{outcome.b_mortality_sum_db}}' aria-valuemin="0" aria-valuemax="100000" style="width: 10%"><span class="sr-only">40% Complete (success)</span></div> 
+    </div>
+    </div>
+    <div class="col-dp-3">{{outcome.b_mortality_sum_db}}</div>
+  </div>
+  <div class='row'>
+    <div class="col-dp-2">
+      <div class="progress-0">
+        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 90%"><span class="sr-only">40% Complete (success)</span></div> 
+      </div>
+    </div>
+    <div class="col-dp-3">{{outcome.c_mortality_sum}}</div>
+  </div>
+  </div>
+</div>
+
+		<div class="space-separator-2"></div>
+ -->
+
+ {% endfor %}

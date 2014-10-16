@@ -1,0 +1,66 @@
+[{
+    "e_id": 1,
+    "mean": 188.6,
+    "sd": 37.72,    
+    "non_rate": 25
+},
+{
+    "e_id": 2,
+    "mean": 168.0,
+    "sd": 33.6,    
+    "non_rate": 25
+},
+{
+    "e_id": 3,
+    "mean": 15.5,
+    "sd": 1.55,    
+    "non_rate": 0 
+},
+{
+    "e_id": 4,
+    "mean": 9,
+    "sd": 0.9,    
+    "non_rate": 0 
+},
+{
+    "e_id": 5,
+    "mean_total": 37.3,
+    "mean_sat": 14.1,
+    "mean_mufa": 13.7,
+    "mean_pufa": 6.8,
+    "mean_diet": 250.0,
+    "sd_total": 3.73,    
+    "sd_sat": 1.41,    
+    "sd_mufa": 1.37,    
+    "sd_pufa": 0.68,    
+    "sd_diet": 10.0,    
+    "non_rate": 0 
+},
+{
+    "e_id": 6,
+    "mean": 30.0,
+    "sd": 35.0,    
+    "non_rate": 0 
+},
+{
+    "e_id": 7,
+    "energy_mean": 2000,
+    "sedentary_rate": 0,
+    "met_mean": 30.0,
+    "met_sd": 35.0,
+    "met_mvpa": 6.0,    
+    "met_non_mvpa": 1.1
+},
+{
+    "e_id": 8,
+    "mean": 10.0,
+    "sd": 10.0,    
+    "non_rate": 20.0 
+},
+{
+    "e_id": 9,
+    "mean": 0.3,
+    "sd": 0.3,    
+    "non_rate": 0.4 
+}
+]

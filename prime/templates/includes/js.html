@@ -1,0 +1,13 @@
+	<!-- Loading static for the second time (needs to be done here to ensure these files are loaded) -->
+	<!-- Inefficient? Perhaps move this partial back to base.html -->
+	{% load staticfiles %}
+
+    <!-- Bootstrap core JavaScript - Placed at the end of the document so the pages load faster -->
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src='{% static "prime/js/bootstrap.min.js" %}'></script>
+    <script src='{% static "prime/js/prime.js" %}'></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBO4EHdS534vJDO-UPAbdMcS7bJfe7oJvc&sensor=true"></script>

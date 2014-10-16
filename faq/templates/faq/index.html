@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %} Prime Publications {{ year }}{% endblock %}
+
+{% block content %}
+<!-- container -->
+     <div class="row">
+        <div class="col-dp-1">
+
+
+{% for faq in faq_list %}
+
+	<div class="media">
+          <div class="media-body">
+            <h4 class="media-heading"><a href="" >{{ faq.title}}</h4></a>
+            <p>{{ faq.body }}</p>
+          </div>
+        </div><!-- /.media -->
+{% endfor %}
+
+        </div><!-- /.col-dp-1 -->
+        <div class="col-dp-2">
+          
+        </div><!-- /.col-dp-2 -->
+      </div><!-- container -->
+
+{% endblock %}

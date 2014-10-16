@@ -1,0 +1,33 @@
+<!-- HTML5 doctype -->
+<!DOCTYPE html>
+<html>
+  <head>
+      {% include "includes/head.html" %}   
+  </head>
+  <body>
+    
+    <!-- Container -->
+    <div class='container-fluid'>
+
+      {% include "includes/top.html" %}           
+      {% include "includes/header.html" %}   
+      {% include "includes/navigation.html" %}   
+
+      <!-- Main -->
+      <!-- Can change soon to <main> but not all browsers recognise this yet e.g. http://html5doctor.com/the-main-element/ -->
+      <!-- Some issues with using main.html as an include... will review -->
+      <div class="main">
+        <div class="row">
+         <div class="col-dp-0">
+         {% block content %}{% endblock %}
+         </div> 
+        </div> 
+      </div>
+
+      {% include "includes/footer.html" %}   
+
+    </div>
+
+  </body>
+  {% include "includes/js.html" %}   
+</html>

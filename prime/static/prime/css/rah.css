@@ -1,0 +1,67 @@
+header { display:block;}
+
+footer {
+    background: #b8b3af;
+    padding: 80px 0;
+    margin: 0;
+    border-top: 5px solid #9f9a96;
+    margin-top: 50px;
+}
+footer h5 {
+    color: #fff;
+}
+
+.main {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.page-header h1 {
+    padding-left: 50px;
+}
+
+.dash{
+  border: 0 none;
+  border-top: 1px dashed #9f9a96;
+  background: none;
+  height:0;
+} 
+
+.topbar1 {
+    background: #9f9a96;
+    height: 10px;
+}
+.topbar2 {
+    background: #b8b3af;
+    height: 10px;
+}
+
+/* Want to slightly separate the variables and results in main model page */
+.well {
+    margin-right: 10px;
+}
+
+.navbar-menu {
+    margin-left: 40px;
+}
+
+/*footer a {
+    color: #999;
+}
+footer a:hover {
+    color: #efefef;
+}
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -63px;
+}
+.push {
+    height: 63px;
+}
+/* not required for sticky footer; just pushes hero down a bit */
+/*.wrapper > .container {
+    padding-top: 60px;
+}
+*/

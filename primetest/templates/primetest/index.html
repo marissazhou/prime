@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<title>PRIME Model</title>
+	</head>
+	<body>
+		<h1>populations</h1> {{ b_log_mean_fibre}}
+		
+<p>
+*******************************  0  ***************************************************************************************************************************
+<!--<p>
+		{{ outcomes_b_m_deaths_sum_CHD_fibre }}&nbsp;{{ outcomes_b_f_deaths_sum_CHD_fibre }}&nbsp;{{ outcomes_c_m_deaths_sum_CHD_fibre }}&nbsp;{{ outcomes_c_f_deaths_sum_CHD_fibre }}&nbsp;
+
+<p>
+{{b_death_age_a1}}&nbsp; -->
+
+
+<h1>final baseline compound mortality</h1>
+
+{% for mortality in b_output_mortality_num %}
+{{ mortality }}&nbsp;
+{% endfor %}
+<h1> total mortality</h1>
+{{ b_total_mortality }}&nbsp;
+		
+<h1>final counterfactual compound mortality</h1>
+
+{% for mortality in c_output_mortality_num %}
+{{ mortality }}&nbsp;
+{% endfor %}
+<h1> total mortality</h1>
+{{ c_total_mortality }}&nbsp;
+		
+	</body>
+</html>

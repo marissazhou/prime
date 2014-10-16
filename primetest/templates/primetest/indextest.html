@@ -1,0 +1,445 @@
+<html>
+	<head>
+		<title>PRIME Model</title>
+	</head>
+	<body>
+		<h1>populations</h1> {{ b_log_mean_fibre}}
+		<h1>type_mortality_f_CHD </h1> {{ type_mortality_f_CHD}}
+		<h1> mortality of different diseases </h1>
+		<ol>
+			{% for m in mortality_m_CHD %}
+				<li>
+					{{ m}}
+				</li>
+			{% endfor %}
+		</ol>
+		<ol>
+			{% for m in mortality_f_CHD %}
+				<li>
+					{{ m}}
+				</li>
+			{% endfor %}
+		</ol>
+		<ol>
+			{% for m_age_group in m_age_groups %}
+				<li>
+					{{ m_age_group}}
+				</li>
+			{% endfor %}
+		</ol>
+		<ol>
+			{% for mortality in mortality_base %}
+				<li>
+					{{ mortality.value }}
+				</li>
+			{% endfor %}
+		</ol>
+		<h3>mortality fruit&veg averted/delayed</h3>
+		{{ mortality_fruit_veg }}
+		<h4>mortality fruit&veg baseline</h4>
+		{{ mortality_fruit_veg }}
+		<h4>mortality fruit&veg counterfactual</h4>
+		{{ mortality_fruit_veg }}
+		
+<p>
+*******************************  Fibre  ***************************************************************************************************************************
+<p>
+		<h3>mortality fibre</h3>
+		{{ mortality_fibre }}
+		<p>
+		{{ relative_risks_count }}
+		<h4>population_distribution_b_m_fibre</h4> 
+		{% for row in population_distribution_b_m_fibre %}
+			{% for item in row %}
+				{{ item }}&nbsp;
+			{% endfor %}
+			<p>
+		{% endfor %}
+		<p>
+
+		<h4>population_distribution_b_f_fibre</h4> 
+		{% for row in population_distribution_b_f_fibre %}
+			{% for item in row %}
+				{{ item }}&nbsp;
+			{% endfor %}
+			<p>
+		{% endfor %}
+		<p>
+
+
+		<h4>population_distribution_c_m_fibre</h4> 
+		{% for row in population_distribution_c_m_fibre %}
+			{% for item in row %}
+				{{ item }}&nbsp;
+			{% endfor %}
+			<p>
+		{% endfor %}
+		<p>
+
+
+		<h4>population_distribution_c_f_fibre</h4> 
+		{% for row in population_distribution_c_f_fibre %}
+			{% for item in row %}
+				{{ item }}&nbsp;
+			{% endfor %}
+			<p>
+		{% endfor %}
+		<p>
+
+
+		<p>
+		<h4>relative risks_CHD_m </h4>
+		{% for risks in outcomes_relative_risks_m_CHD_fibre %}
+			{{ risks }}&nbsp;
+		<p>
+		{% endfor %}
+		<p>
+		<p>
+		<h4>relative risks_CHD_f </h4>
+		{% for risks in outcomes_relative_risks_f_CHD_fibre %}
+			{{ risks }}&nbsp;
+		<p>
+		{% endfor %}
+		<p>
+		<p>
+		<h4>relative risks_CC_m </h4>
+		{% for risks in outcomes_relative_risks_m_CC_fibre %}
+			{{ risks }}&nbsp;
+		<p>
+		{% endfor %}
+		<p>
+
+		<p>
+		<h4>death_rates_CHD_m </h4>
+		{% for rates in outcomes_death_rates_m_CHD_fibre %}
+			{% for rate in rates %}
+				{{ rate }}&nbsp;
+			{% endfor %}
+		<p>
+		{% endfor %}
+		<p>
+		<p>
+		<h4>death_rates_CHD_f </h4>
+		{% for rates in outcomes_death_rates_f_CHD_fibre %}
+			{% for rate in rates %}
+				{{ rate }}&nbsp;
+			{% endfor %}
+		<p>
+		{% endfor %}
+		<p>
+		<p>
+		<h4>outcomes_b_m_deaths_CHD_fibre </h4>
+		{% for deaths in outcomes_b_m_deaths_CHD_fibre %}
+			{% for death in deaths %}
+				{{ death }}&nbsp;
+			{% endfor %}
+		<p>
+		{% endfor %}
+		<p>
+		<h4>outcomes_b_f_deaths_CHD_fibre </h4>
+		{% for deaths in outcomes_b_f_deaths_CHD_fibre %}
+			{% for death in deaths %}
+				{{ death }}&nbsp;
+			{% endfor %}
+		<p>
+		{% endfor %}
+		<p>
+		<h4>outcomes_c_m_deaths_CHD_fibre </h4>
+		{% for deaths in outcomes_c_m_deaths_CHD_fibre %}
+			{% for death in deaths %}
+				{{ death }}&nbsp;
+			{% endfor %}
+		<p>
+		{% endfor %}
+		<p>
+		<h4>outcomes_c_f_deaths_CHD_fibre </h4>
+		{% for deaths in outcomes_c_f_deaths_CHD_fibre %}
+			{% for death in deaths %}
+				{{ death }}&nbsp;
+			{% endfor %}
+		<p>
+		{% endfor %}
+		<p>
+		{{ outcomes_b_m_deaths_sum_CHD_fibre }}&nbsp;{{ outcomes_b_f_deaths_sum_CHD_fibre }}&nbsp;{{ outcomes_c_m_deaths_sum_CHD_fibre }}&nbsp;{{ outcomes_c_f_deaths_sum_CHD_fibre }}&nbsp;
+<p>
+*******************************  Salt  ***************************************************************************************************************************
+<p>
+		<h3>mortality salt</h3>
+		{{ mortality_salt }}
+		<p>
+		{{ relative_risks_count }}
+		<h4>population_distribution_b_m_salt</h4> 
+		{% for row in population_distribution_b_m_salt %}
+			{% for item in row %}
+				{{ item }}&nbsp;
+			{% endfor %}
+			<p>
+		{% endfor %}
+		<p>
+
+		<h4>population_distribution_b_f_salt</h4> 
+		{% for row in population_distribution_b_f_salt %}
+			{% for item in row %}
+				{{ item }}&nbsp;
+			{% endfor %}
+			<p>
+		{% endfor %}
+		<p>
+
+
+		<h4>population_distribution_c_m_salt</h4> 
+		{% for row in population_distribution_c_m_salt %}
+			{% for item in row %}
+				{{ item }}&nbsp;
+			{% endfor %}
+			<p>
+		{% endfor %}
+		<p>
+
+
+		<h4>population_distribution_c_f_salt</h4> 
+		{% for row in population_distribution_c_f_salt %}
+			{% for item in row %}
+				{{ item }}&nbsp;
+			{% endfor %}
+			<p>
+		{% endfor %}
+		<p>
+
+
+		<p>
+		<h4>relative risks_CHD_m </h4>
+		{% for risks in outcomes_relative_risks_m_CHD_salt %}
+			{{ risks }}&nbsp;
+		<p>
+		{% endfor %}
+		<p>
+		<p>
+		<h4>relative risks_CHD_f </h4>
+		{% for risks in outcomes_relative_risks_f_CHD_salt %}
+			{{ risks }}&nbsp;
+		<p>
+		{% endfor %}
+		<p>
+		<p>
+		<h4>relative risks_CC_m </h4>
+		{% for risks in outcomes_relative_risks_m_CC_salt %}
+			{{ risks }}&nbsp;
+		<p>
+		{% endfor %}
+		<p>
+
+		<p>
+		<h4>death_rates_CHD_m </h4>
+		{% for rates in outcomes_death_rates_m_CHD_salt %}
+			{% for rate in rates %}
+				{{ rate }}&nbsp;
+			{% endfor %}
+		<p>
+		{% endfor %}
+		<p>
+		<p>
+		<h4>death_rates_CHD_f </h4>
+		{% for rates in outcomes_death_rates_f_CHD_salt %}
+			{% for rate in rates %}
+				{{ rate }}&nbsp;
+			{% endfor %}
+		<p>
+		{% endfor %}
+		<p>
+		<p>
+		<h4>outcomes_b_m_deaths_CHD_salt </h4>
+		{% for deaths in outcomes_b_m_deaths_CHD_salt %}
+			{% for death in deaths %}
+				{{ death }}&nbsp;
+			{% endfor %}
+		<p>
+		{% endfor %}
+		<p>
+		<h4>outcomes_b_f_deaths_CHD_salt </h4>
+		{% for deaths in outcomes_b_f_deaths_CHD_salt %}
+			{% for death in deaths %}
+				{{ death }}&nbsp;
+			{% endfor %}
+		<p>
+		{% endfor %}
+		<p>
+		<h4>outcomes_c_m_deaths_CHD_salt </h4>
+		{% for deaths in outcomes_c_m_deaths_CHD_salt %}
+			{% for death in deaths %}
+				{{ death }}&nbsp;
+			{% endfor %}
+		<p>
+		{% endfor %}
+		<p>
+		<h4>outcomes_c_f_deaths_CHD_salt </h4>
+		{% for deaths in outcomes_c_f_deaths_CHD_salt %}
+			{% for death in deaths %}
+				{{ death }}&nbsp;
+			{% endfor %}
+		<p>
+		{% endfor %}
+		<p>
+		<h4>outcomes_b_m_deaths_sum_CHD_salt</h4>
+		{{ outcomes_b_m_deaths_sum_CHD_salt }}
+		<p>
+		<h4>outcomes_b_f_deaths_sum_CHD_salt</h4>
+		{{ outcomes_b_f_deaths_sum_CHD_salt }}
+		<p>
+		<h4>outcomes_c_m_deaths_sum_CHD_salt</h4>
+		{{ outcomes_c_m_deaths_sum_CHD_salt }}
+		<p>
+		<h4>outcomes_c_f_deaths_sum_CHD_salt</h4>
+		{{ outcomes_c_f_deaths_sum_CHD_salt }}
+		<p>
+<p>
+*******************************  Fat  ***************************************************************************************************************************
+<p>
+		<h3>mortality fat</h3>
+		{{ mortality_fat }}
+		<p>
+		{{ relative_risks_count }}
+		<h4>population_distribution_b_m_fat</h4> 
+		{% for row in population_distribution_b_m_fat %}
+			{% for item in row %}
+				{{ item }}&nbsp;
+			{% endfor %}
+			<p>
+		{% endfor %}
+		<p>
+
+		<h4>population_distribution_b_f_fat</h4> 
+		{% for row in population_distribution_b_f_fat %}
+			{% for item in row %}
+				{{ item }}&nbsp;
+			{% endfor %}
+			<p>
+		{% endfor %}
+		<p>
+
+
+		<h4>population_distribution_c_m_fat</h4> 
+		{% for row in population_distribution_c_m_fat %}
+			{% for item in row %}
+				{{ item }}&nbsp;
+			{% endfor %}
+			<p>
+		{% endfor %}
+		<p>
+
+
+		<h4>population_distribution_c_f_fat</h4> 
+		{% for row in population_distribution_c_f_fat %}
+			{% for item in row %}
+				{{ item }}&nbsp;
+			{% endfor %}
+			<p>
+		{% endfor %}
+		<p>
+
+
+		<p>
+		<h4>relative risks_CHD_m </h4>
+		{% for risks in outcomes_relative_risks_m_CHD_fat %}
+			{{ risks }}&nbsp;
+		<p>
+		{% endfor %}
+		<p>
+		<p>
+		<h4>relative risks_CHD_f </h4>
+		{% for risks in outcomes_relative_risks_f_CHD_fat %}
+			{{ risks }}&nbsp;
+		<p>
+		{% endfor %}
+		<p>
+
+		<p>
+		<h4>death_rates_CHD_m </h4>
+		{% for rates in outcomes_death_rates_m_CHD_fat %}
+			{% for rate in rates %}
+				{{ rate }}&nbsp;
+			{% endfor %}
+		<p>
+		{% endfor %}
+		<p>
+		<p>
+		<h4>death_rates_CHD_f </h4>
+		{% for rates in outcomes_death_rates_f_CHD_fat %}
+			{% for rate in rates %}
+				{{ rate }}&nbsp;
+			{% endfor %}
+		<p>
+		{% endfor %}
+		<p>
+		<p>
+		<h4>outcomes_b_m_deaths_CHD_fat </h4>
+		{% for deaths in outcomes_b_m_deaths_CHD_fat %}
+			{% for death in deaths %}
+				{{ death }}&nbsp;
+			{% endfor %}
+		<p>
+		{% endfor %}
+		<p>
+		<h4>outcomes_b_f_deaths_CHD_fat </h4>
+		{% for deaths in outcomes_b_f_deaths_CHD_fat %}
+			{% for death in deaths %}
+				{{ death }}&nbsp;
+			{% endfor %}
+		<p>
+		{% endfor %}
+		<p>
+		<h4>outcomes_c_m_deaths_CHD_fat </h4>
+		{% for deaths in outcomes_c_m_deaths_CHD_fat %}
+			{% for death in deaths %}
+				{{ death }}&nbsp;
+			{% endfor %}
+		<p>
+		{% endfor %}
+		<p>
+		<h4>outcomes_c_f_deaths_CHD_fat </h4>
+		{% for deaths in outcomes_c_f_deaths_CHD_fat %}
+			{% for death in deaths %}
+				{{ death }}&nbsp;
+			{% endfor %}
+		<p>
+		{% endfor %}
+		<p>
+		<h4>outcomes_b_m_deaths_sum_CHD_fat</h4>
+		{{ outcomes_b_m_deaths_sum_CHD_fat }}
+		<p>
+		<h4>outcomes_b_f_deaths_sum_CHD_fat</h4>
+		{{ outcomes_b_f_deaths_sum_CHD_fat }}
+		<p>
+		<h4>outcomes_c_m_deaths_sum_CHD_fat</h4>
+		{{ outcomes_c_m_deaths_sum_CHD_fat }}
+		<p>
+		<h4>outcomes_c_f_deaths_sum_CHD_fat</h4>
+		{{ outcomes_c_f_deaths_sum_CHD_fat }}
+		<p>
+<p>
+*******************************  BMI  ***************************************************************************************************************************
+<p>	
+		
+		<h3>mortality BMI</h3>
+		{{ mortality_BMI }}
+		
+<p>
+*******************************  pa  ***************************************************************************************************************************
+<p>
+		<h3>mortality pa</h3>
+		{{ mortality_pa }}
+		
+<p>
+*******************************  alcohol  ***************************************************************************************************************************
+<p>
+		<h3>mortality alcohol</h3>
+		{{ mortality_alcohol }}
+		
+<p>
+*******************************  smoking  ***************************************************************************************************************************
+<p>
+		<h3>mortality smoking</h3>
+		{{ mortality_smoking }}
+		
+	</body>
+</html>
